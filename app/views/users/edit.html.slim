@@ -1,0 +1,8 @@
+- @page_title = "マイページ編集"
+h1 = @page_title
+
+= form_with model: @user do |form|
+  =render "form", f: form 
+  .subbtn
+    = form.submit
+    

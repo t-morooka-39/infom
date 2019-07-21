@@ -1,0 +1,29 @@
+- @page_title = "User一覧"
+h1 = @page_title
+
+- if @users.present?
+  table
+    thead
+      tr
+        th ニックネーム
+        th 本名
+        th 性別
+        th 誕生日
+        th メールアドレス
+        th 管理者
+        th 操作
+    tbody
+      - @users.each do |user|
+        tr
+          td = link_to user.nickname, user
+          td = user.name
+          td = user.sex
+          td = user.birthday
+          td = user.email
+          td = user.admin
+          td 
+            = link_to "編集", edit_user_path(user.id)
+            = link_to "削除", user_path(user.id), method: :delete, data: {confirm: "本当に削除しますか？"}
+
+- else 
+  p ユーザーが登録されていません。

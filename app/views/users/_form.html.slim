@@ -1,0 +1,25 @@
+table
+  tr
+    th = f.label :nickname, "ニックネーム"
+    td = f.text_field :nickname
+  tr
+    th = f.label :name, "本名"
+    td = f.text_field :name
+  tr 
+    th 本名は第三者には公開されません
+  tr
+    th 性別
+    td 
+      = f.radio_button :sex, 1
+      = f.label :sex_1, "男"
+      = f.radio_button :sex, 2
+      = f.label :sex_2, "女"
+  tr
+    th = f.label :birthday, "誕生日", for: "user_birthday_li"
+    td = f.date_select :birthday, start_year: 1919, end_year: Time.current.year, use_month_numbers: true 
+  tr
+    th = f.label :email, "メールアドレス"
+    td = f.text_field :email
+  / tr
+  /   th
+  /   td

@@ -1,0 +1,36 @@
+nav.navbar-expand-lg.navbar-light.navbar.fixed-top
+  =link_to image_tag("tikarakobu.png", width: "50", alt: "infomus-logo"), "#", id: "logo", class: "navbar-brand"
+  
+  form.form-inline.my-2.my-lg-0
+    input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索..."
+    button type="submit" class="btn btn-outline-success my-2 my-sm-0" 検索
+  
+  ul.navbar-nav.ml-auto
+    /ログインした状態で見せる
+    li.nav-item
+      = link_to "#", class: 'nav-link' do 
+        i.fa.fa-send-o 投稿
+
+    li.nav-item
+      = link_to "#", class: "nav-link" do
+        i.fa.fa-envelope-o 受信メッセージ
+
+    li.nav-item
+      = link_to "#", class: 'nav-link' do 
+        i.fa.fa-child マイページ
+
+    /ログインしていない状態に見せる
+    li.nav-item
+      = link_to new_user_path, class: 'nav-link' do 
+        i.fa.fa-edit 新規登録
+
+    li.nav-item
+      = link_to "#", class: 'nav-link' do 
+        i.fa.fa-sign-in ログイン        
+    
+    li.nav-item
+      = link_to anchor: 'aside', class: 'nav-link' do 
+        i.fa.fa-arrow-circle-o-up 上へ
+          
+    
+
