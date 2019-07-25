@@ -18,6 +18,8 @@ html
           =render "shared/sidebar"
 
         main
+          p.notice = notice 
+          p.alert = alert
           =yield
 
       footer
