@@ -1,20 +1,60 @@
 
 header{
   font-size: 2rem;
-  nav{
-    background-color:  hsl(0, 0%, 97%);
+  
+  .headbar{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    background-color: hsl(0, 0%, 97%);
+    .search{
+      padding: 15px 0px 10px 0 ;
+      input{
+        font-size: 1.7rem;
+        width:80%;
+      }
+      button{
+        font-size: 1.7rem;
+      }
+    }
+    .logo{
+      width: calc(12% - 10px);
+      background-color: blue;
+    }
+    .search{
+      width:38%;
+    }
+    ul{
+      width: 50%;
+      display:flex;
+      padding: 15px 0px 10px 40px ;
+      justify-content:flex-end;
+      li{
+        list-style: none;
+        display: block;
+        text-align: center;
+        // background-color: red;
+        font-size: 1.7rem;
+        padding: 0 5px 0;
+        form{
+          padding: 10px 0 10px 0;
+        }
+      }      
+      i{
+        padding: 10px 0 10px 0;
+      }
+    }
   }
-
 }
+
 
 // sidebar
 .flex{
   display:flex;
   flex-wrap:wrap;
   align-items:flex-start;
-  padding-top: 70px;
+  padding-top: 85px;
 }
-
 aside{
   
   width:12%;
@@ -25,13 +65,14 @@ aside{
       background-color: hsl(0, 0%, 97%);
       list-style: none;
       padding: 10px 24px 10px;
-      font-size: 1.4rem
+      font-size: 1.4rem;
+      box-sizing: border-box;
       
     }
   }
-  .absolute{
+}
+.absolute{
     position: fixed;
-  }
 }
 
 

@@ -1,35 +1,36 @@
-.headbar
-  =link_to image_tag("tikarakobu.png", width: "50", alt: "infomus-logo"), "#", id: "logo", class: "navbar-brand"
-  
-  form.form-inline.my-2.my-lg-0
-    input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索..."
-    button type="submit" class="btn btn-outline-success my-2 my-sm-0" 検索
-  
+.headbar.absolute
+  .logo
+    =link_to image_tag("tikarakobu.png", width: "75", alt: "infomus-logo"), "#", id: "logo", class: "navbar-brand"
+  .search
+    form.form-inline.my-2.my-lg-0
+        input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索..."
+        button type="submit" class="btn btn-outline-success my-2 my-sm-0" 検索
+
   ul
     /ログインした状態で見せる
-    li
-      = link_to "#", class: 'nav-link' do 
+    li.head_icon
+      = link_to "#" do 
         i.fa.fa-send-o 投稿
 
-    li.
-      = link_to "#", class: "nav-link" do
+    li.head_icon
+      = link_to "#" do
         i.fa.fa-envelope-o 受信メッセージ
 
-    li.
-      = link_to "#", class: 'nav-link' do 
+    li.head_icon
+      = link_to "#" do 
         i.fa.fa-child マイページ
 
     /ログインしていない状態に見せる
-    li
-      = link_to new_user_path, class: 'nav-link' do 
+    li.head_icon
+      = link_to new_user_path do 
         i.fa.fa-edit 新規登録
 
-    li
-      = link_to "#", class: 'nav-link' do 
+    li.head_icon
+      = link_to "#" do 
         i.fa.fa-sign-in ログイン        
     
-    li
-      = link_to anchor: 'aside', class: 'nav-link' do 
+    li.head_icon
+      = link_to anchor: 'aside' do 
         i.fa.fa-arrow-circle-o-up 上へ
           
     
