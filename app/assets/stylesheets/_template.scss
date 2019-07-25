@@ -1,3 +1,40 @@
+
+header{
+  font-size: 2rem;
+  nav{
+    background-color:  hsl(0, 0%, 97%);
+  }
+
+}
+
+// sidebar
+.flex{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  padding-top: 70px;
+}
+
+aside{
+  
+  width:12%;
+
+  ul{
+    padding: 0 ;
+    li{
+      background-color: hsl(0, 0%, 97%);
+      list-style: none;
+      padding: 10px 24px 10px;
+      font-size: 1.4rem
+      
+    }
+  }
+  .absolute{
+    position: fixed;
+  }
+}
+
+
 footer{
   border-top: inset 1px brown;
   height:1000px;
