@@ -94,6 +94,11 @@ GEM
       railties (>= 3.2, < 6.1)
     erubi (1.8.0)
     execjs (2.7.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
+      railties (>= 3.0.0)
     ffi (1.11.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -273,6 +278,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  factory_bot_rails (>= 4.10)
   html2slim
   jbuilder (~> 2.5)
   jquery-rails
@@ -282,7 +288,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-i18n (>= 5.1)
   rails_autolink
-  rspec-rails (>= 3.6.0)
+  rspec-rails (>= 3.7.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   slim-rails

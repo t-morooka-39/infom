@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before do
-    @user = User.create(
-      name: "佐藤太郎",
-      nickname: "satotaro",
-      email: "sato@gmail.com",
-      birthday: "1997-07-07",
-    )
+    @user = FactoryBot.create(:user)
   end
 
   example "nameがなければ無効であること" do
@@ -33,8 +28,8 @@ RSpec.describe User, type: :model do
 
   example "重複したnicknameなら無効な状態であること" do
     user = User.new(
-      name: "太呂山さとる",
-      nickname: "satotaro",
+      name: "竹山さとし",
+      nickname: "satotake",
       email: "take@gmail.com",
       birthday: "1997-09-09",
     )

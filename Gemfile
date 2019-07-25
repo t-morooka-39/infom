@@ -73,4 +73,5 @@ gem "bootstrap"
 gem 'jquery-rails'
 gem 'devise' #使ってない
 gem "dotenv-rails"
-gem "rspec-rails",'>= 3.6.0'
+gem "rspec-rails",'>= 3.7.0'
+gem "factory_bot_rails",">=4.10"
