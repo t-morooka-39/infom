@@ -9,18 +9,19 @@ html
     link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
   
   body
-    #content
-      header
+    .container.sticky-top
+      header.bg-head
         =render "shared/header"
         
-      .flex
-        aside
+    .container
+      .row
+        aside.two.columns
           =render "shared/sidebar"
-
-        main
+        main.ten.columns
           p.notice = notice 
           p.alert = alert
           =yield
-
-      footer
-        =render "shared/footer"
+    .container
+      .row
+        footer.twelve.column
+          =render "shared/footer"

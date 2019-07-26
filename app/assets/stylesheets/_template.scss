@@ -1,80 +1,72 @@
-
+// header
+.container{
+  padding: 0;
+}
+.bg-head{
+  background-color: hsl(0, 0%, 97%);
+}
 header{
-  font-size: 2rem;
-  
-  .headbar{
-    width:100%;
-    display:flex;
-    justify-content: space-between;
-    background-color: hsl(0, 0%, 97%);
-    .search{
-      padding: 15px 0px 10px 0 ;
-      input{
-        font-size: 1.7rem;
-        width:80%;
-      }
-      button{
-        font-size: 1.7rem;
-      }
+  .search{
+    padding: 15px 0px 10px 0 ;
+    input{
+      font-size: 1.7rem;
+      width:80%;
     }
-    .logo{
-      width: calc(12% - 10px);
-      background-color: blue;
-    }
-    .search{
-      width:38%;
-    }
-    ul{
-      width: 50%;
-      display:flex;
-      padding: 15px 0px 10px 40px ;
-      justify-content:flex-end;
-      li{
-        list-style: none;
-        display: block;
-        text-align: center;
-        // background-color: red;
-        font-size: 1.7rem;
-        padding: 0 5px 0;
-        form{
-          padding: 10px 0 10px 0;
-        }
-      }      
-      i{
-        padding: 10px 0 10px 0;
-      }
+    button{
+      font-size: 1.7rem;
     }
   }
+.two.columns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
 }
-
-
-// sidebar
-.flex{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:flex-start;
-  padding-top: 85px;
-}
-aside{
-  
-  width:12%;
-  .absolute_in{
-    position: fixed;
+  .logo{
+    text-align: center;
+  }
+  .head_icons{
+    display:flex;
+    align-items: center;
   }
   ul{
-    padding: 0 ;
+    display:flex;
+    align-items: center;
+    margin: 0;
+    
     li{
-      background-color: hsl(0, 0%, 97%);
+      margin: 0;
       list-style: none;
-      padding: 10px 24px 10px;
-      font-size: 2rem;
-      box-sizing: border-box;
-      
+      display: block;
+      text-align: center;
+      // background-color: red;
+      font-size: 1.7rem;
+      padding: 0 5px 0;
+      form{
+        padding: 10px 0 10px 0;
+      }
+    }      
+    i{
+      padding: 10px 0 10px 0;
     }
   }
 }
-.absolute{
-    position: fixed;
+// sidebar
+aside{
+  box-sizing: border-box;
+  ul{
+    margin: 5px 0 0 0;
+    padding: 0 ;
+    box-sizing: border-box;
+    background-color: hsl(0, 0%, 97%);
+    li{
+      list-style: none;
+      padding: 0 10px 0 15px;
+      margin:0 0 10px 0;
+      font-size: 1.5rem;
+      transform: scale( 1 , 1.2 );
+    }
+  }
 }
 
 
