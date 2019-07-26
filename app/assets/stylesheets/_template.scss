@@ -58,7 +58,9 @@ header{
 aside{
   
   width:12%;
-
+  .absolute_in{
+    position: fixed;
+  }
   ul{
     padding: 0 ;
     li{
