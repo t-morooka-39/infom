@@ -18,7 +18,7 @@
           = link_to "#" do
             i.fa.fa-envelope-o 受信メッセージ
         li.head_icon
-          = link_to pages_show_path do 
+          = link_to member_path(@member) do 
             i.fa.fa-child マイページ
         li.head_icon
           =link_to destroy_member_session_path, method: :delete do
