@@ -18,8 +18,12 @@ html
         aside.two.columns
           =render "shared/sidebar"
         main.ten.columns
-          p.notice = notice 
-          p.alert = alert
+          -if flash[:notice]
+            .notice 
+              p = flash[:notice]
+          / - if @member&.errors&.present?
+          /   p エラーがあります
+          /   p.alert = alert
           =yield
     .container
       .row

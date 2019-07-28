@@ -13,4 +13,5 @@ class Member < ApplicationRecord
     less_than: 3,
     allow_blank: true
   }
+  has_many :tweets, dependent: :destroy
 end

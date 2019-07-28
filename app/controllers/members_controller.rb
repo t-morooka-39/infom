@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   # 管理者用にする
   def index
-    @members = Member.order("created_at")
+    @members = Member.all
   end
 
   def show
