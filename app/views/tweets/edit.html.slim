@@ -1,0 +1,10 @@
+- @page_title = "ツイートの編集"
+
+p = @page_title 
+.back
+  = link_to "編集をやめる", "#"
+
+= form_with model: @tweet do |f|
+  = render "form", form: f
+  .buttn 
+    = f.submit 

@@ -1,0 +1,8 @@
+- @page_title = "ツイート一覧"
+p = @page_title
+
+- if @tweets.present?
+  - @tweets.each do |tweet|
+    .tweet
+      h2 = tweet.title
+      p = tweet.body

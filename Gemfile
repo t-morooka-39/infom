@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'letter_opener'
 end
 
 group :test do
@@ -71,7 +72,9 @@ gem "bcrypt", "~> 3.1.7"
 gem "rails_autolink"
 gem "bootstrap"
 gem 'jquery-rails'
-gem 'devise' #使ってない
+gem 'devise' 
 gem "dotenv-rails"
 gem "rspec-rails",'>= 3.7.0'
 gem "factory_bot_rails",">=4.10"
+gem 'devise-i18n'
+gem 'devise-i18n-views'
