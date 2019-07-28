@@ -10,7 +10,7 @@ ja:
         remember_me: 次回からパスワード入力を省く
   devise:
     confirmations:
-      confirmed: "アカウントが確認されました。ログインしています。"
+      confirmed: "メールが確認されました。ログインしています。"
       send_instructions: "アカウントの確認方法を数分以内にメールでご連絡します。"
       send_paranoid_instructions: "ご登録のメールアドレスが保存されている場合、アカウントの確認方法をメールでご連絡します。"
     failure:
@@ -25,7 +25,7 @@ ja:
       unconfirmed: "本登録を行ってください。"
     mailer:
       confirmation_instructions:
-        subject: "アカウントの登録方法"
+        subject: "アカウント登録の確認メール"
         action: "アカウント確認"
         greeting: "ようこそ、%{recipient}さん!"
         instruction: "次のリンクでメールアドレスの確認が完了します:"
