@@ -3,4 +3,6 @@ p = @page_title
 
 - if @tweets.present?
   - @tweets.each do |tweet|
-    
+    .tweet
+      h2 = tweet.title
+      p = tweet.body

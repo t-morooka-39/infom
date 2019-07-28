@@ -7,4 +7,10 @@ class Member < ApplicationRecord
 
   validates :first_name, :last_name, :sex, presence: true
   validates :first_name, :last_name, length: {maximum: 10}
+  validates :sex, numericality:{
+    only_integer: true,
+    greater_than: 0,
+    less_than: 3,
+    allow_blank: true
+  }
 end
