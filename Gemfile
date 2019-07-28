@@ -76,3 +76,5 @@ gem 'devise'
 gem "dotenv-rails"
 gem "rspec-rails",'>= 3.7.0'
 gem "factory_bot_rails",">=4.10"
+gem 'devise-i18n'
+gem 'devise-i18n-views'

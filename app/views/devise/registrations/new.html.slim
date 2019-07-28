@@ -1,5 +1,5 @@
 h2
-  | Sign up
+  | 新規登録
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
@@ -31,5 +31,5 @@ h2
     br
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
-    = f.submit "Sign up"
+    = f.submit "登録"
 = render "devise/shared/links"
