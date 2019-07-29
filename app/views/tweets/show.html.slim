@@ -1,5 +1,5 @@
 - @page_title = "ツイート詳細"
 .tweet
   p.author = @tweet.author.first_name
-  h2 = @tweet.title
-  p = @tweet.body
+  .show
+    = simple_format(@tweet.body)

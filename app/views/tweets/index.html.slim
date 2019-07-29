@@ -1,11 +1,12 @@
 - @page_title = "ツイート一覧"
-p = @page_title
 
 - if @tweets.present?
-  - @tweets.each do |tweet|
-    .tweet
-      =link_to tweet.author.first_name, "#"
-      = link_to tweet do
-        .show
-          h2 = tweet.title
-          p = tweet.body
+  .flexdiv
+    - @tweets.each do |tweet|
+      .tweet
+        =link_to tweet.author.first_name, "#"
+        = link_to tweet do
+          .show
+            =simple_format(tweet.body)
+- else 
+  p ツイートがありません

@@ -1,9 +1,5 @@
 
 .field
-  p タイトルは20文字以内で記入してください
-  = form.label :title
-  = form.text_field :title, size:"30", maxlength: "20"
-.field
-  p 本文は400文字以内で記入してください
+  p 400文字以内で記入してください(改行は一文字としてカウントされます。)
   = form.label :body
   = form.text_area :body, rows: 30, cols: 60
