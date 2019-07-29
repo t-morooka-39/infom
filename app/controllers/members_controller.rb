@@ -6,6 +6,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @tweets = @member.tweets
     # @member = current_member.id
   end
   def new

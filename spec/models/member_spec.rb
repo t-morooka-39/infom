@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Member, type: :model do
   before do 
-    @member = Member.create(
-      first_name: "たける",
-      last_name: "山田",
-      email: "hogehoge@gmail.com",
-      password: "hogehogehoge",
-      sex: 1,
-    )
+    @member = FactoryBot.create(:member)
     @blank = "を入力してください"
     @already = "はすでに存在します"
     @chara_limit = "は10文字以内で入力してください"
@@ -38,10 +32,11 @@ RSpec.describe Member, type: :model do
   end
 
   example "重複したメールアドレスなら無効な状態であること" do
+    member1 = FactoryBot.create(:member, email: "test1@example.com")
     member = Member.new(
       first_name: "あ",
       last_name: "oao",
-      email: "hogehoge@gmail.com",
+      email: "test1@example.com",
       password: "hogehogehogehoge",
       sex: 2,
     )

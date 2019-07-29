@@ -21,9 +21,6 @@ html
           -if flash[:notice]
             .notice 
               p = flash[:notice]
-          / - if @member&.errors&.present?
-          /   p エラーがあります
-          /   p.alert = alert
           =yield
     .container
       .row

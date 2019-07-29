@@ -4,5 +4,8 @@ p = @page_title
 - if @tweets.present?
   - @tweets.each do |tweet|
     .tweet
-      h2 = tweet.title
-      p = tweet.body
+      =link_to tweet.author.first_name, "#"
+      = link_to tweet do
+        .show
+          h2 = tweet.title
+          p = tweet.body
