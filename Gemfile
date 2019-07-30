@@ -78,3 +78,5 @@ gem "dotenv-rails"
 gem "rspec-rails",'>= 3.7.0'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem "kaminari"
+gem "kaminari-i18n"

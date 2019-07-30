@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   before_action :authenticate_member!, only:[:show, :new, :edit, :create, :update, :destroy]
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(10)
   end
   def show
     @tweet = Tweet.find(params[:id])

@@ -53,3 +53,14 @@
     }
   }
 }
+.pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  span{
+    font-size: 1.6rem;
+    margin:10px 5px 10px;
+    display: block;
+  }
+}
