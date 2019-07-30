@@ -4,8 +4,8 @@
   .flexdiv
     - @tweets.each do |tweet|
       .tweet
-        =link_to tweet.author.first_name, "#"
-        = link_to tweet do
+        =link_to tweet.author.first_name, "#", class: "name_link"
+        = link_to(tweet,class: "show_link") do
           .show
             =simple_format(tweet.body)
 - else 

@@ -1,5 +1,6 @@
 - @page_title = "ツイート詳細"
-.tweet
-  p.author = @tweet.author.first_name
-  .show
-    = simple_format(@tweet.body)
+.flexdiv
+  .tweet.full_size
+    =link_to @tweet.author.first_name, "#", class: "name_link"
+    .show
+      = simple_format(@tweet.body)

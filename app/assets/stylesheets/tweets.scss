@@ -1,0 +1,55 @@
+.flexdiv{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0 0 0;
+  align-items: baseline;
+  .tweet{
+    width:48%;
+    // height:;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    margin: 5px 2px 5px;
+    border-radius: 10px;
+    a{
+      text-decoration: none;
+      color: black;
+    }
+    .name_link{
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+    .show{
+      p{
+        margin:0;
+        padding:5px 0 5px;
+        max-width: 80%;
+        font-size: 1.4rem;
+      }
+    }
+    .show,.name_link{
+      margin: 0 0 0 20px;
+    }
+    @media(min-width:769px){
+      .name_link{
+        &:hover{
+          background-color:darken( #ffffff,5%);
+          border-radius: 10px;
+        }
+      }
+      .show{
+        &:hover{
+          background-color: darken(#ffffff,5%);
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  .full_size{
+    width:90%;
+    .show{
+      &:hover{
+        background-color: #ffffff;
+      }
+    }
+  }
+}
