@@ -20,7 +20,7 @@ ja:
       inactive: "Your account is not activated yet."
       invalid: "メールアドレスかパスワードが間違っています"
       locked: "アカウントがロックされています。"
-      last_attempt: "あなたのアカウントがロックされる前に、もう1つの試みを持っています。"
+      last_attempt: "あと１度間違えると、アカウントがロックされます。"
       not_found_in_database: "メールアドレスまたはパスワードが無効です。"
       timeout: "一定時間が経過したため、再度ログインが必要です"
       unauthenticated: "ログインまたは登録が必要です。"
@@ -74,6 +74,6 @@ ja:
       not_found: "は見つかりませんでした。"
       not_locked: "ロックされていません。"
       not_saved:
-        one: "以下のエラーにより、登録できません："
-        other: "以下の%{count} 個のエラーにより、登録できません："
+        one: "以下のエラーにより、送信できません："
+        other: "以下の%{count} 個のエラーにより、送信できません："
       

@@ -1,11 +1,11 @@
-h2
-  | Resend unlock instructions
+h2.devise_title
+  | アカウント凍結解除メールの送信
 = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
   = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+  table.input_table.margin_top
+    tr
+      th = f.label :email
+      td = f.email_field :email, autofocus: true, autocomplete: "email", class: "text"
   .actions
-    = f.submit "Resend unlock instructions"
+    = f.submit "凍結解除用メールの送信"
 = render "devise/shared/links"

@@ -26,6 +26,9 @@
     }
   }
 }
+.margin_top{
+  margin-top: 10px;
+}
 .remember_flex{
   display: flex;
   .remember{
@@ -36,4 +39,11 @@
   .remember_box{
     margin:5px 10px 10px 0 ;
   }
+}
+.alert{
+  box-sizing: border-box;
+  width:90%;
+}
+.alert-success{
+  margin: 10px 0 10px;
 }

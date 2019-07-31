@@ -1,11 +1,10 @@
-h2
-  | Forgot your password?
+h2.devise_title パスワードの再発行
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
   = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+  table.input_table.margin_top
+    tr
+      th = f.label :email
+      td = f.email_field :email, autofocus: true, autocomplete: "email", class: "text"
   .actions
-    = f.submit "Send me reset password instructions"
+    = f.submit "メールのリンクから再発行する"
 = render "devise/shared/links"

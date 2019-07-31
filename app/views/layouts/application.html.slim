@@ -19,7 +19,7 @@ html
           =render "shared/sidebar"
         main.ten.columns
           -if flash[:notice]
-            .notice 
+            .notice.alert.alert-success 
               p = flash[:notice]
           =yield
     .container
