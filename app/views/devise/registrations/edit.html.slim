@@ -7,6 +7,15 @@ h2.devise_title
   = render "devise/shared/error_messages", resource: resource
   table.input_table.margin_top
     tr
+      th = f.label :new_profile_picture
+      td 
+        .file_div = f.file_field :new_profile_picture
+        - if @member.profile_picture.attached?
+          = image_tag @member.profile_picture.variant(resize: "100x100")
+          = f.check_box :remove_profile_picture
+          = f.label :remove_profile_picture
+
+    tr
       th = f.label :last_name
       td = f.text_field :last_name, class: "lastname text"
     tr

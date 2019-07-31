@@ -6,6 +6,9 @@
 }
 .input_table{
   width:90%;
+  tr:first-of-type{
+    border-top: inset 1px #E1E1E1;
+  }
   tr{
     th{
       width:25%;

@@ -9,6 +9,8 @@ ja:
         email: メールアドレス
         remember_me: 次回からパスワード入力を省く
         current_password: 新しいパスワード
+        new_profile_picture: プロフィール画像
+        remove_profile_picture: 画像の削除
       tweet:
         body: 本文
   devise:
@@ -77,4 +79,5 @@ ja:
       not_saved:
         one: "以下のエラーにより、送信できません："
         other: "以下の%{count} 個のエラーにより、送信できません："
+      invalid_image_type: にはJPEG、PNG、GIF、PING形式の画像を指定してください。
       

@@ -4,6 +4,9 @@ h2.devise_title
   - else
     = @member.first_name.to_s.humanize
     |さんのページ
+- if @member.profile_picture.attached?
+  .img_div
+    = image_tag @member.profile_picture.variant(resize: "100x100")
 
 -if current_member == @member
   table.input_table.margin_top

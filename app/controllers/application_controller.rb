@@ -11,5 +11,7 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_up, keys: [:sex])
       devise_parameter_sanitizer.permit(:account_update, keys: [:sex])
       devise_parameter_sanitizer.permit(:sign_up, keys: [:admin])
+      devise_parameter_sanitizer.permit(:account_update, keys:[:new_profile_picture])
+      devise_parameter_sanitizer.permit(:account_update, keys:[:remove_profile_picture])
     end
 end
