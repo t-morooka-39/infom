@@ -1,5 +1,5 @@
 - @page_title = "ツイート作成"
-h1 = @page_title
+h1.page_title = @page_title
 = render "shared/errors", obj: @tweet
 = form_with model: @tweet,local: true do |form|
   = render "form", form: form

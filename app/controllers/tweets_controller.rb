@@ -11,6 +11,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
   end
   def edit
+    @tweet = Tweet.find(params[:id])
   end
   def create
     @tweet = Tweet.new(tweet_params)
@@ -22,8 +23,19 @@ class TweetsController < ApplicationController
     end
   end
   def update
+    @tweet = Tweet.find(params[:id])
+    @tweet.assign_attributes(tweet_params)
+    @tweet.member_id = current_member.id
+    if @tweet.save
+      redirect_to @tweet, notice: "更新しました。"
+    else
+      render :edit
+    end
   end
-  def delete
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to :tweets, notice: "ツイートを削除しました。"
   end
 
   private

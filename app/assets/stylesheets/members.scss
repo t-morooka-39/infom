@@ -1,3 +1,39 @@
-// Place all the styles related to the Members controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.devise_title{
+  margin:10px 0 0 0;
+}
+.input_table{
+  tr{
+    th{
+      width:25%;
+    }
+    td{
+      .space{
+        margin: 0 0 0 10px;
+      }
+      .text{
+        width:50%;
+      }
+      p{
+        padding:0 0 0 10px;
+        display: inline;
+      }
+      .hoge{
+        display: block;
+      }
+      span{
+        margin:0 0 0 10px;
+      }
+    }
+  }
+}
+.remember_flex{
+  display: flex;
+  .remember{
+    display: block;
+    margin:0 0 10px 0;
+    font-size: 1.4rem;
+  } 
+  .remember_box{
+    margin:5px 10px 10px 0 ;
+  }
+}

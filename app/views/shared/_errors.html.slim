@@ -1,5 +1,5 @@
 - if obj.errors.present?
-  .errors
+  .errors.alert.alert-danger
     h2 エラーがあります
     ul
       - obj.errors.full_messages.each do |msg|

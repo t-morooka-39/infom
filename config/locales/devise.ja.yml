@@ -8,15 +8,17 @@ ja:
         password_confirmation: パスワード(再入力)
         email: メールアドレス
         remember_me: 次回からパスワード入力を省く
+      tweet:
+        body: 本文
   devise:
     confirmations:
-      confirmed: "メールが確認されました。ログインしています。"
+      confirmed: "メールが確認され、登録が完了しました。"
       send_instructions: "アカウントの確認方法を数分以内にメールでご連絡します。"
       send_paranoid_instructions: "ご登録のメールアドレスが保存されている場合、アカウントの確認方法をメールでご連絡します。"
     failure:
       already_authenticated: "既にログインしています。"
       inactive: "Your account is not activated yet."
-      invalid: "Invalid email or password."
+      invalid: "メールアドレスかパスワードが間違っています"
       locked: "アカウントがロックされています。"
       last_attempt: "あなたのアカウントがロックされる前に、もう1つの試みを持っています。"
       not_found_in_database: "メールアドレスまたはパスワードが無効です。"
@@ -72,5 +74,6 @@ ja:
       not_found: "は見つかりませんでした。"
       not_locked: "ロックされていません。"
       not_saved:
-        one: "エラーにより、この %{resource} を保存できません："
-        other: "%{count} 個のエラーにより、この %{resource} を保存できません："
+        one: "以下のエラーにより、登録できません："
+        other: "以下の%{count} 個のエラーにより、登録できません："
+      
