@@ -8,24 +8,29 @@ ja:
         password_confirmation: パスワード(再入力)
         email: メールアドレス
         remember_me: 次回からパスワード入力を省く
+        current_password: 新しいパスワード
+        new_profile_picture: プロフィール画像
+        remove_profile_picture: 画像の削除
+      tweet:
+        body: 本文
   devise:
     confirmations:
-      confirmed: "アカウントが確認されました。ログインしています。"
+      confirmed: "メールが確認され、登録が完了しました。"
       send_instructions: "アカウントの確認方法を数分以内にメールでご連絡します。"
       send_paranoid_instructions: "ご登録のメールアドレスが保存されている場合、アカウントの確認方法をメールでご連絡します。"
     failure:
       already_authenticated: "既にログインしています。"
       inactive: "Your account is not activated yet."
-      invalid: "Invalid email or password."
+      invalid: "メールアドレスかパスワードが間違っています"
       locked: "アカウントがロックされています。"
-      last_attempt: "あなたのアカウントがロックされる前に、もう1つの試みを持っています。"
+      last_attempt: "あと１度間違えると、アカウントがロックされます。"
       not_found_in_database: "メールアドレスまたはパスワードが無効です。"
       timeout: "一定時間が経過したため、再度ログインが必要です"
       unauthenticated: "ログインまたは登録が必要です。"
       unconfirmed: "本登録を行ってください。"
     mailer:
       confirmation_instructions:
-        subject: "アカウントの登録方法"
+        subject: "アカウント登録の確認メール"
         action: "アカウント確認"
         greeting: "ようこそ、%{recipient}さん!"
         instruction: "次のリンクでメールアドレスの確認が完了します:"
@@ -72,5 +77,7 @@ ja:
       not_found: "は見つかりませんでした。"
       not_locked: "ロックされていません。"
       not_saved:
-        one: "エラーにより、この %{resource} を保存できません："
-        other: "%{count} 個のエラーにより、この %{resource} を保存できません："
+        one: "以下のエラーにより、送信できません："
+        other: "以下の%{count} 個のエラーにより、送信できません："
+      invalid_image_type: にはJPEG、PNG、GIF、PING形式の画像を指定してください。
+      

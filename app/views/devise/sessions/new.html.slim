@@ -1,18 +1,27 @@
-h2
+h2.devise_title
   | ログイン
+- if alert
+  p.alert.alert-danger = alert
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "current-password"
+  table.input_table
+    tr
+      th = f.label :email
+      td 
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "text"
+        p.hoge 
+          |簡易ログインアドレス:
+          span hoge@ho.ge
+    tr
+      th = f.label :password
+      td 
+        = f.password_field :password, autocomplete: "current-password", class: "text"
+        p.hoge
+          |簡易ログインパスワード:
+          span hogehoge
   - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
+    .field.remember_flex
+      = f.check_box :remember_me, class: "remember_box"
+      = f.label :remember_me, class: "remember"
   .actions
     = f.submit "ログイン"
 = render "devise/shared/links"

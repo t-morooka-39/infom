@@ -1,0 +1,14 @@
+- @page_title = "ツイート詳細"
+=link_to tweets_path, class: "index" do
+        i.fa.fa-rotate-left 戻る
+.flexdiv
+  .tweet.full_size
+    =link_to @tweet.author.first_name, "#", class: "name_link"
+    .show
+      = simple_format(@tweet.body)
+- if current_member == @tweet.author
+  .btns
+    = link_to edit_tweet_path(@tweet), class: "edit" do
+      p 編集
+    = link_to tweet_path(@tweet), method: :delete, data: {confirm: "本当に削除しますか？"} do
+      p 削除

@@ -3,7 +3,7 @@
   padding: 0;
 }
 .bg-head{
-  background-color: hsl(0, 0%, 97%);
+  background-color:darken( #f9f8f6,5%);
 }
 header{
   .search{
@@ -58,7 +58,7 @@ aside{
     margin: 5px 0 0 0;
     padding: 0 ;
     box-sizing: border-box;
-    background-color: hsl(0, 0%, 97%);
+    background-color:darken( #f9f8f6,5%);
     li{
       list-style: none;
       padding: 0 10px 0 15px;
@@ -72,7 +72,7 @@ aside{
 
 footer{
   border-top: inset 1px brown;
-  height:1000px;
+  height:2000px;
   width:100%;
   margin-top:20px;
   .container{

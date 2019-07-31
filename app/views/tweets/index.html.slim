@@ -1,8 +1,13 @@
 - @page_title = "ツイート一覧"
-p = @page_title
 
 - if @tweets.present?
-  - @tweets.each do |tweet|
-    .tweet
-      h2 = tweet.title
-      p = tweet.body
+  .flexdiv
+    - @tweets.each do |tweet|
+      .tweet
+        =link_to tweet.author.first_name, member_path(tweet.member_id), class: "name_link"
+        = link_to(tweet,class: "show_link") do
+          .show
+            =simple_format(tweet.body)
+  = paginate @tweets
+- else 
+  p ツイートがありません

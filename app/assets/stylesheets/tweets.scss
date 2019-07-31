@@ -1,3 +1,143 @@
-// Place all the styles related to the tweets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.flexdiv{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px 0 0 0;
+  align-items: baseline;
+  .tweet{
+    width:48%;
+    // height:;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    margin: 5px 2px 5px;
+    border-radius: 10px;
+    a{
+      text-decoration: none;
+      color: black;
+    }
+    .name_link{
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+    .show{
+      p{
+        margin:0;
+        padding:5px 0 5px;
+        max-width: 80%;
+        font-size: 1.4rem;
+      }
+    }
+    .show,.name_link{
+      margin: 0 0 0 20px;
+    }
+    @media(min-width:769px){
+      .name_link{
+        &:hover{
+          background-color:darken( #ffffff,5%);
+          border-radius: 10px;
+        }
+      }
+      .show{
+        &:hover{
+          background-color: darken(#ffffff,5%);
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  .full_size{
+    width:90%;
+    .show{
+      &:hover{
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+.pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  span{
+    font-size: 1.6rem;
+    margin:10px 5px 10px;
+    display: block;
+  }
+}
+.btns{
+  display: flex;
+  p{
+    display: block;
+    background-color: #ffffff;
+    font-size: 1.6rem;
+    margin: 5px;
+    padding:4px;
+    text-decoration: none;
+    color: black;
+    @media(min-width:769px){
+      &:hover{
+        background-color: darken(#ffffff,10%);
+      }
+    }
+  }
+  a{
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
+.index{
+  i{
+    font-size: 1.6rem;
+    color: black;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding:4px;
+    margin:10px 5px 0 5px;
+    @media(min-width: 769px){
+      &:hover{
+        text-decoration: none;
+        background-color: darken(#ffffff,10%);
+      }
+    }
+  }
+}
+
+// new&edit
+.page_title{
+  font-size: 1.6rem;
+  margin:10px 0 0;
+}
+.field{
+  margin:15px 0 0 0;
+  label{
+    display: block;
+  }
+}
+.back{
+  margin:10px 0 0;
+  a{
+    text-decoration: none;
+    color: black;
+    padding: 4px;
+    background-color: #ffffff;
+    @media(min-width:769px){
+      &:hover{
+        text-decoration: none;
+        color: black;
+
+      }
+    }
+  }
+}
+.errors{
+  margin:10px 0 0;
+  h2{
+    font-size: 1.6rem;
+  }
+  ul{
+    li{
+      list-style: none;
+    }
+  }
+}

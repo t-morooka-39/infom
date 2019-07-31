@@ -1,7 +1,5 @@
 
 .field
-  = form.label :title
-  = form.text_field :title
-.field
   = form.label :body
-  = form.text_field :body, rows: 10, cols: 30
+  = form.text_area :body, rows: 30, cols: 60
+  p 400文字以内で記入してください(改行は一文字としてカウントされます。)

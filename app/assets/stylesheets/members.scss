@@ -1,3 +1,76 @@
-// Place all the styles related to the Members controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.devise_title{
+  margin:10px 0 10px 0;
+  color: black;
+  border-bottom: inset 2px black;
+  width:90%;
+}
+.input_table{
+  width:90%;
+  tr:first-of-type{
+    border-top: inset 1px #E1E1E1;
+  }
+  tr{
+    th{
+      width:25%;
+    }
+    td{
+      .space{
+        margin: 0 0 0 10px;
+      }
+      .text{
+        width:50%;
+      }
+      p{
+        padding:0 0 0 10px;
+        display: inline;
+      }
+      .last_name{
+        padding: 0;
+      }
+      .hoge{
+        display: block;
+      }
+      span{
+        margin:0 0 0 10px;
+      }
+    }
+  }
+}
+.margin_top{
+  margin-top: 10px;
+}
+.remember_flex{
+  display: flex;
+  .remember{
+    display: block;
+    margin:0 0 10px 0;
+    font-size: 1.4rem;
+  } 
+  .remember_box{
+    margin:5px 10px 10px 0 ;
+  }
+}
+.alert{
+  box-sizing: border-box;
+  width:90%;
+}
+.alert-success{
+  margin: 10px 0 10px;
+}
+.delete{
+  margin:100px 0 0 0;
+}
+.edit_member{
+  a{
+    background-color: #ffffff;
+    color: black;
+    padding: 4px;
+    font-size: 1.6rem;
+    border-radius: 10px;
+    &:hover{
+      color: black;
+      text-decoration: none;
+      background-color: darken(#ffffff,10%)
+    }
+  }
+}

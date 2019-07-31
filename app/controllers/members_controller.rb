@@ -1,11 +1,12 @@
 class MembersController < ApplicationController
   # 管理者用にする
   def index
-    @members = Member.order("created_at")
+    @members = Member.all
   end
 
   def show
     @member = Member.find(params[:id])
+    @tweets = @member.tweets
     # @member = current_member.id
   end
   def new

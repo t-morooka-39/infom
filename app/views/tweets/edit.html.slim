@@ -1,10 +1,9 @@
 - @page_title = "ツイートの編集"
-
-p = @page_title 
+h1.page_title = @page_title 
+= render "shared/errors", obj: @tweet
 .back
-  = link_to "編集をやめる", "#"
-
-= form_with model: @tweet do |f|
+  = link_to "編集をやめる", tweet_path(@tweet)
+= form_with model: @tweet,local: true do |f|
   = render "form", form: f
   .buttn 
     = f.submit 
