@@ -1,7 +1,11 @@
 .devise_title{
-  margin:10px 0 0 0;
+  margin:10px 0 10px 0;
+  color: black;
+  border-bottom: inset 2px black;
+  width:90%;
 }
 .input_table{
+  width:90%;
   tr{
     th{
       width:25%;
@@ -16,6 +20,9 @@
       p{
         padding:0 0 0 10px;
         display: inline;
+      }
+      .last_name{
+        padding: 0;
       }
       .hoge{
         display: block;
@@ -46,4 +53,21 @@
 }
 .alert-success{
   margin: 10px 0 10px;
+}
+.delete{
+  margin:100px 0 0 0;
+}
+.edit_member{
+  a{
+    background-color: #ffffff;
+    color: black;
+    padding: 4px;
+    font-size: 1.6rem;
+    border-radius: 10px;
+    &:hover{
+      color: black;
+      text-decoration: none;
+      background-color: darken(#ffffff,10%)
+    }
+  }
 }

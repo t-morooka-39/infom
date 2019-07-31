@@ -8,6 +8,7 @@ ja:
         password_confirmation: パスワード(再入力)
         email: メールアドレス
         remember_me: 次回からパスワード入力を省く
+        current_password: 新しいパスワード
       tweet:
         body: 本文
   devise:

@@ -149,6 +149,7 @@ GEM
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
     mimemagic (0.3.3)
+    mini_magick (4.9.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
@@ -310,6 +311,7 @@ DEPENDENCIES
   kaminari-i18n
   letter_opener
   listen (>= 3.0.5, < 3.2)
+  mini_magick (>= 4.8)
   mysql2 (>= 0.4.4, < 0.6.0)
   puma (~> 3.11)
   rails (~> 5.2.3)
