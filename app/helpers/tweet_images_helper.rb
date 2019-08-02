@@ -1,0 +1,2 @@
+module TweetImagesHelper
+end

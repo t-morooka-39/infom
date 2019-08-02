@@ -1,0 +1,14 @@
+- @page_title = "ツイートの画像"
+h2.devise_title = @page_title
+.action_link
+  = link_to tweet_images_path(@tweet), class: "index" do
+    i.fa.fa-rotate-left 戻る
+
+table.input_table
+      td
+        = form_with model: @image, as: "image", local: true do |form|
+          = render "shared/errors", obj: @image
+          = form.label :new_data
+          = form.file_field :new_data
+          .formbtn
+            = form.submit

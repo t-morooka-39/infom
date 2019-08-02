@@ -11,5 +11,5 @@ class Tweet < ApplicationRecord
     end
   end
 
-  has_many :tweet_images, dependent: :destroy
+  has_many :images, class_name: "TweetImage", dependent: :destroy
 end

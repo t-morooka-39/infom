@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_31_101915) do
+ActiveRecord::Schema.define(version: 2019_08_01_064738) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -64,12 +64,12 @@ ActiveRecord::Schema.define(version: 2019_07_31_101915) do
   end
 
   create_table "tweet_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "tweet_images_id"
-    t.string "alt_text", default: ""
+    t.bigint "tweet_id"
+    t.string "alt_text"
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tweet_images_id"], name: "index_tweet_images_on_tweet_images_id"
+    t.index ["tweet_id"], name: "index_tweet_images_on_tweet_id"
   end
 
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
