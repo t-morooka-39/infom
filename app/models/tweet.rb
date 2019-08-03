@@ -10,6 +10,7 @@ class Tweet < ApplicationRecord
       errors.add(:body, "は#{@chara_lim}文字以内で入力してください")
     end
   end
-
   has_many :images, class_name: "TweetImage", dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_members, through: :favorites, source: :member
 end

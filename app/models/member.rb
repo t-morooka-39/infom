@@ -23,6 +23,8 @@ class Member < ApplicationRecord
     end
   end
   has_many :tweets, dependent: :destroy
+  has_many :favorites
+  has_many :favorite_tweets, through: :favorites, source: :tweet
   # pictureアップロード
   has_one_attached :profile_picture
   attribute :new_profile_picture
@@ -33,6 +35,12 @@ class Member < ApplicationRecord
     elsif remove_profile_picture
       self.profile_picture.purge
     end
+  end
+  def favorite?(tweet)
+    tweet && tweet.author != self && !favorites.exists?(tweet_id: tweet.id)
+  end
+  def delete_favorite?(tweet)
+    tweet && tweet.author != self && favorites.exists?(tweet_id: tweet.id)
   end
 
 end

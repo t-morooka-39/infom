@@ -1,0 +1,13 @@
+.flexdiv
+    - tweets.each do |tweet|
+      .tweet
+        =link_to tweet.author.first_name, member_path(tweet.member_id), class: "name_link"
+        = link_to(tweet,class: "show_link") do
+          .show
+            .small_image
+              = view_images(tweet)
+            .text
+              =simple_format(tweet.body)
+        - if (count = tweet.favorites.count) > 0
+          i.fa.fa-heart
+          p = count

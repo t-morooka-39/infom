@@ -1,12 +1,40 @@
 - @page_title = "ツイート詳細"
-=link_to tweets_path, class: "index" do
-        i.fa.fa-rotate-left 戻る
+- if flash[:notice]
+  =link_to tweets_path, class: "index" do
+    i.fa.fa-rotate-left 戻る
+- else
+  =link_to :back, class: "index" do
+    i.fa.fa-rotate-left 戻る
 .flexdiv
   .tweet.full_size
     = link_to @tweet.author.first_name, "#", class: "name_link"
     = view_images(@tweet)
     .show
       = simple_format(@tweet.body)
+ul
+  li  
+    i.fa.fa-heart
+    = @tweet.favorites.count
+
+  - if member_signed_in? && current_member.favorite?(@tweet)
+    li
+        =link_to [:like, @tweet], method: :patch do
+          i.fa.fa-heart-o.noclick 
+  - if member_signed_in? && current_member.delete_favorite?(@tweet)
+    li
+      = link_to unlike_tweet_path(@tweet), method: :patch do
+        i.fa.fa-heart 解除
+- if current_member == @tweet.author
+  .favo_member
+    h3 いいねした人
+    ul
+  - @tweet.favorite_members.order("favorites.created_at").each do |member|
+        li 
+          = member.first_name
+          |さん
+
+
+  
 - if current_member == @tweet.author
   .btns
     = link_to "画像の編集", tweet_images_path(@tweet)

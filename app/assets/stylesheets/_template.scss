@@ -9,11 +9,11 @@ header{
   .search{
     padding: 15px 0px 10px 0 ;
     input{
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       width:80%;
     }
     button{
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
   }
 .two.columns{
@@ -40,10 +40,18 @@ header{
       display: block;
       text-align: center;
       // background-color: red;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       padding: 0 5px 0;
       form{
         padding: 10px 0 10px 0;
+      }
+    }
+    .head_icon{
+      @media(min-width:769px){
+        &:hover{
+          background-color:darken(white,3%);
+          border-radius: 10px;
+        }  
       }
     }      
     i{
@@ -56,15 +64,24 @@ aside{
   box-sizing: border-box;
   ul{
     margin: 5px 0 0 0;
-    padding: 0 ;
+    padding: 2px;
     box-sizing: border-box;
     background-color:darken( #f9f8f6,5%);
     li{
       list-style: none;
-      padding: 0 10px 0 15px;
+      padding: 2px 8px 2px 15px;
       margin:0 0 10px 0;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       transform: scale( 1 , 1.2 );
+      @media(min-width:769px){
+        &:hover{
+          background-color: darken(white,3%);
+          border-radius: 10px;
+          a{
+            text-decoration: none;
+          }
+        }  
+      }
     }
   }
 }
@@ -83,9 +100,10 @@ footer{
 
         a{
           font-size: 1.5rem;
-
-          &:hover{
-            color:black;
+          @media(min-width:769px){
+            &:hover{
+              color:black;
+            }  
           }
         }  
       }

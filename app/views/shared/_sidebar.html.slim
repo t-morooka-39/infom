@@ -4,21 +4,21 @@
       = link_to root_path, class: 'top' do 
         i.fa.fa-home 　TOP
     li
-      =link_to tweets_path, class: "popularity" do
+      = link_to tweets_path, class: "tweet" do
         i.fa.fa-comments 　ツイート一覧
-    li
-      =link_to "#", class: "tweet-list" do
-        i.fa.fa-signal 　人気記事
-    
-    li
-      =link_to "#", class: "popularity" do
-        i.fa.fa-home 　機能が入る
-    li
-      =link_to "#", class: "popularity" do
-        i.fa.fa-home 　機能が入る
-    li
-      =link_to "#", class: "popularity" do
-        i.fa.fa-home 　機能が入る
-    li
-      =link_to members_path, class: "admin" do
-        i.fa.fa-address-card-o 　ユーザー管理
+    - if member_signed_in?
+      li
+        =link_to :favo_tweets, class: "favorite" do
+          i.fa.fa-heart 　いいね一覧
+      li
+        =link_to "#", class: "follower-tweet" do
+          i.fa.fa-comments-o 　フォロワー呟き
+      li
+        =link_to "#", class: "follower" do
+          i.fa.fa-group 　フォロワー一覧
+      li
+        =link_to "#", class: "popularity" do
+          i.fa.fa-home 　機能が入る
+      li
+        =link_to members_path, class: "admin" do
+          i.fa.fa-address-card-o 　ユーザー管理

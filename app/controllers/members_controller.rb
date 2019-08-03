@@ -3,12 +3,15 @@ class MembersController < ApplicationController
   def index
     @members = Member.all
   end
-
   def show
     @member = Member.find(params[:id])
     @tweets = @member.tweets
     # @member = current_member.id
   end
+  def favtweets
+    @favorite_tweets = current_member.favorite_tweets
+  end
+
   def new
   end
   def edit
