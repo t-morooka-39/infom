@@ -1,5 +1,5 @@
-first_names = %w[太郎 二郎 ほげ]
-last_names = %w[山田 長谷川 ほげお]
+first_names = %w[太郎 二郎 ほげ蔵]
+last_names = %w[山田 長谷川 ほげ田]
 hoges = %w[aiueo kakikukeko hoge]
 0.upto(2) do |i|
   Member.create(

@@ -1,7 +1,13 @@
 .flexdiv
     - tweets.each do |tweet|
       .tweet
-        =link_to tweet.author.first_name, member_path(tweet.member_id), class: "name_link"
+        =link_to  member_path(tweet.member_id), class: "name_link" do
+          - if tweet.author.profile_picture.attached?
+            .img_div
+              = image_tag tweet.author.profile_picture.variant(resize: "100x100")
+          - else
+            .img_div.no_image
+          p =tweet.author.first_name
         = link_to(tweet,class: "show_link") do
           .show
             .small_image

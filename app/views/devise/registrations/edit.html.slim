@@ -31,7 +31,9 @@ h2.devise_title
     tr
       th = f.label :email
       td = f.email_field :email, autofocus: true, autocomplete: "email", class: "text"
-    
+    tr
+      th = f.label :introduction
+      td = f.text_area :introduction, class: "text introduction", rows: 30, cols: 60
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       tr
         div

@@ -1,0 +1,3 @@
+= form_for(current_member.active_relationships.find_by(followed_id: member.id),
+  method: :delete, remote: true) do |f|
+  = f.submit "フォロー解除", class: "btn"

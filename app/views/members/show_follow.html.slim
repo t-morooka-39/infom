@@ -1,0 +1,7 @@
+- @page_title 
+h2.devise_title = @page_title
+- if @members.any?
+  .member_avatars
+  - @members.each do |member|
+    = render "member", {member: member}
+  = paginate @members

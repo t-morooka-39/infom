@@ -1,8 +1,7 @@
 - @page_title = "ツイート一覧"
 
 - if @tweets.present?
-  = render "listTweet", tweets: @tweets
-          
+  = render "listTweet", {tweets:@tweets}
   = paginate @tweets
 - else 
   p ツイートがありません

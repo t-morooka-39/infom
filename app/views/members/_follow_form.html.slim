@@ -1,0 +1,6 @@
+- unless current_member == member
+  #follow_form
+    - if current_member.following?(member)
+      = render "unfollow", member: member
+    - else
+      = render "follow", member: member
