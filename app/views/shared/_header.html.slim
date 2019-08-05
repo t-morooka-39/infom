@@ -3,10 +3,9 @@
     .logo
       =link_to "logo", "#", id: "logo", class: "navbar-brand"
   .four.columns
-    .search
-      form.form-inline.my-2.my-lg-0
-          input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索..."
-          button type="submit" class="btn btn-outline-success my-2 my-sm-0" 検索
+    = form_with url: search_tweets_path, method: :get,class: "form-inline",local: true do |f|
+      = f.text_field :keyword, placeholder: "検索したいキーワードを入力してください", value: @search_attr
+      = f.submit "検索"
   .six.columns.head_icons
     ul
       - if member_signed_in?

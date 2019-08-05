@@ -50,6 +50,26 @@ class TweetsController < ApplicationController
   def favo
     @tweets = current_member.favorite_tweets.reverse_order.page(params[:page]).per(15)
   end
+  def followTweet
+    @tweets = current_member.following.tweets.reverse_order.page(params{:page}).per(15)
+  end
+
+  def search
+    @tweets = []
+    if params[:keyword] == ""
+      render "index" and return
+    else
+      @search_attr = params[:keyword]
+      split_keyword = params[:keyword].split(/[[:blank:]]+/)
+      split_keyword.each do |keyword|
+        next if keyword == ""
+        @tweets += Tweet.where("body LIKE ?", "%#{keyword}%")
+      end
+    end
+    @tweets.uniq!
+    @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(15)
+    render "search"
+  end
   private
   def tweet_params
     params.require(:tweet).permit(:title,:body)

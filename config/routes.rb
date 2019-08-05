@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :tweets do
     resources :images, controller: "tweet_images",:only => [:index, :show, :new, :create, :destroy] 
     patch "like", "unlike", on: :member
-    get "favo", on: :collection
+    get "favo", "followTweet","search", on: :collection
   end
   resources :relationships, only:[:create, :destroy]
 end

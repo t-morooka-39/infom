@@ -13,4 +13,5 @@ class Tweet < ApplicationRecord
   has_many :images, class_name: "TweetImage", dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_members, through: :favorites, source: :member
+  
 end
