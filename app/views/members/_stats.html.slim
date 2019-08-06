@@ -1,11 +1,6 @@
 - member ||= current_member
-.stats
-  = link_to  following_member_path(member) do
-    p.follow
-      = member.following.count
-      |フォロー
-.stats
-  = link_to followers_member_path(member) do
-    p.follow
-      = member.followers.count
-      |フォロワー
+.stats#follow_count
+  = render partial: "follow_count",locals:{member:member}
+.stats#followers_count
+  = render partial:"followers_count", locals: {member: member}
+  

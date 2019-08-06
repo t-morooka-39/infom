@@ -56,17 +56,23 @@ class TweetsController < ApplicationController
 
   def search
     @tweets = []
-    unless params[:keyword] == ""
+    if params[:keyword] == ""
+      @tweets = nil
+      render "index"
+    else
       @search_attr = params[:keyword]
       split_keyword = params[:keyword].split(/[[:blank:]]+/)
       split_keyword.each do |keyword|
         next if keyword == ""
         @tweets += Tweet.joins(:author).where("(body LIKE ?) OR (first_name LIKE ?)", "%#{keyword}%","%#{keyword}%")
       end
-    @tweets.uniq!
-    @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(15)
-    render "search"
+      @tweets.uniq!
+      @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(15)
+      #ランキング
+      @ranks = @tweets.find(Favorite.group(:tweet_id).order("count(tweet_id) desc").pluck(:tweet_id)) 
     end
+    render "index"
+    
   end
   private
   def tweet_params
