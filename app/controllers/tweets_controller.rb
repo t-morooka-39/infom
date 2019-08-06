@@ -48,10 +48,10 @@ class TweetsController < ApplicationController
     redirect_to @tweet, notice: "いいねを解除しました。"
   end
   def favo
-    @tweets = current_member.favorite_tweets.reverse_order.page(params[:page]).per(15)
+    @tweets = current_member.favorite_tweets.reverse_order.page(params[:page]).per(10)
   end
   def followTweet
-    @tweets = current_member.following.tweets.reverse_order.page(params{:page}).per(15)
+    @tweets = current_member.following.tweets.reverse_order.page(params{:page}).per(10)
   end
 
   def search
@@ -67,12 +67,9 @@ class TweetsController < ApplicationController
         @tweets += Tweet.joins(:author).where("(body LIKE ?) OR (first_name LIKE ?)", "%#{keyword}%","%#{keyword}%")
       end
       @tweets.uniq!
-      @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(15)
-      #ランキング
-      @ranks = @tweets.find(Favorite.group(:tweet_id).order("count(tweet_id) desc").pluck(:tweet_id)) 
+      @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(10)
     end
     render "index"
-    
   end
   private
   def tweet_params
