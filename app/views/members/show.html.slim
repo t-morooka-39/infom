@@ -10,7 +10,7 @@ h2.devise_title
 - else
   .img_div.no_image
 = render partial: "stats", locals: {member: @member}
-= render partial: "follow_form", locals: {member: @member} if member_signed_in?
+= render partial: "follow_form", locals: {member: @member} 
 table.input_table.margin_top
   tr
     th 名前

@@ -59,4 +59,6 @@ class Member < ApplicationRecord
   def following?(other_member)
     following.include?(other_member)
   end
+  #いいね機能の追加
+  has_many :likes
 end

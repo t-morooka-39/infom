@@ -37,16 +37,16 @@ class TweetsController < ApplicationController
     @tweet.destroy
     redirect_to :tweets, notice: "ツイートを削除しました。"
   end
-  def like
-    @tweet = Tweet.find(params[:id])
-    current_member.favorite_tweets << @tweet 
-    redirect_to @tweet, notice: "いいねしました。"
-  end
-  def unlike
-    @tweet = Tweet.find(params[:id])
-    current_member.favorite_tweets.destroy(@tweet)
-    redirect_to @tweet, notice: "いいねを解除しました。"
-  end
+  # def like
+  #   @tweet = Tweet.find(params[:id])
+  #   current_member.favorite_tweets << @tweet 
+  #   redirect_to @tweet, notice: "いいねしました。"
+  # end
+  # def unlike
+  #   @tweet = Tweet.find(params[:id])
+  #   current_member.favorite_tweets.destroy(@tweet)
+  #   redirect_to @tweet, notice: "いいねを解除しました。"
+  # end
   def favo
     @tweets = current_member.favorite_tweets.reverse_order.page(params[:page]).per(10)
   end
