@@ -3,6 +3,7 @@ h2.devise_title = @page_title
 
 - if @tweets.present?
   = render "listTweet", tweets: @tweets
+  = paginate @tweets
 - else 
   p
     まだフォローしている人がいません。
@@ -10,7 +11,6 @@ h2.devise_title = @page_title
     ランキングをのぞいてみましょう
     人気ツイートが入ります
     = link_to "詳しく見る","#"
-
   .new
     p 気になるワードを検索してみましょう
     

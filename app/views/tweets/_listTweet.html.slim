@@ -22,7 +22,5 @@
                   |更新日
                   = tweet.updated_at.strftime("%Y/%m/%d %H:%M")
         div id=tweet.id
+         #like
           = render partial: "likes/like", locals: {tweet: tweet}
-        / - if (count = tweet.favorites.count) > 0
-        /   i.fa.fa-heart
-        /   p = count

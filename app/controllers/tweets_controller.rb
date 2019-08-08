@@ -43,12 +43,13 @@ class TweetsController < ApplicationController
     render "other"
   end
   def followTweet
-    if current_member.following.present?
+    if current_member.following&.present?
       @members = current_member.following
       @tweets = []
       @members.each do |member|
         @tweets += Tweet.where(member_id: member.id).reverse_order
       end
+      @tweets = @tweets.sort_by{|tweet| tweet.created_at}.reverse
       @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(10)
     end
   end
