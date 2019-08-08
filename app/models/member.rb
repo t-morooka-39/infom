@@ -61,4 +61,5 @@ class Member < ApplicationRecord
   end
   #いいね機能の追加
   has_many :likes
+  has_many :like_tweets, through: :likes, source: :tweet
 end

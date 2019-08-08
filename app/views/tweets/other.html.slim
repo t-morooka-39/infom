@@ -1,0 +1,7 @@
+- @page_title 
+h2.devise_title = @page_title
+
+- if @tweets.present?
+  = render "listTweet", tweets: @tweets
+- else
+  p まだありません

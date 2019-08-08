@@ -18,4 +18,5 @@ class Tweet < ApplicationRecord
   def like?(other_member)
     liker.include?(other_member)
   end
+
 end

@@ -37,23 +37,26 @@ class TweetsController < ApplicationController
     @tweet.destroy
     redirect_to :tweets, notice: "ツイートを削除しました。"
   end
-  # def like
-  #   @tweet = Tweet.find(params[:id])
-  #   current_member.favorite_tweets << @tweet 
-  #   redirect_to @tweet, notice: "いいねしました。"
-  # end
-  # def unlike
-  #   @tweet = Tweet.find(params[:id])
-  #   current_member.favorite_tweets.destroy(@tweet)
-  #   redirect_to @tweet, notice: "いいねを解除しました。"
-  # end
   def favo
-    @tweets = current_member.favorite_tweets.reverse_order.page(params[:page]).per(10)
+    @tweets = current_member.like_tweets.reverse_order.page(params[:page]).per(10)
+    @page_title = "いいねしたツイート"
+    render "other"
   end
   def followTweet
-    @tweets = current_member.following.tweets.reverse_order.page(params{:page}).per(10)
+    if current_member.following.present?
+      @members = current_member.following
+      @tweets = []
+      @members.each do |member|
+        @tweets += Tweet.where(member_id: member.id).reverse_order
+      end
+      @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(10)
+    end
   end
-
+  def mine
+    @tweets = current_member.tweets.reverse_order.page(params[:page]).per(10)
+    @page_title = "あなたの投稿"
+    render "other"
+  end
   def search
     @tweets = []
     if params[:keyword] == ""
