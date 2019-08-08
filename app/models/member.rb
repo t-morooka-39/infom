@@ -60,6 +60,6 @@ class Member < ApplicationRecord
     following.include?(other_member)
   end
   #いいね機能の追加
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :like_tweets, through: :likes, source: :tweet
 end

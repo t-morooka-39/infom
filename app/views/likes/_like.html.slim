@@ -1,8 +1,8 @@
 - if tweet.author != current_member
   - if tweet.like?(current_member)
     p 
-      |いいね解除：
-      = link_to tweet.likes.count,tweet_likes_path(tweet.id),method: :delete, remote: true
+    |いいね解除：
+    = link_to tweet.likes.count,tweet_likes_path(tweet.id),method: :delete, remote: true
   - else
     p
       |いいね登録:

@@ -75,6 +75,9 @@ class TweetsController < ApplicationController
     end
     render "index"
   end
+  def rank
+    @tweets = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(20).pluck(:tweet_id))
+  end
   private
   def tweet_params
     params.require(:tweet).permit(:title,:body)
