@@ -11,7 +11,6 @@
     = view_images(@tweet)
     .show
       = simple_format(@tweet.body)
-  
   #like
       = render partial: "likes/like", locals: {tweet: @tweet}
 - if current_member == @tweet.author
