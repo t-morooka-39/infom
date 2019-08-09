@@ -1,0 +1,8 @@
+.formbox
+  p コメント記入
+  = form_for comment do |f|
+    = f.hidden_field :tweet_id 
+    .form_group
+      = f.label :body, "コメント"
+      = f.text_area :body, row: 4
+    = f.submit "送信", class: "btn btn-primary"

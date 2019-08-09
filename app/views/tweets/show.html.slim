@@ -14,27 +14,6 @@
   
   #like
       = render partial: "likes/like", locals: {tweet: @tweet}
-     
-/ ul
-/   li  
-/     i.fa.fa-heart
-/     = @tweet.favorites.count
-/   - if member_signed_in? && current_member.favorite?(@tweet)
-/     li
-/         =link_to [:like, @tweet], method: :patch do
-/           i.fa.fa-heart-o.noclick 
-/   - if member_signed_in? && current_member.delete_favorite?(@tweet)
-/     li
-/       = link_to unlike_tweet_path(@tweet), method: :patch do
-/         i.fa.fa-heart 解除
-/ - if current_member == @tweet.author
-/   .favo_member
-/     h3 いいねした人
-/     ul
-/       - @tweet.favorite_members.order("favorites.created_at").each do |member|
-/         li 
-/           = member.first_name
-/           |さん
 - if current_member == @tweet.author
   .btns
     = link_to "画像の編集", tweet_images_path(@tweet)
@@ -42,3 +21,7 @@
       p 編集
     = link_to tweet_path(@tweet), method: :delete, data: {confirm: "本当に削除しますか？"} do
       p 削除
+.comment
+  - @tweet.comments.each do |comment|
+    = render partial: "comments/comments" ,locals:{comment: comment}
+= render partial: "comments/form", locals: { comment: @comment}

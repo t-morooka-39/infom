@@ -18,4 +18,5 @@ class Tweet < ApplicationRecord
   def like?(member)
     liker.include?(member)
   end
+  has_many :comments, dependent: :destroy
 end

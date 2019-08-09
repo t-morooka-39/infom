@@ -1,0 +1,5 @@
+.comment_text
+  = simple_format(comment.body)
+  .bottomline
+    = comment.created_at
+    = link_to "削除", comment, method: :delete, data:{confirm: "削除しますか？"}
