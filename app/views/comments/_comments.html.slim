@@ -2,6 +2,6 @@
   = simple_format(comment.body)
   .bottomline
     span = comment.name
-    span = comment.created_at
+    span = comment.created_at.strftime("%Y/%m/%d %H:%M")
     - if current_member.first_name == comment.name 
       span = link_to "削除", comment, method: :delete, data:{confirm: "削除しますか？"}

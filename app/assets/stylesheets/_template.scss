@@ -58,6 +58,16 @@ header{
       padding: 10px 0 10px 0;
     }
   }
+  .form-inline{
+    margin: 10px 0 10px;
+    input[type="submit"]{
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+    input[type="text"]{
+      width:80%;
+    }
+  }
 }
 // sidebar
 aside{

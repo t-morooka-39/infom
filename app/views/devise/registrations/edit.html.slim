@@ -44,21 +44,23 @@ h2.devise_title
       td 
         = f.password_field :password, autocomplete: "new-password", class: "text"
         .description 
-          |(変更したくない場合は空白のままにします。)
-        - if @minimum_password_length
-          p
-            = @minimum_password_length
-            |  文字以上で入力してください
+          - if @minimum_password_length
+            p
+              = @minimum_password_length
+              |  文字以上で入力してください
+          p.note_pass
+            |(パスワードを変更しない場合は空白のままにします。)
     tr
       th = f.label :password_confirmation
       td 
         = f.password_field :password_confirmation, autocomplete: "new-password", class: "text"
         .description 
-          |(変更したくない場合は空白のままにします。)
-        - if @minimum_password_length
-          p
-            = @minimum_password_length
-            |  文字以上で入力してください
+          - if @minimum_password_length
+            p
+              = @minimum_password_length
+              |  文字以上で入力してください
+          p.note_pass
+            |(パスワードを変更しない場合は空白のままにします。)
     tr
       th = f.label :current_password
       td 

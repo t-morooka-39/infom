@@ -23,3 +23,8 @@
                   = tweet.updated_at.strftime("%Y/%m/%d %H:%M")
         div id=tweet.id
           = render partial: "likes/like", locals: {tweet: tweet}
+        - if tweet.comments.present?
+          .comment
+            p 
+              = tweet.comment_count
+              |件の返信

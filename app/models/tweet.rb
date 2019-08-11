@@ -19,4 +19,11 @@ class Tweet < ApplicationRecord
     liker.include?(member)
   end
   has_many :comments, dependent: :destroy
+  def comment_count
+    if comments.loaded?
+      comments.to_a.count
+    else
+      comments.count 
+    end
+  end
 end

@@ -4,7 +4,7 @@
       =link_to "logo", "#", id: "logo", class: "navbar-brand"
   .four.columns
     = form_with url: search_tweets_path, method: :get,class: "form-inline",local: true do |f|
-      = f.text_field :keyword, placeholder: "検索したいキーワードを入力してください", value: @search_attr
+      = f.text_field :keyword, placeholder: "キーワードを入力してください", value: @search_attr
       = f.submit "検索"
   .six.columns.head_icons
     ul

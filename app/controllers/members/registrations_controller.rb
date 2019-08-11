@@ -63,4 +63,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
     return super if params["password"]&.present?
     resource.update_without_password(params.except("current_password"))
   end
+  def after_update_path_for(resource)
+    followTweet_tweets_path
+  end
 end
