@@ -76,3 +76,51 @@
     }
   }
 }
+// member_show
+.flexdiv{
+  .profile{
+    width:80%;
+    .flexname{
+      display: flex;
+      width:100%;
+      p{
+        display: block;
+        padding: 0 3px 0 0;
+        font-size: 1.4rem;
+      }
+    }
+    p{
+      font-size: 1.2rem;
+    }
+  }
+  .stats_div{
+    width:45%;
+    display: flex;
+    .stats{
+      margin:5px 10px 0 0;
+      width:30%;
+      flex-wrap: wrap;
+
+      p{
+        font-size: 1.4rem;
+        color: black;
+      }
+    }
+    @media(min-width:769px){
+      a{
+        &:hover{
+          border-color: black !important;
+        }
+      } 
+    }
+  }
+  #follow_form{
+    margin:0 0 0 10px;
+    width:50%;
+    form{
+      input[type="submit"]{
+        width:100%;
+      }
+    }
+  }
+}

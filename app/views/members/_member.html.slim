@@ -3,7 +3,8 @@
   .img_div
     = image_tag member.profile_picture.variant(resize: "100x100")
 - else
-  .img_div.no_image
+  .img_div
+    = image_tag "no_image.png"
 p.last_name = member.last_name
 p.first_name = member.first_name
 = simple_format(member.introduction)

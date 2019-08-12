@@ -44,6 +44,7 @@ class TweetsController < ApplicationController
     render "other"
   end
   def followTweet
+    @ranks = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(3).pluck(:tweet_id))
     if current_member.following&.present?
       @members = current_member.following
       @tweets = []
