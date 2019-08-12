@@ -1,29 +1,37 @@
-
+.global-nav
   ul
     - if member_signed_in?
       li
         = link_to :followTweet_tweets, class: 'top' do 
-          i.fa.fa-home 　TOP
+          .list
+            i.fa.fa-home 　TOP
     - else
       li
         = link_to root_path, class: 'top' do 
-          i.fa.fa-home 　TOP
+          .list
+            i.fa.fa-home 　TOP
     li
       = link_to tweets_path, class: "tweet" do
-        i.fa.fa-comments 　ツイート一覧
+        .list
+          i.fa.fa-comments 　ツイート一覧
     li
         =link_to :rank_tweets, class: "popularity" do
-          i.fa.fa-home 　ランキング
+          .list
+            i.fa.fa-home 　ランキング
     - if member_signed_in?
       li
         =link_to :favo_tweets, class: "favorite" do
-          i.fa.fa-heart 　いいね
+          .list
+            i.fa.fa-heart 　いいね
       li
         =link_to :mine_tweets, class: "follower" do
-          i.fa.fa-group 　投稿ツイート
+          .list
+            i.fa.fa-group 　投稿ツイート
       li
         =link_to "#", class: "popularity" do
-          i.fa.fa-home 　機能が入る
+          .list
+            i.fa.fa-home 　機能が入る
       li
         =link_to members_path, class: "admin" do
-          i.fa.fa-address-card-o 　ユーザー管理
+          .list
+            i.fa.fa-address-card-o 　ユーザー管理

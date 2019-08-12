@@ -9,4 +9,5 @@ module ApplicationHelper
       content_tag( :span, text)
     end
   end
+
 end

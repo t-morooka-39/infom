@@ -1,12 +1,13 @@
-- if tweet.author != current_member
-  - if tweet.like?(current_member)
-    = link_to tweet_likes_path(tweet.id),method: :delete, remote: true do
-      .btn-cancel
-        i.fa.fa-heart
-  - else
-    = link_to tweet_likes_path(tweet.id),method: :post, remote: true do
-      .btn-like
-        i.fa.fa-heart-o
 p
   |いいね数
   = tweet.likes.count
+- if member_signed_in?
+  - if tweet.author != current_member
+    - if tweet.like?(current_member)
+      = link_to tweet_likes_path(tweet.id),method: :delete, remote: true do
+        .btn-cancel
+          i.fa.fa-heart
+    - else
+      = link_to tweet_likes_path(tweet.id),method: :post, remote: true do
+        .btn-like
+          i.fa.fa-heart-o

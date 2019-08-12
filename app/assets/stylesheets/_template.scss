@@ -45,6 +45,9 @@ header{
       form{
         padding: 10px 0 10px 0;
       }
+      a{
+        color: black;
+      }
     }
     .head_icon{
       @media(min-width:769px){
@@ -79,10 +82,17 @@ aside{
     background-color:darken( #f9f8f6,5%);
     li{
       list-style: none;
-      padding: 2px 8px 2px 15px;
+      padding: 0px;
       margin:0 0 10px 0;
       font-size: 1.4rem;
       transform: scale( 1 , 1.2 );
+      .list{
+        padding: 2px 8px 2px;
+        margin: 0 5px 0;
+      }
+      a{
+        color: black;
+      }
       @media(min-width:769px){
         &:hover{
           background-color: darken(white,3%);
@@ -95,8 +105,6 @@ aside{
     }
   }
 }
-
-
 footer{
   border-top: inset 1px brown;
   height:2000px;
@@ -118,8 +126,6 @@ footer{
         }  
       }
   }
-  
-   
   .footer_bar{
     
     font-size: 0.8rem;
@@ -127,4 +133,38 @@ footer{
     text-align: center;
   }
         
+}
+
+//pagination
+.pagination{
+  margin: 20px 0 0 0;
+  li{
+    margin: 0;
+    a{
+      background-color: #887f69;
+      margin: 0 2px;
+      padding: 0;
+      width: 55px;
+      height: 55px;
+      text-align: center;
+      border-radius: 10px !important;
+      line-height: 55px;
+      color: #ffffff;
+      font-size: 1.4rem;
+      @media(min-width:769px){
+        &:hover{
+          background-color: #fff !important;
+          color: #887f69 !important;
+          border-color: #887f69 !important;
+        }
+      }
+    }
+  }
+  .active{
+    a{
+      background-color: #fff !important;
+      color: #887f69 !important;
+      border-color: #887f69 !important;
+    }
+  }
 }

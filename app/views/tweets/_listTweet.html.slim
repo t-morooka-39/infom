@@ -6,7 +6,8 @@
             .img_div
               = image_tag tweet.author.profile_picture.variant(resize: "100x100")
           - else
-            .img_div.no_image
+            .img_div
+              = image_tag "no_image.png"
           p =tweet.author.first_name
         = link_to(tweet,class: "show_link") do
           .show
@@ -14,17 +15,17 @@
               = view_images(tweet)
             .text
               =simple_format(tweet.body)
-            .day
-              p 
-                |作成日
-                = tweet.created_at.strftime("%Y/%m/%d %H:%M")
-                - if tweet.updated_at != tweet.created_at
-                  |更新日
-                  = tweet.updated_at.strftime("%Y/%m/%d %H:%M")
-        div id=tweet.id
-          = render partial: "likes/like", locals: {tweet: tweet}
+        .day
+          p 
+            |作成日
+            = tweet.created_at.strftime("%Y/%m/%d %H:%M")
+            - if tweet.updated_at != tweet.created_at
+              |更新日
+              = tweet.updated_at.strftime("%Y/%m/%d %H:%M")
         - if tweet.comments.present?
           .comment
             p 
               = tweet.comment_count
               |件の返信
+        div.like id=tweet.id
+          = render partial: "likes/like", locals: {tweet: tweet}

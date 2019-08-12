@@ -6,7 +6,7 @@
     = form_with url: search_tweets_path, method: :get,class: "form-inline",local: true do |f|
       = f.text_field :keyword, placeholder: "キーワードを入力してください", value: @search_attr
       = f.submit "検索"
-  .six.columns.head_icons
+  .six.columns.head_icons.global-nav
     ul
       - if member_signed_in?
         /ログインした状態で見せる

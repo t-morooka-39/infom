@@ -63,7 +63,7 @@ class TweetsController < ApplicationController
     @tweets = []
     if params[:keyword] == ""
       @tweets = nil
-      render "index"
+      render "index" and return
     else
       @search_attr = params[:keyword]
       split_keyword = params[:keyword].split(/[[:blank:]]+/)
