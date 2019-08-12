@@ -1,0 +1,6 @@
+- member ||= current_member
+.stats#follow_count
+  = render partial: "follow_count",locals:{member:member}
+.stats#followers_count
+  = render partial:"followers_count", locals: {member: member}
+  

@@ -7,6 +7,7 @@ class Member < ApplicationRecord
 
   validates :first_name, :last_name, :sex, presence: true
   validates :first_name, :last_name, length: {maximum: 10}
+  validates :introduction, length: {maximum: 70}
   validates :sex, numericality:{
     only_integer: true,
     greater_than: 0,
@@ -23,6 +24,8 @@ class Member < ApplicationRecord
     end
   end
   has_many :tweets, dependent: :destroy
+  has_many :favorites
+  has_many :favorite_tweets, through: :favorites, source: :tweet
   # pictureアップロード
   has_one_attached :profile_picture
   attribute :new_profile_picture
@@ -34,5 +37,29 @@ class Member < ApplicationRecord
       self.profile_picture.purge
     end
   end
-
+  def favorite?(tweet)
+    tweet && tweet.author != self && !favorites.exists?(tweet_id: tweet.id)
+  end
+  def delete_favorite?(tweet)
+    tweet && tweet.author != self && favorites.exists?(tweet_id: tweet.id)
+  end
+  # フォロー機能の追加
+  has_many :active_relationships, class_name: "Relationship",
+   foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship",
+    foreign_key: "followed_id", dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed 
+  has_many :followers, through: :passive_relationships, source: :follower
+  def follow(other_member)
+    active_relationships.create(followed_id: other_member.id)
+  end
+  def unfollow(other_member)
+    active_relationships.find_by(followed_id: other_member.id).destroy
+  end
+  def following?(other_member)
+    following.include?(other_member)
+  end
+  #いいね機能の追加
+  has_many :likes, dependent: :destroy
+  has_many :like_tweets, through: :likes, source: :tweet
 end

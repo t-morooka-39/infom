@@ -1,13 +1,10 @@
 - @page_title = "ツイート一覧"
-
+- if @search_attr.present?
+  - @page_title = "検索結果"
+  h2.devise_title = @page_title
 - if @tweets.present?
-  .flexdiv
-    - @tweets.each do |tweet|
-      .tweet
-        =link_to tweet.author.first_name, member_path(tweet.member_id), class: "name_link"
-        = link_to(tweet,class: "show_link") do
-          .show
-            =simple_format(tweet.body)
+  = render "listTweet", {tweets:@tweets}
   = paginate @tweets
 - else 
-  p ツイートがありません
+  h3.no_tweet ツイートがありません
+

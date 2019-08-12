@@ -1,24 +1,37 @@
-
+.global-nav
   ul
+    - if member_signed_in?
+      li
+        = link_to :followTweet_tweets, class: 'top' do 
+          .list
+            i.fa.fa-home 　TOP
+    - else
+      li
+        = link_to root_path, class: 'top' do 
+          .list
+            i.fa.fa-home 　TOP
     li
-      = link_to root_path, class: 'top' do 
-        i.fa.fa-home 　TOP
+      = link_to tweets_path, class: "tweet" do
+        .list
+          i.fa.fa-comments 　ツイート一覧
     li
-      =link_to tweets_path, class: "popularity" do
-        i.fa.fa-comments 　ツイート一覧
-    li
-      =link_to "#", class: "tweet-list" do
-        i.fa.fa-signal 　人気記事
-    
-    li
-      =link_to "#", class: "popularity" do
-        i.fa.fa-home 　機能が入る
-    li
-      =link_to "#", class: "popularity" do
-        i.fa.fa-home 　機能が入る
-    li
-      =link_to "#", class: "popularity" do
-        i.fa.fa-home 　機能が入る
-    li
-      =link_to members_path, class: "admin" do
-        i.fa.fa-address-card-o 　ユーザー管理
+        =link_to :rank_tweets, class: "popularity" do
+          .list
+            i.fa.fa-home 　ランキング
+    - if member_signed_in?
+      li
+        =link_to :favo_tweets, class: "favorite" do
+          .list
+            i.fa.fa-heart 　いいね
+      li
+        =link_to :mine_tweets, class: "follower" do
+          .list
+            i.fa.fa-group 　投稿ツイート
+      li
+        =link_to "#", class: "popularity" do
+          .list
+            i.fa.fa-home 　機能が入る
+      li
+        =link_to members_path, class: "admin" do
+          .list
+            i.fa.fa-address-card-o 　ユーザー管理

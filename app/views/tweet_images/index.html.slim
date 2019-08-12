@@ -1,0 +1,27 @@
+- @page_title = "ツイートの画像"
+h2.devise_title = @page_title
+.action_link
+  = link_to tweets_path, class: "index" do
+    i.fa.fa-rotate-left ツイートに戻る
+
+  table.input_table
+    - if @images.present?
+      thead
+        tr
+          th 画像
+          th 操作
+      tbody
+        - @images.each do |image|
+          tr
+            td = image_tag image.data.variant(resize: "100x>"), alt: image.alt_text
+            td 
+              .td_div
+                = link_to "削除", tweet_image_path(@tweet,image), method: :delete, data: {confirm: "削除しますか？"}
+        tr
+          td
+            = link_to "画像を追加", new_tweet_image_path(@tweet)
+    - else
+      tr
+            td
+              = link_to "画像を追加", new_tweet_image_path(@tweet)
+

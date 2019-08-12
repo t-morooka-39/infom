@@ -1,0 +1,4 @@
+= form_with model: @relationships, url: relationships_path, remote: true do |f|
+  .hide
+    = hidden_field_tag :followed_id, member.id
+  = f.submit "フォロー", class: "btn btn-primary"

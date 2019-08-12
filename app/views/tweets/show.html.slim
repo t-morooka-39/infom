@@ -1,14 +1,26 @@
 - @page_title = "ツイート詳細"
-=link_to tweets_path, class: "index" do
-        i.fa.fa-rotate-left 戻る
+- if flash[:notice]
+  =link_to tweets_path, class: "index" do
+    i.fa.fa-rotate-left 戻る
+- else
+  =link_to :back, class: "index" do
+    i.fa.fa-rotate-left 戻る
 .flexdiv
   .tweet.full_size
-    =link_to @tweet.author.first_name, "#", class: "name_link"
+    = link_to @tweet.author.first_name, "#", class: "name_link"
+    = view_images(@tweet)
     .show
       = simple_format(@tweet.body)
+  #like
+      = render partial: "likes/like", locals: {tweet: @tweet}
 - if current_member == @tweet.author
   .btns
+    = link_to "画像の編集", tweet_images_path(@tweet)
     = link_to edit_tweet_path(@tweet), class: "edit" do
       p 編集
     = link_to tweet_path(@tweet), method: :delete, data: {confirm: "本当に削除しますか？"} do
       p 削除
+.comment
+  - @tweet.comments.each do |comment|
+    = render partial: "comments/comments" ,locals:{comment: comment}
+= render partial: "comments/form", locals: { comment: @comment}

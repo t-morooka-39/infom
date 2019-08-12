@@ -80,4 +80,5 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem "kaminari"
 gem "kaminari-i18n"
-gem "mini_magick", '>= 4.8'
+gem "mini_magick", '>= 4.9.4'
+gem "acts_as_list"

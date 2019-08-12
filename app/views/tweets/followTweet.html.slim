@@ -1,0 +1,22 @@
+- @page_title = "フォローユーザーのタイムライン"
+h2.devise_title = @page_title
+
+- if @tweets.present?
+  = render "listTweet", tweets: @tweets
+  = paginate @tweets
+- else 
+  .nofollow_div
+    h3
+      |まだフォローしている人がいません
+    .ranking
+      p.nofollow ランキングを覗いてみましょう
+      div
+        = render "listRank", {tweets:@ranks}
+      p.link_rank = link_to "詳しく見る",:rank_tweets
+    .search 
+      p.nofollow 気になるワードを検索してみましょう
+      = form_with url: search_tweets_path, method: :get,class: "form-inline",local: true do |f|
+        = f.text_field :keyword, placeholder: "検索したいキーワードを入力してみましょう", value: @search_attr
+        = f.submit "検索"
+      
+    

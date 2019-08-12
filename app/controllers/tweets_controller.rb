@@ -6,6 +6,7 @@ class TweetsController < ApplicationController
   def show
     @tweet = Tweet.find(params[:id])
     @author = @tweet.author
+    @comment = Comment.new(tweet_id: @tweet.id)
   end
   def new
     @tweet = Tweet.new
@@ -37,7 +38,48 @@ class TweetsController < ApplicationController
     @tweet.destroy
     redirect_to :tweets, notice: "ツイートを削除しました。"
   end
-
+  def favo
+    @tweets = current_member.like_tweets.reverse_order.page(params[:page]).per(10)
+    @page_title = "いいねしたツイート"
+    render "other"
+  end
+  def followTweet
+    @ranks = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(3).pluck(:tweet_id))
+    if current_member.following&.present?
+      @members = current_member.following
+      @tweets = []
+      @members.each do |member|
+        @tweets += Tweet.where(member_id: member.id).reverse_order
+      end
+      @tweets = @tweets.sort_by{|tweet| tweet.created_at}.reverse
+      @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(10)
+    end
+  end
+  def mine
+    @tweets = current_member.tweets.reverse_order.page(params[:page]).per(10)
+    @page_title = "あなたの投稿"
+    render "other"
+  end
+  def search
+    @tweets = []
+    if params[:keyword] == ""
+      @tweets = nil
+      render "index" and return
+    else
+      @search_attr = params[:keyword]
+      split_keyword = params[:keyword].split(/[[:blank:]]+/)
+      split_keyword.each do |keyword|
+        next if keyword == ""
+        @tweets += Tweet.joins(:author).where("(body LIKE ?) OR (first_name LIKE ?)", "%#{keyword}%","%#{keyword}%")
+      end
+      @tweets.uniq!
+      @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(10)
+    end
+    render "index"
+  end
+  def rank
+    @tweets = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(20).pluck(:tweet_id))
+  end
   private
   def tweet_params
     params.require(:tweet).permit(:title,:body)

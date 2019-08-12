@@ -4,22 +4,38 @@ h2.devise_title
   - else
     = @member.first_name.to_s.humanize
     |さんのページ
-- if @member.profile_picture.attached?
-  .img_div
-    = image_tag @member.profile_picture.variant(resize: "100x100")
-
--if current_member == @member
-  table.input_table.margin_top
-    tr
-      th 名前
-      td 
+.flexdiv 
+  .show_image
+    - if @member.profile_picture.attached?
+      .img_div
+        = image_tag @member.profile_picture.variant(resize: "100x100")
+    - else
+      .img_div
+        = image_tag "no_image.png"
+  -if current_member == @member
+    table.input_table.margin_top
+      tr
+        th 名前
+        td 
+          p.last_name = @member.last_name
+          p.first_name = @member.first_name
+      tr
+        th 性別
+        td = @member.sex == 1 ? "男" : "女"
+      tr
+        th 紹介文
+        td = simple_format(@member.introduction)
+      tr
+        th メールアドレス
+        td = @member.email
+      .edit_member
+        = link_to '編集する', edit_member_registration_path, class: "edit_btn"
+  -else
+    .profile
+      .flexname
         p.last_name = @member.last_name
         p.first_name = @member.first_name
-    tr
-      th 性別
-      td = @member.sex == 1 ? "男" : "女"
-    tr
-      th メールアドレス
-      td = @member.email
-  .edit_member
-    = link_to '編集する', edit_member_registration_path, class: "edit_btn"
+      = simple_format(@member.introduction)
+  .stats_div
+    = render partial: "stats", locals: {member: @member}
+  = render partial: "follow_form", locals: {member: @member} 
