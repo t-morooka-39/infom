@@ -83,6 +83,17 @@
     .flexname{
       display: flex;
       width:100%;
+      a{
+        display: flex;
+        color: black;
+        @media(min-width:769px){
+          &:hover{
+            color: black;
+            opacity: 0.5;
+            text-decoration: none;
+          }
+        }
+      }
       p{
         display: block;
         padding: 0 3px 0 0;

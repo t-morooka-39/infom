@@ -5,7 +5,6 @@
   align-items: start;
   .tweet{
     width:48%;
-    // height:;
     background-color: #ffffff;
     box-sizing: border-box;
     margin: 5px 2px 5px;
@@ -81,9 +80,45 @@
   }
   .full_size{
     width:90%;
+    margin:0 10% 0 0;
     .show{
-      &:hover{
-        background-color: #ffffff;
+      @media(min-width:769px){
+        &:hover{
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+  #like{
+    margin: 10px 0 0 20px;
+    display: flex;
+    p{
+      display: block;
+      padding: 0 0 0 5px;
+    }
+    a{
+      i{
+        font-size: 1.6rem;
+        color: #e0245e;
+      }
+    }
+  }
+}
+// comment
+.comment{
+  .comment_text{
+    background-color: #ffffff;
+    box-sizing: border-box;
+    width: 90%;
+    margin: 10px 0 0 0;
+    border-radius: 10px;
+    p{
+      padding:10px 0 0 20px;
+    }
+    .bottomline{
+      padding: 0 0 5px 20px;
+      span{
+        padding:0 5px 0 0;
       }
     }
   }

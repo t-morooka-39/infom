@@ -13,13 +13,13 @@ class MembersController < ApplicationController
     @favorite_tweets = current_member.favorite_tweets
   end
   def following
-    @page_title = "フォローしている人"
+    @page_title = "フォロー中"
     @member = Member.find(params[:id])
     @members = @member.following.page(params[:page]).per(10)
     render "show_follow"
   end
   def followers
-    @page_title = "フォローされている人"
+    @page_title = "フォロワー"
     @member = Member.find(params[:id])
     @members = @member.followers.page(params[:page]).per(10)
     render "show_follow"
