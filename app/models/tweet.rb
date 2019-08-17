@@ -10,9 +10,6 @@ class Tweet < ApplicationRecord
       errors.add(:body, "は#{@chara_lim}文字以内で入力してください")
     end
   end
-  has_many :images, class_name: "TweetImage", dependent: :destroy
-  has_many :favorites, dependent: :destroy
-  has_many :favorite_members, through: :favorites, source: :member
   has_many :likes, dependent: :destroy
   has_many :liker, through: :likes, source: :member 
   def like?(member)
@@ -24,6 +21,23 @@ class Tweet < ApplicationRecord
       comments.to_a.count
     else
       comments.count 
+    end
+  end
+  # image 
+  has_one_attached :image
+  attribute :new_image
+  validate if: :new_image do
+    if new_image.respond_to?(:content_type)
+      unless new_image.content_type.in?(ALLOWED_CONTENT_TYPES)
+        errors.add(:new_image, :invalid_image_type)
+      end
+    else
+      errors.add(:new_image, :invald)
+    end
+  end
+  before_save do 
+    if new_image
+      self.image = new_image
     end
   end
 end

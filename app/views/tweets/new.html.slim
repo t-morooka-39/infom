@@ -3,4 +3,6 @@ h1.page_title = @page_title
 = render "shared/errors", obj: @tweet
 = form_with model: @tweet,local: true do |form|
   = render "form", form: form
+  = form.label :new_image
+  = form.file_field :new_image
   .buttn = form.submit 

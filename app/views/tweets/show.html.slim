@@ -8,7 +8,8 @@
 .flexdiv
   .tweet.full_size
     = link_to @tweet.author.first_name, "#", class: "name_link"
-    = view_images(@tweet)
+    - if @tweet.image.attached?
+      = image_tag @tweet.image.variant(resize: "150x150")
     .show
       = simple_format(@tweet.body)
   #like
