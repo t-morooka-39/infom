@@ -10,6 +10,8 @@
     = link_to @tweet.author.first_name, "#", class: "name_link"
     - if @tweet.image.attached?
       = image_tag @tweet.image.variant(resize: "150x150")
+    -if @tweet.image2.attached?
+      = image_tag @tweet.image2.variant(resize: "150x150")
     .show
       = simple_format(@tweet.body)
   #like
