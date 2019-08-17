@@ -1,4 +1,4 @@
-.flexdiv
+.flexdiv.rank
     - tweets.each do |tweet|
       .tweet
         =link_to  member_path(tweet.member_id), class: "name_link" do
@@ -12,13 +12,17 @@
         = link_to(tweet,class: "show_link") do
           .show
             .small_image
-              
+              - if tweet.image.attached?
+                = image_tag tweet.image.variant(resize: "150x150")
+              -if tweet.image2.attached?
+                = image_tag tweet.image2.variant(resize: "150x150")
             .text
               =simple_format(tweet.body)
         .day
           p 
             |作成日
             = tweet.created_at.strftime("%Y/%m/%d %H:%M")
+          p
             - if tweet.updated_at != tweet.created_at
               |更新日
               = tweet.updated_at.strftime("%Y/%m/%d %H:%M")

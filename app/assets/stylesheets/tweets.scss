@@ -33,6 +33,8 @@
       }
     }
     .show{
+      margin: 5px ;
+      padding: 0 15px;
       .text{
         p{
           margin:0 auto;
@@ -41,9 +43,6 @@
           font-size: 1.4rem;
         }
       }
-    }
-    .show{
-      margin: 5px 20px ;
     }
     @media(min-width:769px){
       .name_link{
@@ -68,13 +67,18 @@
     }
     .like{
       padding:0 0 0 20px;
+      display: flex;
       p{
         margin:0;
+        display: block;
+        line-height: 1.6rem;
+        margin: 2px 0 7px 0;
       }
       i{
         font-size: 1.6rem;
         color: #e0245e;
         margin: 2px 0 7px 0;
+        padding: 0 5px 0 0;
       }
     }
   }
@@ -130,6 +134,12 @@
   label{
     width: 30%;
     margin-right: 70%;
+    margin-top: 10px;
+    font-size: 1.4rem;
+  }
+  textarea{
+    width:90%;
+    padding: 5px 20px ;
   }
 }
 .pagination{
