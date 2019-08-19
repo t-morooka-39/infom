@@ -1,4 +1,5 @@
 - @page_title = "ツイート詳細"
+= render "devise/shared/error_messages", resource: @comment
 - if flash[:notice]
   =link_to tweets_path, class: "index" do
     i.fa.fa-rotate-left 戻る

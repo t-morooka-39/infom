@@ -27,10 +27,6 @@
         =link_to :mine_tweets, class: "follower" do
           .list
             i.fa.fa-group 　投稿ツイート
-      / li
-      /   =link_to "#", class: "popularity" do
-      /     .list
-      /       i.fa.fa-home 　機能が入る
       - if current_member.admin?
         li
           =link_to admin_members_path, class: "admin" do

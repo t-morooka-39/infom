@@ -18,9 +18,9 @@ html
         aside.two.columns
           =render "shared/sidebar"
         main.ten.columns
-          -if flash[:notice]
+          -if flash.notice
             .notice.alert.alert-success 
-              p = flash[:notice]
+              p = flash.notice
           =yield
     .container
       .row

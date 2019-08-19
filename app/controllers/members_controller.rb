@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :authenticate_member!, only:[:show,:following, :followers]
+  before_action :authenticate_member!
   # 管理者用にする
   def show
     @member = Member.find(params[:id])

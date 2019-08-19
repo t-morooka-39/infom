@@ -13,6 +13,8 @@ ja:
         remove_profile_picture: 画像の削除
       tweet:
         body: 本文
+      comment:
+        body: コメント内容
   devise:
     confirmations:
       confirmed: "メールが確認され、登録が完了しました。"
