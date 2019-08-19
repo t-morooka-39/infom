@@ -62,4 +62,12 @@ class Member < ApplicationRecord
   #いいね機能の追加
   has_many :likes, dependent: :destroy
   has_many :like_tweets, through: :likes, source: :tweet
+  # 論理削除
+  soft_deletable
+  def active_for_authentication?
+    super && !soft_destroyed_at
+  end
+  def inactive_message
+    !soft_destroyed_at ? super : :deleted_account
+  end
 end

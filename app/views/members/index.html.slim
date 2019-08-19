@@ -19,6 +19,30 @@ h1 = @page_title
           td = member.sex
           td = member.email
           td = member.admin
-          / td = link_to "削除", registration_path(resource_name), data: {confirm: "本当に削除しますか？"}
+          - if member.admin.blank?
+            td = link_to "アカウント凍結", member_path(member), method: :delete, data: {confirm: "このアカウントを停止しますか？"}
 - else
   p 利用者がいません
+h1 アカウント凍結中のユーザー
+- if @delete_members.present?
+  table.list
+    thead
+      tr
+        th 苗字
+        th 名前
+        th 性別
+        th メールアドレス
+        th 管理者
+        th 操作
+    tbody
+      - @delete_members.each do |member|
+        tr
+          td = member.last_name
+          td = member.first_name
+          td = member.sex
+          td = member.email
+          td = member.admin
+          - if member.admin.blank?
+            td = link_to "凍結解除", cancel_member_path(member), data: {confirm: "凍結を解除しますか？"}
+-else
+  p アカウントが凍結されたユーザーが存在しません。

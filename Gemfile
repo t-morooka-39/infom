@@ -82,3 +82,4 @@ gem "kaminari"
 gem "kaminari-i18n"
 gem "mini_magick", '>= 4.9.4'
 gem "acts_as_list"
+gem "kakurenbo-puti"
