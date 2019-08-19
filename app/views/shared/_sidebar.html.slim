@@ -31,7 +31,8 @@
       /   =link_to "#", class: "popularity" do
       /     .list
       /       i.fa.fa-home 　機能が入る
-      li
-        =link_to members_path, class: "admin" do
-          .list
-            i.fa.fa-address-card-o 　ユーザー管理
+      - if current_member.admin?
+        li
+          =link_to admin_members_path, class: "admin" do
+            .list
+              i.fa.fa-address-card-o 　ユーザー管理

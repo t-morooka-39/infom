@@ -20,7 +20,7 @@ h1 = @page_title
           td = member.email
           td = member.admin
           - if member.admin.blank?
-            td = link_to "アカウント凍結", member_path(member), method: :delete, data: {confirm: "このアカウントを停止しますか？"}
+            td = link_to "アカウント凍結", admin_member_path(member), method: :delete, data: {confirm: "このアカウントを停止しますか？"}
 - else
   p 利用者がいません
 h1 アカウント凍結中のユーザー
@@ -43,6 +43,6 @@ h1 アカウント凍結中のユーザー
           td = member.email
           td = member.admin
           - if member.admin.blank?
-            td = link_to "凍結解除", cancel_member_path(member), data: {confirm: "凍結を解除しますか？"}
+            td = link_to "凍結解除", cancel_admin_member_path(member), data: {confirm: "凍結を解除しますか？"}
 -else
-  p アカウントが凍結されたユーザーが存在しません。
+  p アカウントを凍結されたユーザーが存在しません。
