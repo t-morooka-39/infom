@@ -3,8 +3,7 @@ services:
   db:
     image: mysql:latest
     environment:
-      MYSQL_USER: <%= ENV['USERNAME'] %>
-      MYSQL_ROOT_PASSWORD: <%= ENV['ROOTPASS'] %>
+      MYSQL_ROOT_PASSWORD: hogehoge
     ports:
       - "3306:3306"
     volumes:
@@ -21,6 +20,10 @@ services:
     image: selenium/standalone-chrome
     ports:
       - "4444:4444"
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    ports:
+      - '8025:8025'
   web: &app
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
@@ -40,6 +43,7 @@ services:
     links:
       - db
       - redis
+      - mailhog
 
 volumes:
   bundle:
