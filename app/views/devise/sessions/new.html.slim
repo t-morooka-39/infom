@@ -8,20 +8,18 @@ h2.devise_title
       th = f.label :email
       td 
         = f.email_field :email, autofocus: true, autocomplete: "email", class: "text"
-        p.hoge 
-          |簡易ログインアドレス:
-          span hoge@ho.ge
     tr
       th = f.label :password
       td 
         = f.password_field :password, autocomplete: "current-password", class: "text"
-        p.hoge
-          |簡易ログインパスワード:
-          span hogehoge
   - if devise_mapping.rememberable?
     .field.remember_flex
       = f.check_box :remember_me, class: "remember_box"
       = f.label :remember_me, class: "remember"
   .actions
     = f.submit "ログイン"
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = f.hidden_field :email, value: "hogehoge@hoge.hoge" 
+  = f.hidden_field :password, value: "hogehoge"
+  = f.submit "かんたんログイン"
 = render "devise/shared/links"

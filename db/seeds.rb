@@ -14,3 +14,12 @@ table_names.each do |table_name|
     require path
   end
 end
+
+# Member.create(
+#   first_name: "ほげ太",
+#   last_name: "ほげ山",
+#   email: "hogehoge@hoge.hoge",
+#   sex: 1,
+#   password: "hogehoge",
+#   admin: false
+# )

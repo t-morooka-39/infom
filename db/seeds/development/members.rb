@@ -8,6 +8,17 @@ hoges = %w[aiueo kakikukeko hoge]
     email: "#{hoges[i]}@ho.ge",
     sex: 1,
     password: "hogehoge",
-    admin: (i == 0)
+    admin: (i == 0),
+    introduction: "こんにちは、私の名前は#{first_name[i]}です。よろしくお願いします。"
   )
 end
+
+Member.create(
+  first_name: "ほげ太",
+  last_name: "ほげ山",
+  email: "hogehoge@hoge.hoge",
+  sex: 1,
+  password: "hogehoge",
+  admin: false,
+  introduction: "私はテストユーザーです。"
+)
