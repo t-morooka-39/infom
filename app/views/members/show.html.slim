@@ -28,8 +28,12 @@ h2.devise_title
       tr
         th メールアドレス
         td = @member.email
-      .edit_member
-        = link_to '編集する', edit_member_registration_path, class: "edit_btn"
+      - if current_member.tester == true
+        .edit_div
+          p.badge.badge-pill.badge-secondary.f-size.badgeh テストユーザーは編集できません
+      - else 
+        .edit_div
+          = link_to '編集する', edit_member_registration_path, class: "btn btn-secondary rounded-pill f-size"
   -else
     .profile
       .flexname

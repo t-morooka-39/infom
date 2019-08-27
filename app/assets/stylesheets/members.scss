@@ -76,6 +76,17 @@
     }
   }
 }
+.edit_div{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  .f-size{
+    font-size: 1.4rem;
+  }
+  .badgeh{
+    padding: 10px;
+  }
+}
 // member_show
 .flexdiv{
   .profile{
