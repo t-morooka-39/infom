@@ -1,3 +1,6 @@
+-if flash[:alert]
+  .alert.alert-danger
+    p = flash[:alert]
 h2.devise_title
   - if current_member == @member 
     |マイページ
@@ -12,6 +15,9 @@ h2.devise_title
     - else
       .img_div
         = image_tag "no_image.png"
+  -if current_member.soft_destroy
+    .freeze
+      p.badge.badge-pill.badge-danger.f-size.badgeh このアカウントは現在凍結中です。
   -if current_member == @member
     table.input_table.margin_top
       tr
