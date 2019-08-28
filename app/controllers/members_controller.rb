@@ -1,6 +1,8 @@
 class MembersController < ApplicationController
   before_action :authenticate_member!
-  # 管理者用にする
+  def index
+    redirect_to root_url
+  end
   def show
     @member = Member.find(params[:id])
     @tweets = @member.tweets

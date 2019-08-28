@@ -22,8 +22,16 @@ class Member < ApplicationRecord
       errors.add(:new_profile_picture, :invalid)
     end
   end
+  # パスワードバリデーション！
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-  validates :password, format: { with: VALID_PASSWORD_REGEX }
+  validate :pass_value
+  def pass_value
+    if password.present?
+      unless password.match(VALID_PASSWORD_REGEX)
+        errors.add(:password, :invalid_password)
+      end
+    end
+  end
   has_many :tweets, dependent: :destroy
   has_many :favorites
   has_many :favorite_tweets, through: :favorites, source: :tweet
@@ -71,4 +79,5 @@ class Member < ApplicationRecord
   def inactive_message
     !soft_destroyed_at ? super : :deleted_account
   end
+  attr_accessor :current_password
 end
