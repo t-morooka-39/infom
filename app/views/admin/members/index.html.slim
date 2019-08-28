@@ -1,3 +1,6 @@
+-if flash[:alert]
+  .alert.alert-danger
+    p = flash[:alert]
 - @page_title = "利用者一覧"
 h1 = @page_title
 
@@ -5,7 +8,6 @@ h1 = @page_title
   table.list
     thead
       tr
-        th 苗字
         th 名前
         th 性別
         th メールアドレス
@@ -14,8 +16,7 @@ h1 = @page_title
     tbody
       - @members.each do |member|
         tr
-          td = member.last_name
-          td = member.first_name
+          td = link_to member.last_name + member.first_name, member_path(member) 
           td = member.sex
           td = member.email
           td = member.admin
@@ -28,7 +29,6 @@ h1 アカウント凍結中のユーザー
   table.list
     thead
       tr
-        th 苗字
         th 名前
         th 性別
         th メールアドレス
@@ -37,12 +37,10 @@ h1 アカウント凍結中のユーザー
     tbody
       - @delete_members.each do |member|
         tr
-          td = member.last_name
-          td = member.first_name
+          td = link_to member.last_name + member.first_name, member_path(member) 
           td = member.sex
           td = member.email
           td = member.admin
-          - if member.admin.blank?
-            td = link_to "凍結解除", cancel_admin_member_path(member), data: {confirm: "凍結を解除しますか？"}
+          td = link_to "凍結解除", cancel_admin_member_path(member), data: {confirm: "凍結を解除しますか？"}
 -else
   p アカウントを凍結されたユーザーが存在しません。

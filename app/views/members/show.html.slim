@@ -15,9 +15,6 @@ h2.devise_title
     - else
       .img_div
         = image_tag "no_image.png"
-  -if current_member.soft_destroy
-    .freeze
-      p.badge.badge-pill.badge-danger.f-size.badgeh このアカウントは現在凍結中です。
   -if current_member == @member
     table.input_table.margin_top
       tr
@@ -46,6 +43,8 @@ h2.devise_title
         p.last_name = @member.last_name
         p.first_name = @member.first_name
       = simple_format(@member.introduction)
+      -if @member.soft_destroyed?
+            p.badge.badge-pill.badge-danger.f-size.badgeh このアカウントは現在凍結中です。
   .stats_div
     = render partial: "stats", locals: {member: @member}
   = render partial: "follow_form", locals: {member: @member} 

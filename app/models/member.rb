@@ -65,10 +65,10 @@ class Member < ApplicationRecord
   has_many :like_tweets, through: :likes, source: :tweet
   # 論理削除
   soft_deletable
-  # def active_for_authentication?
-  #   super && !soft_destroy
-  # end
-  # def inactive_message
-  #   !soft_destroy ? super : :deleted_account
-  # end
+  def active_for_authentication?
+    super && !soft_destroyed_at  
+  end
+  def inactive_message
+    !soft_destroyed_at ? super : :deleted_account
+  end
 end

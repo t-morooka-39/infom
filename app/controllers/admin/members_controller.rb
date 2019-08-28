@@ -6,8 +6,12 @@ class Admin::MembersController < Admin::Base
   end
   def destroy 
     @member = Member.without_soft_destroyed.find(params[:id])
-    @member.soft_destroy
-    redirect_to :admin_members, notice: "アカウントを凍結させました。"
+    if @member.admin == true
+      redirect_to [:admin, :members], alert: "管理者は凍結できません"
+    else
+      @member.soft_destroy
+      redirect_to :admin_members, notice: "アカウントを凍結させました。"
+    end
   end
   def cancel
     @member = Member.only_soft_destroyed.find(params[:id])
