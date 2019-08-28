@@ -1,10 +1,10 @@
 - @page_title = "ツイート詳細"
 = render "devise/shared/error_messages", resource: @comment
 - if flash[:notice]
-  =link_to tweets_path, class: "index" do
+  =link_to tweets_path, class: "badge badge-pill badge-secondary index" do
     i.fa.fa-rotate-left 戻る
 - else
-  =link_to :back, class: "index" do
+  =link_to :back, class: "badge badge-pill badge-secondary index" do
     i.fa.fa-rotate-left 戻る
 .flexdiv
   .tweet.full_size

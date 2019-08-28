@@ -1,5 +1,7 @@
 - @page_title 
 h2.devise_title = @page_title
+=link_to :back, class: "badge badge-pill badge-secondary index" do
+  i.fa.fa-rotate-left 戻る
 - if @members.any?
   .member_avatars
   - @members.each do |member|
