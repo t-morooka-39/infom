@@ -1,7 +1,7 @@
 h2.devise_title
   = resource.first_name.to_s.humanize
   |さんのプロフィール編集
-= link_to :back, class: "index" do
+= link_to member_path(resource), class: "badge badge-pill badge-secondary index" do
         i.fa.fa-rotate-left 戻る
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
