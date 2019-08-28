@@ -17,8 +17,7 @@
       p 登録済みのユーザーなら、自由に投稿が可能です。画像を二つまで挿入できます。
 
 p.top_p 新規登録をしなくても一部機能を使用できます。
-.link
-  = link_to "新規登録はこちら", new_member_registration_path
-  = link_to "ログインはこちら", new_member_session_path
-  / = link_to "ツイートを覗いてみる", tweets_path
-  / = link_to "ランキングを覗いてみる", :rank_tweets
+- unless member_signed_in?
+  .link
+    = link_to "新規登録はこちら", new_member_registration_path
+    = link_to "ログインはこちら", new_member_session_path

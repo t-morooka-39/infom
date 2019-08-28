@@ -24,6 +24,22 @@ header{
 }
   .logo{
     text-align: center;
+    width:100%;
+    height: 100%;
+    margin:0;
+    a{
+      display: flex;
+      margin: 0;
+      width: 100%;
+      height:100%;
+      justify-content: center;
+      h1{
+        color: #ffffff;
+        text-transform: capitalize;
+        width: 100%;
+        margin:auto;
+      }
+    }
   }
   .head_icons{
     display:flex;
