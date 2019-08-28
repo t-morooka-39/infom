@@ -4,7 +4,6 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
-
   validates :first_name, :last_name, :sex, presence: true
   validates :first_name, :last_name, length: {maximum: 10}
   validates :introduction, length: {maximum: 70}
@@ -23,6 +22,8 @@ class Member < ApplicationRecord
       errors.add(:new_profile_picture, :invalid)
     end
   end
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
   has_many :tweets, dependent: :destroy
   has_many :favorites
   has_many :favorite_tweets, through: :favorites, source: :tweet
@@ -62,4 +63,12 @@ class Member < ApplicationRecord
   #いいね機能の追加
   has_many :likes, dependent: :destroy
   has_many :like_tweets, through: :likes, source: :tweet
+  # 論理削除
+  soft_deletable
+  def active_for_authentication?
+    super && !soft_destroyed_at  
+  end
+  def inactive_message
+    !soft_destroyed_at ? super : :deleted_account
+  end
 end

@@ -32,3 +32,45 @@ html{
     background-color: $base;
   }
 }
+
+.top{
+  margin:20px 0 0 0;
+  p{
+    font-size: 1.6rem;
+  }
+  .row{
+    margin-top:50px;
+    .one{
+      i{
+        display: block;
+        text-align: center;
+        font-size: 7.0rem;
+      }
+      .description{
+        display: block;
+        text-align: center;
+        margin:10px 0;
+      }
+    }
+  }
+  .web_title{
+    text-align: center;
+    .logo{
+      font-size: 16rem;
+      text-transform: capitalize;
+    }
+    
+  }
+}
+.top_p{
+  margin:50px 0 0 0 ;
+}
+.link{
+  display: flex;
+  a{
+    display: block;
+    font-size: 1.6rem;
+    margin: 0 20px 0 0;
+    color: black;
+  }
+}

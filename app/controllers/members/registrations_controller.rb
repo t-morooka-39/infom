@@ -28,7 +28,13 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
-
+  def destroy
+    if current_member == resource && current_member.admin?
+      redirect_to member_path(resource), alert: "管理者は削除できません"
+    else
+      super
+    end
+  end
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to

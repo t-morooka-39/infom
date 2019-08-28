@@ -11,7 +11,7 @@ h2.devise_title = @page_title
     .ranking
       p.nofollow ランキングを覗いてみましょう
       div
-        = render "listRank", {tweets:@ranks}
+        = render "listTweet", {tweets:@ranks}
       p.link_rank = link_to "詳しく見る",:rank_tweets
     .search 
       p.nofollow 気になるワードを検索してみましょう

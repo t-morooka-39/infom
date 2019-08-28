@@ -30,7 +30,6 @@ RSpec.describe Member, type: :model do
     member.valid?
     expect(member.errors[:email]).to include(@blank)
   end
-
   example "重複したメールアドレスなら無効な状態であること" do
     member1 = FactoryBot.create(:member, email: "test1@example.com")
     member = Member.new(
@@ -44,12 +43,12 @@ RSpec.describe Member, type: :model do
     expect(member.errors[:email]).to include(@already)
   end
   example "first_nameが10文字を超えたら無効な状態であること" do
-    member = Member.new(first_name: "あいうえおかきくけこさしすせそ")
+    member = Member.new(first_name: "あいうえおかきくけこさ")
     member.valid?
     expect(member.errors[:first_name]).to include(@chara_limit)
   end
   example "last_nameが10文字を超えたら無効な状態であること" do
-    member = Member.new(last_name: "あいうえおかきくけこさしすせそ")
+    member = Member.new(last_name: "あいうえおかきくけこさ")
     member.valid?
     expect(member.errors[:last_name]).to include(@chara_limit)
   end

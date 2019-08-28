@@ -1,0 +1,46 @@
+-if flash[:alert]
+  .alert.alert-danger
+    p = flash[:alert]
+- @page_title = "利用者一覧"
+h1 = @page_title
+
+- if @members.present?
+  table.list
+    thead
+      tr
+        th 名前
+        th 性別
+        th メールアドレス
+        th 管理者
+        th 操作
+    tbody
+      - @members.each do |member|
+        tr
+          td = link_to member.last_name + member.first_name, member_path(member) 
+          td = member.sex
+          td = member.email
+          td = member.admin
+          - if member.admin.blank?
+            td = link_to "アカウント凍結", admin_member_path(member), method: :delete, data: {confirm: "このアカウントを停止しますか？"}
+- else
+  p 利用者がいません
+h1 アカウント凍結中のユーザー
+- if @delete_members.present?
+  table.list
+    thead
+      tr
+        th 名前
+        th 性別
+        th メールアドレス
+        th 管理者
+        th 操作
+    tbody
+      - @delete_members.each do |member|
+        tr
+          td = link_to member.last_name + member.first_name, member_path(member) 
+          td = member.sex
+          td = member.email
+          td = member.admin
+          td = link_to "凍結解除", cancel_admin_member_path(member), data: {confirm: "凍結を解除しますか？"}
+-else
+  p アカウントを凍結されたユーザーが存在しません。

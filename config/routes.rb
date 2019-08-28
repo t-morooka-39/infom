@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "top#index"
-  resources :members,:only => [:index, :show]  do
+  resources :members,:only => [:show]  do
     get :following, :followers, on: :member
   end
   resources :tweets do
@@ -16,4 +16,10 @@ Rails.application.routes.draw do
   end
   resources :relationships, only:[:create, :destroy]
   resources :comments, only:[:create, :destroy]
+
+  namespace :admin do
+    resources :members, :only => [:index, :destroy] do 
+      get :cancel, on: :member
+    end
+  end
 end

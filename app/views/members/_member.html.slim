@@ -1,10 +1,14 @@
-.member_block
-- if member.profile_picture.attached?
-  .img_div
-    = image_tag member.profile_picture.variant(resize: "100x100")
-- else
-  .img_div
-    = image_tag "no_image.png"
-p.last_name = member.last_name
-p.first_name = member.first_name
-= simple_format(member.introduction)
+.flexdiv 
+  .show_image
+    - if member.profile_picture.attached?
+      .img_div
+        = image_tag member.profile_picture.variant(resize: "100x100")
+    - else
+      .img_div
+        = image_tag "no_image.png"
+  .profile
+    .flexname
+      = link_to member_path(member) do
+        p.last_name = member.last_name
+        p.first_name = member.first_name
+    = simple_format(member.introduction)

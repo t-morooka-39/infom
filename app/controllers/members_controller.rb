@@ -1,9 +1,6 @@
 class MembersController < ApplicationController
-  before_action :authenticate_member!, only:[:show,:following, :followers]
+  before_action :authenticate_member!
   # 管理者用にする
-  def index
-    @members = Member.all
-  end
   def show
     @member = Member.find(params[:id])
     @tweets = @member.tweets
@@ -13,13 +10,13 @@ class MembersController < ApplicationController
     @favorite_tweets = current_member.favorite_tweets
   end
   def following
-    @page_title = "フォローしている人"
+    @page_title = "フォロー中"
     @member = Member.find(params[:id])
     @members = @member.following.page(params[:page]).per(10)
     render "show_follow"
   end
   def followers
-    @page_title = "フォローされている人"
+    @page_title = "フォロワー"
     @member = Member.find(params[:id])
     @members = @member.followers.page(params[:page]).per(10)
     render "show_follow"

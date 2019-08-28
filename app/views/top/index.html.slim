@@ -1,1 +1,23 @@
-p hey
+.top.container
+  .web_title
+    h2.logo infomus
+    p infomusは、情報共有サイトです。
+  .three_icon.row
+    .one.four.columns
+      i.fa.fa-heart
+      p.description いいね、フォロー機能
+      p 気に入った投稿やユーザーを登録することができます。また、いいねが多い順にランキングが作成されます。
+    .one.four.columns
+      i.fa.fa-search
+      p.description 検索機能
+      p 投稿内容とユーザー名から、書き込まれたキーワードを探し出します。
+    .one.four.columns
+      i.fa.fa-send-o
+      p.description 投稿機能
+      p 登録済みのユーザーなら、自由に投稿が可能です。画像を二つまで挿入できます。
+
+p.top_p 新規登録をしなくても一部機能を使用できます。
+- unless member_signed_in?
+  .link
+    = link_to "新規登録はこちら", new_member_registration_path
+    = link_to "ログインはこちら", new_member_session_path

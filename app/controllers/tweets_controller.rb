@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_member!, only:[:show, :new, :edit, :create, :update, :destroy]
+  before_action :authenticate_member!, only:[:show, :new, :edit, :create, :update, :destroy, :favo, :followTweet, :mine]
   def index
     @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(10)
   end
@@ -82,6 +82,6 @@ class TweetsController < ApplicationController
   end
   private
   def tweet_params
-    params.require(:tweet).permit(:title,:body)
+    params.require(:tweet).permit(:title, :body, :new_image, :new_image2)
   end
 end
