@@ -9,6 +9,8 @@
             .img_div
               = image_tag "no_image.png"
           p =tweet.author.first_name
+          -if tweet.author.soft_destroyed?
+            p.badge.badge-pill.badge-danger.f-size 凍結中
         = link_to(tweet,class: "show_link") do
           .show
             .small_image
