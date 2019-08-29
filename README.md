@@ -33,4 +33,27 @@ GitHubは実際に使用することを想定して、開発用にfeatureブラ�
 * Rspec
   * 単体テスト（モデル）
 
+## 環境構築方法
+.envファイルに以下の内容を記述します
+
+```
+DATABASE_ROOT_PASSWORD= 'hogehoge'
+DATABASE_USER="root"
+DATABASE_HOST= 'db'
+
+GMAIL_PASSWORD= **** 
+GMAIL_ADDRESS= ****
+```
+
+GMAIL_PASSWORDとGMAIL_ADDRESSは自身のものをご使用ください。
+
+開発環境用のseedを読み込んでいただくと、mailhog(localhost:8025/)にメールが届きます。
+すべて認証していただくと、かんたんログインが可能となります。
+
+管理者の機能を使用したい場合
+ログイン画面に
+メールアドレス　aiueo@ho.ge
+パスワード　hogehoge
+と打ち込んでいただけると、管理者としてログインが可能です。
+通常ユーザーと違い、サイドバーの一番下に管理者機能が追加されます。
 ...
