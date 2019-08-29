@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Member < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -5,9 +7,9 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
   validates :first_name, :last_name, :sex, presence: true
-  validates :first_name, :last_name, length: {maximum: 10}
-  validates :introduction, length: {maximum: 70}
-  validates :sex, numericality:{
+  validates :first_name, :last_name, length: { maximum: 10 }
+  validates :introduction, length: { maximum: 70 }
+  validates :sex, numericality: {
     only_integer: true,
     greater_than: 0,
     less_than: 3,
@@ -22,8 +24,17 @@ class Member < ApplicationRecord
       errors.add(:new_profile_picture, :invalid)
     end
   end
-  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-  validates :password, format: { with: VALID_PASSWORD_REGEX }
+  # パスワードバリデーション
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i.freeze
+  validate :pass_value
+  def pass_value
+    return unless password.present?
+
+    return if password.match(VALID_PASSWORD_REGEX)
+
+    errors.add(:password, :invalid_password)
+  end
+
   has_many :tweets, dependent: :destroy
   has_many :favorites
   has_many :favorite_tweets, through: :favorites, source: :tweet
@@ -31,44 +42,53 @@ class Member < ApplicationRecord
   has_one_attached :profile_picture
   attribute :new_profile_picture
   attribute :remove_profile_picture, :boolean
-  before_save do 
+  before_save do
     if new_profile_picture
       self.profile_picture = new_profile_picture
     elsif remove_profile_picture
-      self.profile_picture.purge
+      profile_picture.purge
     end
   end
   def favorite?(tweet)
     tweet && tweet.author != self && !favorites.exists?(tweet_id: tweet.id)
   end
+
   def delete_favorite?(tweet)
     tweet && tweet.author != self && favorites.exists?(tweet_id: tweet.id)
   end
   # フォロー機能の追加
-  has_many :active_relationships, class_name: "Relationship",
-   foreign_key: "follower_id", dependent: :destroy
-  has_many :passive_relationships, class_name: "Relationship",
-    foreign_key: "followed_id", dependent: :destroy
-  has_many :following, through: :active_relationships, source: :followed 
+  has_many :active_relationships,
+           class_name: 'Relationship',
+           foreign_key: 'follower_id',
+           dependent: :destroy
+  has_many :passive_relationships,
+           class_name: 'Relationship',
+           foreign_key: 'followed_id',
+           dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   def follow(other_member)
     active_relationships.create(followed_id: other_member.id)
   end
+
   def unfollow(other_member)
     active_relationships.find_by(followed_id: other_member.id).destroy
   end
+
   def following?(other_member)
     following.include?(other_member)
   end
-  #いいね機能の追加
+  # いいね機能の追加
   has_many :likes, dependent: :destroy
   has_many :like_tweets, through: :likes, source: :tweet
   # 論理削除
   soft_deletable
   def active_for_authentication?
-    super && !soft_destroyed_at  
+    super && !soft_destroyed_at
   end
+
   def inactive_message
     !soft_destroyed_at ? super : :deleted_account
   end
+  attr_accessor :current_password
 end

@@ -1,17 +1,21 @@
+# frozen_string_literal: true
+
 class Tweet < ApplicationRecord
-  belongs_to :author, class_name: "Member", foreign_key: "member_id"
-  
+  belongs_to :author, class_name: 'Member', foreign_key: 'member_id'
+
   validates :body, presence: true
   validate :body_length
   def body_length
     @chara_lim = 400
+    return if body == nil
+    
     body_for_validation = body.gsub(/[\r\n]/, '')
-    if body_for_validation.length >= @chara_lim
-      errors.add(:body, "は#{@chara_lim}文字以内で入力してください")
-    end
+    return unless body_for_validation.length >= @chara_lim
+
+    errors.add(:body, "は#{@chara_lim}文字以内で入力してください")
   end
   has_many :likes, dependent: :destroy
-  has_many :liker, through: :likes, source: :member 
+  has_many :liker, through: :likes, source: :member
   def like?(member)
     liker.include?(member)
   end
@@ -20,10 +24,10 @@ class Tweet < ApplicationRecord
     if comments.loaded?
       comments.to_a.count
     else
-      comments.count 
+      comments.count
     end
   end
-  # image 
+  # image
   has_one_attached :image
   attribute :new_image
   has_one_attached :image2
@@ -46,12 +50,8 @@ class Tweet < ApplicationRecord
       errors.add(:new_image2, :invald)
     end
   end
-  before_save do 
-    if new_image
-      self.image = new_image
-    end
-    if new_image2
-      self.image2 = new_image2
-    end
+  before_save do
+    self.image = new_image if new_image
+    self.image2 = new_image2 if new_image2
   end
 end

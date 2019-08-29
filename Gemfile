@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -31,22 +33,19 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem "factory_bot_rails",">=4.10"
-  gem "rspec-rails",'~> 3.8'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '>=4.10'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'spring-commands-rspec'
-  gem 'letter_opener'
+  gem 'web-console', '>= 3.3.0'
+  # gem 'letter_opener'
   gem 'rubocop'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
@@ -56,23 +55,20 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data'
-
-
-gem "slim-rails"
-gem "html2slim"
-gem "rails-i18n", ">= 5.1"
-gem "bcrypt", "~> 3.1.7"
-gem "rails_autolink"
-gem "bootstrap"
-gem 'jquery-rails'
-gem 'devise' 
-gem "dotenv-rails"
+gem 'acts_as_list'
+gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap'
+gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-gem "kaminari"
-gem "kaminari-i18n"
-gem "mini_magick", '>= 4.9.4'
-gem "acts_as_list"
-gem "kakurenbo-puti"
+gem 'dotenv-rails'
+gem 'html2slim'
+gem 'jquery-rails'
+gem 'kakurenbo-puti'
+gem 'kaminari'
+gem 'kaminari-i18n'
+gem 'mini_magick', '>= 4.9.4'
+gem 'rails-i18n', '>= 5.1'
+gem 'rails_autolink'
+gem 'slim-rails'
+gem 'tzinfo-data'
