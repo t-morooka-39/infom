@@ -7,6 +7,8 @@ class Tweet < ApplicationRecord
   validate :body_length
   def body_length
     @chara_lim = 400
+    return if body == nil
+    
     body_for_validation = body.gsub(/[\r\n]/, '')
     return unless body_for_validation.length >= @chara_lim
 

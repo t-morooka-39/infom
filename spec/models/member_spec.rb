@@ -55,13 +55,24 @@ RSpec.describe Member, type: :model do
     expect(member.errors[:last_name]).to include(@chara_limit)
   end
   example 'sexに３以上を入れたら無効な状態であること' do
-    member = Member.new(sex: 5)
+    member = Member.new(sex: 3)
     member.valid?
     expect(member.errors[:sex]).to include('は3より小さい値にしてください')
+  end
+  example ' sexに0を入れたら無効な状態であること ' do
+    member = Member.new(sex: 0)
+    member.valid?
+    expect(member.errors[:sex]).to include('は0より大きい値にしてください')
   end
   example 'passwordが６文字より少なかったら無効であること' do
     member = Member.new(password: 'aiueo')
     member.valid?
     expect(member.errors[:password]).to include('は6文字以上で入力してください')
+  end
+  example 'introductionが70文字より大きい場合、無効な状態であること' do
+    member = FactoryBot.create(:member)
+    member.introduction = 'o' * 71
+    member.valid?
+    expect(member.errors[:introduction]).to include('は70文字以内で入力してください')
   end
 end
