@@ -30,7 +30,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # end
   def destroy
     if current_member == resource && current_member.admin?
-      redirect_to member_path(resource), alert: "管理者は削除できません"
+      redirect_to member_path(resource), alert: '管理者は削除できません'
     else
       super
     end
@@ -72,7 +72,8 @@ class Members::RegistrationsController < Devise::RegistrationsController
       resource.update_without_password(params)
     end
   end
-  def after_update_path_for(resource)
+
+  def after_update_path_for(_resource)
     followTweet_tweets_path
   end
 end

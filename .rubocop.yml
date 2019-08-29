@@ -1,0 +1,25 @@
+AllCops:
+  TargetRubyVersion: 2.6.3
+  Exclude:
+    - 'vendor/**/*'
+    - tmp/**/*
+    - db/**/*
+    - 'config/**/*'
+    - 'bin/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+Rails:
+  Enabled: true
+AsciiComments:
+  Enabled: false
+ClassAndModuleChildren:
+  Enabled: false
+AndOr:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
+Style/Documentation:
+  Enabled: false
