@@ -41,11 +41,7 @@ DATABASE_ROOT_PASSWORD= 'hogehoge'
 DATABASE_USER="root"
 DATABASE_HOST= 'db'
 
-GMAIL_PASSWORD= **** 
-GMAIL_ADDRESS= ****
 ```
-
-GMAIL_PASSWORDとGMAIL_ADDRESSは自身のものをご使用ください。
 
 開発環境用のseedを読み込んでいただくと、mailhog(localhost:8025/)にメールが届きます。
 すべて認証していただくと、かんたんログインが可能となります。
