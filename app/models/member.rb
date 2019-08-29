@@ -24,16 +24,17 @@ class Member < ApplicationRecord
       errors.add(:new_profile_picture, :invalid)
     end
   end
-  # パスワードバリデーション！
+  # パスワードバリデーション
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i.freeze
   validate :pass_value
   def pass_value
-    if password.present?
-      unless password.match(VALID_PASSWORD_REGEX)
-        errors.add(:password, :invalid_password)
-      end
-    end
+    return unless password.present?
+
+    return if password.match(VALID_PASSWORD_REGEX)
+
+    errors.add(:password, :invalid_password)
   end
+
   has_many :tweets, dependent: :destroy
   has_many :favorites
   has_many :favorite_tweets, through: :favorites, source: :tweet
@@ -56,10 +57,14 @@ class Member < ApplicationRecord
     tweet && tweet.author != self && favorites.exists?(tweet_id: tweet.id)
   end
   # フォロー機能の追加
-  has_many :active_relationships, class_name: 'Relationship',
-                                  foreign_key: 'follower_id', dependent: :destroy
-  has_many :passive_relationships, class_name: 'Relationship',
-                                   foreign_key: 'followed_id', dependent: :destroy
+  has_many :active_relationships,
+           class_name: 'Relationship',
+           foreign_key: 'follower_id',
+           dependent: :destroy
+  has_many :passive_relationships,
+           class_name: 'Relationship',
+           foreign_key: 'followed_id',
+           dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   def follow(other_member)

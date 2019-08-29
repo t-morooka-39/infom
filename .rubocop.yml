@@ -19,7 +19,12 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 Metrics/LineLength:
+  IgnoredPatterns: ['\A#']
   Exclude:
     - 'spec/**/*'
+    - 'app/controllers/application_controller.rb'
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
 Style/Documentation:
   Enabled: false

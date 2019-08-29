@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class TweetsController < ApplicationController
-  before_action :authenticate_member!, only: %i[show new edit create update destroy favo followTweet mine]
+  before_action :authenticate_member!,
+   only: %i[show new edit create update destroy favo followTweet mine]
+
   def index
     @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(10)
   end
@@ -24,7 +26,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.member_id = current_member.id
     if @tweet.save
-      redirect_to @tweet, notice: '投稿しました。'
+      redirect_to @tweet, notice: ' 投稿しました。'
     else
       render :new
     end
@@ -35,7 +37,7 @@ class TweetsController < ApplicationController
     @tweet.assign_attributes(tweet_params)
     @tweet.member_id = current_member.id
     if @tweet.save
-      redirect_to @tweet, notice: '更新しました。'
+      redirect_to @tweet, notice: ' 更新しました。'
     else
       render :edit
     end
@@ -44,31 +46,32 @@ class TweetsController < ApplicationController
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
-    redirect_to :tweets, notice: 'ツイートを削除しました。'
+    redirect_to :tweets, notice: ' ツイートを削除しました。'
   end
 
   def favo
     @tweets = current_member.like_tweets.reverse_order.page(params[:page]).per(10)
-    @page_title = 'いいねしたツイート'
+    @page_title = ' いいねしたツイート '
     render 'other'
   end
 
-  def followTweet
-    @ranks = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(3).pluck(:tweet_id))
-    if current_member.following&.present?
-      @members = current_member.following
-      @tweets = []
-      @members.each do |member|
-        @tweets += Tweet.where(member_id: member.id).reverse_order
-      end
-      @tweets = @tweets.sort_by(&:created_at).reverse
-      @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(10)
+  def follow_tweet
+    @ranks = Tweet.find(Like.group(:tweet_id)
+    .order('count(tweet_id) desc').limit(3).pluck(:tweet_id))
+    return unless current_member.following&.present?
+
+    @members = current_member.following
+    @tweets = []
+    @members.each do |member|
+      @tweets += Tweet.where(member_id: member.id).reverse_order
     end
+    @tweets = @tweets.sort_by(&:created_at).reverse
+    @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(10)
   end
 
   def mine
     @tweets = current_member.tweets.reverse_order.page(params[:page]).per(10)
-    @page_title = 'あなたの投稿'
+    @page_title = ' あなたの投稿 '
     render 'other'
   end
 
@@ -92,7 +95,8 @@ class TweetsController < ApplicationController
   end
 
   def rank
-    @tweets = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').limit(20).pluck(:tweet_id))
+    @tweets = Tweet.find(Like.group(:tweet_id)
+    .order('count(tweet_id) desc').limit(20).pluck(:tweet_id))
   end
 
   private

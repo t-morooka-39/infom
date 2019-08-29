@@ -33,7 +33,7 @@ RSpec.describe Member, type: :model do
     expect(member.errors[:email]).to include(@blank)
   end
   example '重複したメールアドレスなら無効な状態であること' do
-    member1 = FactoryBot.create(:member, email: 'test1@example.com')
+    FactoryBot.create(:member, email: 'test1@example.com')
     member = Member.new(
       first_name: 'あ',
       last_name: 'oao',
