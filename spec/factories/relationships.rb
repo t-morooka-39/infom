@@ -2,5 +2,7 @@
 
 FactoryBot.define do
   factory :relationship do
+    body { 'これはテストです' }
+    association :tweet
   end
 end

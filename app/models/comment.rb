@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
   validates :body, presence: true
   validate :body_length
   def body_length
-    return if body == nil
+    return if body.nil?
     
     @chara_lim = 200
     body_for_validation = body.gsub(/\r\n/, 'a')
