@@ -3,13 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe Member, type: :model do
-  before do
-    @blank = 'を入力してください'
-    @already = 'はすでに存在します'
-    @chara_limit = 'は10文字以内で入力してください'
-  end
   let(:member) { Member.new(params) }
   let(:params) { {} }
+  let(:blank) { 'を入力してください' }
+  let(:already) { 'はすでに存在します' }
+  let(:chara_limit) { 'は10文字以内で入力してください' }
   example 'first_name,last_name,sex,email,passwordがあれば有効な状態であること' do
     the_member = FactoryBot.create(:member)
     expect(the_member).to be_valid
@@ -17,22 +15,22 @@ RSpec.describe Member, type: :model do
   example 'first_nameがなければ無効な状態であること' do
     params.merge!(first_name: nil)
     member.valid?
-    expect(member.errors[:first_name]).to include(@blank)
+    expect(member.errors[:first_name]).to include(blank)
   end
   example 'last_nameがなければ無効な状態であること' do
     params.merge!(last_name: nil)
     member.valid?
-    expect(member.errors[:last_name]).to include(@blank)
+    expect(member.errors[:last_name]).to include(blank)
   end
   example 'sexがなければ無効な状態であること' do
     params.merge!(sex: nil)
     member.valid?
-    expect(member.errors[:sex]).to include(@blank)
+    expect(member.errors[:sex]).to include(blank)
   end
   example 'emailがなければ無効な状態であること' do
     params.merge!(email: nil)
     member.valid?
-    expect(member.errors[:email]).to include(@blank)
+    expect(member.errors[:email]).to include(blank)
   end
   example '重複したメールアドレスなら無効な状態であること' do
     FactoryBot.create(:member, email: 'test1@example.com')
@@ -44,17 +42,17 @@ RSpec.describe Member, type: :model do
       sex: 2
     )
     member.valid?
-    expect(member.errors[:email]).to include(@already)
+    expect(member.errors[:email]).to include(already)
   end
   example 'first_nameが10文字を超えたら無効な状態であること' do
     params.merge!(first_name: 'あいうえおかきくけこさ')
     member.valid?
-    expect(member.errors[:first_name]).to include(@chara_limit)
+    expect(member.errors[:first_name]).to include(chara_limit)
   end
   example 'last_nameが10文字を超えたら無効な状態であること' do
     params.merge!(last_name: 'あいうえおかきくけこさ')
     member.valid?
-    expect(member.errors[:last_name]).to include(@chara_limit)
+    expect(member.errors[:last_name]).to include(chara_limit)
   end
   example 'sexに３以上を入れたら無効な状態であること' do
     params.merge!(sex: 3)
