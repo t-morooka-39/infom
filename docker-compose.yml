@@ -21,8 +21,6 @@ services:
     ports:
     - 4444:4444
     - 5900:5900
-    depends_on:
-      - web
   mailhog:
     image: mailhog/mailhog:v1.0.0
     ports:
@@ -47,6 +45,7 @@ services:
       - db
       - redis
       - mailhog
+      - chrome
 
 volumes:
   bundle:
@@ -54,4 +53,4 @@ volumes:
   data:
     driver: local
   redis-data:
-      driver: local
+    driver: local
