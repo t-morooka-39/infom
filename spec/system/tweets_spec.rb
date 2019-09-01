@@ -4,7 +4,8 @@ RSpec.feature 'Tweets', type: :system do
   scenario ' ユーザーが新しいツイートを作成する ' do
     member = FactoryBot.create(:member)
     visit root_path
-    find(".fa-sign-in").click
+    wait_until { page.has_css?("h1", text: "infomus") }
+    click_link 'ログインはこちら'
     fill_in 'member_email', with: member.email
     fill_in 'member_password', with: member.password
     click_button "ログイン"
