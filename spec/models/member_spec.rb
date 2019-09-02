@@ -15,22 +15,23 @@ RSpec.describe Member, type: :model do
   example 'first_nameがなければ無効な状態であること' do
     params.merge!(first_name: nil)
     member.valid?
-    expect(member.errors[:first_name]).to include(blank)
+    expect(member.errors.details[:first_name].first[:error]).to eq(:blank)
   end
   example 'last_nameがなければ無効な状態であること' do
     params.merge!(last_name: nil)
     member.valid?
     expect(member.errors[:last_name]).to include(blank)
+    expect(member.errors.details[:last_name].first[:error]).to eq(:blank)
   end
   example 'sexがなければ無効な状態であること' do
     params.merge!(sex: nil)
     member.valid?
-    expect(member.errors[:sex]).to include(blank)
+    expect(member.errors.details[:sex].first[:error]).to eq(:blank)
   end
   example 'emailがなければ無効な状態であること' do
     params.merge!(email: nil)
     member.valid?
-    expect(member.errors[:email]).to include(blank)
+    expect(member.errors.details[:email].first[:error]).to eq(:blank)
   end
   example '重複したメールアドレスなら無効な状態であること' do
     FactoryBot.create(:member, email: 'test1@example.com')
