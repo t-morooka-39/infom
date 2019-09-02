@@ -31,7 +31,7 @@ services:
     volumes:
       - .:/app:cached
       - bundle:/usr/local/bundle:cached
-      - /app/tmp
+      - /tmp
       - /app/log
       - /app/.git
     environment:
