@@ -10,7 +10,7 @@ RSpec.feature 'Tweets', type: :system, js: true do
     fill_in 'member_password', with: member.password
     click_button "ログイン"
   }
-  it ' ユーザーが新しいツイートを作成すること ' do  
+  it ' ユーザーが新しいツイートを作成する ' do  
     # click_link(class: 'post_tweet')
     find(".fa-send-o").click
     fill_in "tweet_body", with: "本文テスト"
@@ -18,6 +18,6 @@ RSpec.feature 'Tweets', type: :system, js: true do
 
     expect(page).to have_content '投稿しました。'
     expect(page).to have_content '本文テスト'
-    expect(page).to have_content "#{member.name}"  
+    expect(page).to have_content "#{member.first_name}"  
   end
 end 

@@ -45,6 +45,10 @@ RSpec.configure do |config|
   # instead of true.
   config.include SystemSupport, type: :system
   config.use_transactional_fixtures = true
+
+  config.verbose_retry = true
+  config.display_try_failure_messages = true
+  config.default_retry_count = 3
   config.before(:each, type: :system) do
     driven_by Capybara.default_driver
   end
