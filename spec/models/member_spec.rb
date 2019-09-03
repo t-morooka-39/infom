@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe Member, type: :model do
   let(:member) { Member.new(params) }
   let(:params) { {} }
-  let(:blank) { 'を入力してください' }
   let(:already) { 'はすでに存在します' }
   let(:chara_limit) { 'は10文字以内で入力してください' }
   example 'first_name,last_name,sex,email,passwordがあれば有効な状態であること' do
@@ -20,7 +19,6 @@ RSpec.describe Member, type: :model do
   example 'last_nameがなければ無効な状態であること' do
     params.merge!(last_name: nil)
     member.valid?
-    expect(member.errors[:last_name]).to include(blank)
     expect(member.errors.details[:last_name].first[:error]).to eq(:blank)
   end
   example 'sexがなければ無効な状態であること' do
