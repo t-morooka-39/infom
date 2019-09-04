@@ -79,6 +79,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+    database_rewinder (0.9.1)
     devise (4.7.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -304,6 +305,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.2)
+  database_rewinder
   devise
   devise-i18n
   devise-i18n-views

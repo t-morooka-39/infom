@@ -44,11 +44,17 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.include SystemSupport, type: :system
-  config.use_transactional_fixtures = true
-
+  config.use_transactional_fixtures = false
+  # ↑がture データベースにコミットが走らない,しかしデータベースに保存されてしまう
+  config.before(:suite) do
+    DatabaseRewinder.clean_all
+  end
+  config.after(:each) do
+    DatabaseRewinder.clean
+  end
   config.verbose_retry = true
   config.display_try_failure_messages = true
-  config.default_retry_count = 3
+  config.default_retry_count = 2
   config.before(:each, type: :system) do
     driven_by Capybara.default_driver
   end
@@ -56,6 +62,7 @@ RSpec.configure do |config|
     driven_by Capybara.javascript_driver
     host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
   end
+  config.include Devise::Test::IntegrationHelpers, type: :system
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.

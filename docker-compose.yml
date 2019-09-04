@@ -20,7 +20,6 @@ services:
     image: selenium/standalone-chrome
     ports:
     - 4444:4444
-    - 5900:5900
   mailhog:
     image: mailhog/mailhog:v1.0.0
     ports:
