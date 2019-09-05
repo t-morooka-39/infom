@@ -16,10 +16,12 @@
         .img_div
           = image_tag "no_image.png"
       p =@tweet.author.first_name
-    - if @tweet.image.attached?
-      = image_tag @tweet.image.variant(resize: "150x150")
-    -if @tweet.image2.attached?
-      = image_tag @tweet.image2.variant(resize: "150x150")
+    - if @tweet&.images?
+      - @tweet.images.each_with_index do |image, index|
+        .post_image
+          = image_tag(image.url)
+          = link_to "削除", tweet_image_path(@tweet, index),
+          :method => :delete, data: { confirm: "本当に削除しますか?"}
     .show
       = simple_format(@tweet.body)
     .day

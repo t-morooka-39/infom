@@ -58,6 +58,7 @@ end
 gem 'acts_as_list'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
+gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'

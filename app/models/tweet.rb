@@ -27,31 +27,32 @@ class Tweet < ApplicationRecord
       comments.count
     end
   end
-  # image
-  has_one_attached :image
-  attribute :new_image
-  has_one_attached :image2
-  attribute :new_image2
-  validate if: :new_image do
-    if new_image.respond_to?(:content_type)
-      unless new_image.content_type.in?(ALLOWED_CONTENT_TYPES)
-        errors.add(:new_image, :invalid_image_type)
-      end
-    else
-      errors.add(:new_image, :invald)
-    end
-  end
-  validate if: :new_image2 do
-    if new_image2.respond_to?(:content_type)
-      unless new_image2.content_type.in?(ALLOWED_CONTENT_TYPES)
-        errors.add(:new_image2, :invalid_image_type)
-      end
-    else
-      errors.add(:new_image2, :invald)
-    end
-  end
-  before_save do
-    self.image = new_image if new_image
-    self.image2 = new_image2 if new_image2
-  end
+  # # image
+  # has_one_attached :image
+  # attribute :new_image
+  # has_one_attached :image2
+  # attribute :new_image2
+  # validate if: :new_image do
+  #   if new_image.respond_to?(:content_type)
+  #     unless new_image.content_type.in?(ALLOWED_CONTENT_TYPES)
+  #       errors.add(:new_image, :invalid_image_type)
+  #     end
+  #   else
+  #     errors.add(:new_image, :invald)
+  #   end
+  # end
+  # validate if: :new_image2 do
+  #   if new_image2.respond_to?(:content_type)
+  #     unless new_image2.content_type.in?(ALLOWED_CONTENT_TYPES)
+  #       errors.add(:new_image2, :invalid_image_type)
+  #     end
+  #   else
+  #     errors.add(:new_image2, :invald)
+  #   end
+  # end
+  # before_save do
+  #   self.image = new_image if new_image
+  #   self.image2 = new_image2 if new_image2
+  # end
+  mount_uploaders :images, ImageUploader
 end
