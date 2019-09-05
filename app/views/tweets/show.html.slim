@@ -1,6 +1,8 @@
 - @page_title = "ツイート詳細"
+= render "shared/flash"
+= render "shared/errors", obj: @tweet
 = render "devise/shared/error_messages", resource: @comment
-- if flash[:notice]
+- if flash[:notice] || flash[:alert]
   =link_to tweets_path, class: "badge badge-pill badge-secondary index" do
     i.fa.fa-rotate-left 戻る
 - else

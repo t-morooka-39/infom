@@ -2,8 +2,13 @@ class ImagesController < ApplicationController
   before_action :set_tweet
 
   def create
+    unless params.include?(:tweet)
+      flash[:alert] = "画像が挿入されていません"
+      redirect_to tweet_path(params[:tweet_id])
+      return
+    end
     add_more_images(images_params[:images])
-    flash[:error] = "画像のアップロードに失敗しました" unless @tweet.save(context: :registration)
+    flash[:error] = "画像のアップロードに失敗しました" unless @tweet.save
     redirect_to tweet_path(params[:tweet_id])
   end
 
