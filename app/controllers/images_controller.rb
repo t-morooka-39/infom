@@ -3,14 +3,14 @@ class ImagesController < ApplicationController
 
   def create
     add_more_images(images_params[:images])
-    flash[:error] = "画像のアップロードに失敗しました" unless @tweet.save
-    redirect_to :back
+    flash[:error] = "画像のアップロードに失敗しました" unless @tweet.save(context: :registration)
+    redirect_to tweet_path(params[:tweet_id])
   end
 
   def destroy
     remove_image_at_index(params[:id].to_i)
-    flash[:error] = "画像のアップロードに失敗しました" unless @tweet.save
-    redirect_to :back
+    flash[:error] = "画像の削除に失敗しました" unless @tweet.save
+    redirect_to tweet_path(params[:tweet_id])
   end
 
   private
@@ -37,6 +37,6 @@ class ImagesController < ApplicationController
   end
 
   def images_params
-    params.require(:tweet).permit({images: []}) # allow nested params as array
+    params.require(:tweet).permit({images: []}, {images_cache: []}) # allow nested params as array
   end
 end

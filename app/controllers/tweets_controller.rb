@@ -96,6 +96,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:title, :body, {images: []})
+    params.require(:tweet).permit(:title, :body, {images: []}, {images_cache: []})
   end
 end

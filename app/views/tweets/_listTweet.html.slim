@@ -16,7 +16,7 @@
             - if tweet&.images?
               - tweet.images.each_with_index do |image, index|
                 .post_image
-                  = image_tag(image.url)
+                  = image_tag(image.thumb.url)
             .text
               =simple_format(tweet.body)
         .day

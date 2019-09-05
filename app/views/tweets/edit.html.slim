@@ -3,6 +3,10 @@ h1.page_title = @page_title
 = render "shared/errors", obj: @tweet
 .back
   = link_to "編集をやめる", tweet_path(@tweet)
+- if @tweet&.images?
+  - @tweet.images.each_with_index do |image, index|
+    .post_image
+      = image_tag(image.thumb.url)
 = form_with model: @tweet,local: true do |f|
   = render "form", form: f
   .buttn 
