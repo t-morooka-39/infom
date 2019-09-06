@@ -29,5 +29,6 @@ module Infom
     config.time_zone = "Tokyo"
 
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
   end
 end

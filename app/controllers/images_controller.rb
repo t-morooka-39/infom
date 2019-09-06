@@ -8,6 +8,12 @@ class ImagesController < ApplicationController
       return
     end
     add_more_images(images_params[:images])
+    if @tweet.images.size > 4 
+      flash[:alert] = "画像は４枚まで挿入可能です。"
+      redirect_to tweet_path(params[:tweet_id])
+      return
+    end
+
     flash[:error] = "画像のアップロードに失敗しました" unless @tweet.save
     redirect_to tweet_path(params[:tweet_id])
   end

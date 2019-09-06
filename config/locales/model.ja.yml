@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      member:
+        first_name: 名前
+        last_name: 苗字
+        password: パスワード
+        password_confirmation: パスワード(再入力)
+        email: メールアドレス
+        remember_me: 次回からパスワード入力を省く
+        current_password: 新しいパスワード
+        new_profile_picture: プロフィール画像
+        remove_profile_picture: 画像の削除
+        introduction: 紹介文
+      tweet:
+        body: 本文
+        images: 画像挿入(4枚まで)
+      comment:
+        body: コメント内容

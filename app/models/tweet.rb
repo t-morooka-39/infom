@@ -23,7 +23,7 @@ class Tweet < ApplicationRecord
   def like?(member)
     liker.include?(member)
   end
-
+  
   def comment_count
     if comments.loaded?
       comments.to_a.count
