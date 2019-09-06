@@ -74,6 +74,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(_resource)
-    followTweet_tweets_path
+    # follow_tweet_tweets_path
+    member_path(current_member.id)
   end
 end
