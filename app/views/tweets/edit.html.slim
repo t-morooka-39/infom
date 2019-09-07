@@ -3,11 +3,21 @@ h1.page_title = @page_title
 = render "shared/errors", obj: @tweet
 .back
   = link_to "編集をやめる", tweet_path(@tweet)
-- if @tweet&.images?
-  - @tweet.images.each_with_index do |image, index|
-    .post_image
-      = image_tag(image.thumb.url)
 = form_with model: @tweet,local: true do |f|
+  - if @tweet.image1?
+    = image_tag(@tweet.image1.thumb.url) 
+    = f.check_box :remove_image1
+    = f.label :remove_image1, "画像を削除する"
+  - else 
+    = image_tag @tweet.image1.thumb.url if @tweet.image1?
+    = f.file_field :image1
+  - if @tweet.image2?
+    = image_tag(@tweet.image2.thumb.url) 
+    = f.check_box :remove_image2
+    = f.label :remove_image2, "画像を削除する"
+  - else
+    = image_tag @tweet.image2.thumb.url if @tweet.image2?
+    = f.file_field :image2
   = render "form", form: f
   .buttn 
     = f.submit 

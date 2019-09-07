@@ -7,8 +7,9 @@ class Tweet < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liker, through: :likes, source: :member
   has_many :comments, dependent: :destroy
-  mount_uploaders :images, ImageUploader
-  validate :validate_images
+  mount_uploader :image1, ImageUploader
+  mount_uploader :image2, ImageUploader
+  
 
   def body_length
     @chara_lim = 400
@@ -30,9 +31,5 @@ class Tweet < ApplicationRecord
     else
       comments.count
     end
-  end
-
-  def validate_images
-    errors.add(:images, "は4枚まで挿入できます。") if self.images.size > 4
   end
 end

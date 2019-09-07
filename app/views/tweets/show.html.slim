@@ -17,18 +17,9 @@
       - else
         .img_div
           = image_tag "no_image.png"
-      p =@tweet.author.first_name
-    - if @tweet&.images?
-      - @tweet.images.each_with_index do |image, index|
-        .post_image
-          = image_tag(image.thumb.url)
-          - if current_member == @tweet.author
-            = link_to "削除", tweet_image_path(@tweet, index),
-              :method => :delete, data: { confirm: "本当に削除しますか?"}
-    - if current_member == @tweet.author
-      = form_for @tweet, url: tweet_images_path(@tweet), method: :post do |f|
-        = f.file_field :images, multiple: true
-        .add_btn = f.submit '画像を追加する'
+      p = @tweet.author.first_name
+    = image_tag(@tweet.image1.thumb.url) if @tweet.image1?
+    = image_tag(@tweet.image2.thumb.url) if @tweet.image2?
     .show
       = simple_format(@tweet.body)
     .day
@@ -44,7 +35,7 @@
 - if current_member == @tweet.author
   .btns
     = link_to edit_tweet_path(@tweet), class: "edit" do
-      p 本文の編集
+      p ツイートの編集
     = link_to tweet_path(@tweet), method: :delete, data: {confirm: "本当に削除しますか？"} do
       p ツイートの削除
 .comment

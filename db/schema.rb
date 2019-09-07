@@ -101,7 +101,8 @@ ActiveRecord::Schema.define(version: 2019_09_04_072947) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "images"
+    t.string "image1"
+    t.string "image2"
     t.index ["member_id"], name: "index_tweets_on_member_id"
   end
 

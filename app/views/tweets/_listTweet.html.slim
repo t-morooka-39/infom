@@ -13,10 +13,8 @@
             p.badge.badge-pill.badge-danger.f-size 凍結中
         = link_to(tweet,class: "show_link") do
           .show
-            - if tweet&.images?
-              - tweet.images.each_with_index do |image, index|
-                .post_image
-                  = image_tag(image.thumb.url)
+            = image_tag(tweet.image1.thumb.url) if tweet.image1?
+            = image_tag(tweet.image2.thumb.url) if tweet.image2?
             .text
               =simple_format(tweet.body)
         .day
