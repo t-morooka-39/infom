@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'sign up', type: :system, js: true do
-  background do
+  before do
     ActionMailer::Base.deliveries.clear
   end
 
