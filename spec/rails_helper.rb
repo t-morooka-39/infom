@@ -44,14 +44,14 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.include SystemSupport, type: :system
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
   # ↑がture データベースにコミットが走らない,しかしデータベースに保存されてしまう
-  config.before(:suite) do
-    DatabaseRewinder.clean_all
-  end
-  config.after(:each) do
-    DatabaseRewinder.clean
-  end
+  # config.before(:suite) do
+  #   DatabaseRewinder.clean_all
+  # end
+  # config.after(:each) do
+  #   DatabaseRewinder.clean
+  # end
   config.verbose_retry = true
   config.display_try_failure_messages = true
   config.default_retry_count = 2

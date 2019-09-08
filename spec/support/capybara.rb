@@ -8,7 +8,20 @@ Capybara.configure do |config|
 end
 Capybara.register_driver :selenium_chrome do |app|
   url = "http://chrome:4444/wd/hub"
-  opts = { desired_capabilities: :chrome, browser: :remote, url: url }
-  Capybara::Selenium::Driver.new(app, opts)
+  # opts = { desired_capabilities: :chrome, browser: :remote, url: url }
+  # options.add_argument('window-size=800,550')
+  Capybara::Selenium::Driver.new(
+    app,
+    desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
+      chromeOptions: {
+        args: [
+          "window-size=1024,512",
+        ]
+      }
+    ),
+    browser: :remote,
+    url: url,
+
+  )
 end
 

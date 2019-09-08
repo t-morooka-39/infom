@@ -4,10 +4,9 @@ describe 'Tweets', type: :system, js: true do
   let!(:member) { FactoryBot.create(:member) }
   context ' ログインした時 ' do  
     before do 
-      page.driver.browser.manage.window.resize_to(1440,900)
       token = member.confirmation_token
       visit member_confirmation_path(confirmation_token: token)
-
+      page.driver.browser.manage.window.resize_to(800,550)
       # expect(page).to have_content 'メールが確認され、登録が完了しました。'
       fill_in 'member_email', with: "#{member.email}"
       fill_in 'member_password', with: "#{member.password}"
