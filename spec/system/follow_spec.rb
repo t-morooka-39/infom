@@ -14,9 +14,9 @@ describe 'フォロー機能', type: :system, js: true do
   end
   context 'メンバーbをフォローしていない時' do
     it 'フォローボタンが表示され、クリックするとフォローできること' do
-      expect(page).to have_content 'フォロー'
+      expect(page).to have_button 'フォロー'
       click_button 'フォロー'
-      expect(page).to have_content 'フォロー解除'
+      expect(page).to have_button 'フォロー解除'
     end
   end
 end
