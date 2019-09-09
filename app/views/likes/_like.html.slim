@@ -1,11 +1,11 @@
 - if member_signed_in?
   - if tweet.author != current_member
     - if tweet.like?(current_member)
-      = link_to tweet_likes_path(tweet.id),method: :delete, remote: true do
+      = link_to tweet_likes_path(tweet.id),method: :delete, remote: true, class: 'likebtn' do
         .btn-cancel
           i.fa.fa-heart
     - else
-      = link_to tweet_likes_path(tweet.id),method: :post, remote: true do
+      = link_to tweet_likes_path(tweet.id),method: :post, remote: true, class: 'likebtn' do
         .btn-like
           i.fa.fa-heart-o
 p
