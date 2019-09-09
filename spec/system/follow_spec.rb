@@ -19,4 +19,14 @@ describe 'フォロー機能', type: :system, js: true do
       expect(page).to have_button 'フォロー解除'
     end
   end
+  context 'メンバーbをフォローしている時' do
+    before do
+      click_button 'フォロー'
+    end
+    it 'フォロー解除ボタンが表示され、クリックするとフォロー解除できること' do
+      expect(page).to have_button 'フォロー解除'
+      click_button 'フォロー解除'
+      expect(page).to have_button 'フォロー'
+    end
+  end
 end
