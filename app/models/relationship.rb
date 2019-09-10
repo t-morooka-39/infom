@@ -6,6 +6,7 @@ class Relationship < ApplicationRecord
 
   validates :follower_id, presence: true
   validates :followed_id, presence: true
+
   def like?(member)
     liker.include?(member)
   end

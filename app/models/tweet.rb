@@ -2,9 +2,15 @@
 
 class Tweet < ApplicationRecord
   belongs_to :author, class_name: 'Member', foreign_key: 'member_id'
-
   validates :body, presence: true
   validate :body_length
+  has_many :likes, dependent: :destroy
+  has_many :liker, through: :likes, source: :member
+  has_many :comments, dependent: :destroy
+  mount_uploader :image1, ImageUploader
+  mount_uploader :image2, ImageUploader
+  
+
   def body_length
     @chara_lim = 400
     return if body.nil?
@@ -14,44 +20,16 @@ class Tweet < ApplicationRecord
 
     errors.add(:body, "は#{@chara_lim}文字以内で入力してください")
   end
-  has_many :likes, dependent: :destroy
-  has_many :liker, through: :likes, source: :member
+
   def like?(member)
     liker.include?(member)
   end
-  has_many :comments, dependent: :destroy
+  
   def comment_count
     if comments.loaded?
       comments.to_a.count
     else
       comments.count
     end
-  end
-  # image
-  has_one_attached :image
-  attribute :new_image
-  has_one_attached :image2
-  attribute :new_image2
-  validate if: :new_image do
-    if new_image.respond_to?(:content_type)
-      unless new_image.content_type.in?(ALLOWED_CONTENT_TYPES)
-        errors.add(:new_image, :invalid_image_type)
-      end
-    else
-      errors.add(:new_image, :invald)
-    end
-  end
-  validate if: :new_image2 do
-    if new_image2.respond_to?(:content_type)
-      unless new_image2.content_type.in?(ALLOWED_CONTENT_TYPES)
-        errors.add(:new_image2, :invalid_image_type)
-      end
-    else
-      errors.add(:new_image2, :invald)
-    end
-  end
-  before_save do
-    self.image = new_image if new_image
-    self.image2 = new_image2 if new_image2
   end
 end

@@ -1,6 +1,8 @@
 - @page_title = "ツイート詳細"
+= render "shared/flash"
+= render "shared/errors", obj: @tweet
 = render "devise/shared/error_messages", resource: @comment
-- if flash[:notice]
+- if flash[:notice] || flash[:alert]
   =link_to tweets_path, class: "badge badge-pill badge-secondary index" do
     i.fa.fa-rotate-left 戻る
 - else
@@ -15,11 +17,9 @@
       - else
         .img_div
           = image_tag "no_image.png"
-      p =@tweet.author.first_name
-    - if @tweet.image.attached?
-      = image_tag @tweet.image.variant(resize: "150x150")
-    -if @tweet.image2.attached?
-      = image_tag @tweet.image2.variant(resize: "150x150")
+      p = @tweet.author.first_name
+    = image_tag(@tweet.image1.thumb.url) if @tweet.image1?
+    = image_tag(@tweet.image2.thumb.url) if @tweet.image2?
     .show
       = simple_format(@tweet.body)
     .day
@@ -35,9 +35,9 @@
 - if current_member == @tweet.author
   .btns
     = link_to edit_tweet_path(@tweet), class: "edit" do
-      p 編集
+      p ツイートの編集
     = link_to tweet_path(@tweet), method: :delete, data: {confirm: "本当に削除しますか？"} do
-      p 削除
+      p ツイートの削除
 .comment
   - @tweet.comments.each do |comment|
     = render partial: "comments/comments" ,locals:{comment: comment}

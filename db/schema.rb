@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_073235) do
+ActiveRecord::Schema.define(version: 2019_09_04_072947) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 2019_08_27_073235) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image1"
+    t.string "image2"
     t.index ["member_id"], name: "index_tweets_on_member_id"
   end
 

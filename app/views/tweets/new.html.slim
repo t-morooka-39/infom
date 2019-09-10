@@ -3,9 +3,13 @@ h1.page_title = @page_title
 = render "shared/errors", obj: @tweet
 = form_with model: @tweet,local: true do |form|
   = render "form", form: form
-  = form.label :new_image,"画像１"
-  = form.file_field :new_image
-  = form.label :new_image2, "画像２"
-  = form.file_field :new_image2
-  .buttn 
-    = form.submit '投稿する'
+
+  .image1
+    = image_tag @tweet.image1.thumb.url if @tweet.image1?
+    = form.file_field :image1
+    = form.hidden_field :image1_cache
+  .image2
+    = image_tag @tweet.image2.thumb.url if @tweet.image2?
+    = form.file_field :image2
+    = form.hidden_field :image2_cache
+  .buttn = form.submit 

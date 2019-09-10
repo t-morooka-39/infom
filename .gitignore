@@ -69,6 +69,10 @@ node_modules/
 /public/packs-test
 /public/assets
 /public/uploads
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature-2
 # Ignore yarn files
 /yarn-error.log
 yarn-debug.log*
