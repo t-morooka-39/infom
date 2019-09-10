@@ -18,17 +18,17 @@ describe 'いいね機能', type: :system, js: true do
     context 'いいねボタンを押していないとき' do 
       it 'いいねボタンを押せること' do
         expect(page).to have_css '.fa-heart-o'
-        find(".likebtn").click
+        first(".likebtn").click
         expect(page).to have_css '.fa-heart'
       end
     end
     context 'いいねボタンを押しているとき' do
       before do
-        find(".likebtn").click
+        first(".likebtn").click
       end
       it 'いいねの解除ができること' do
         expect(page).to have_css '.fa-heart'
-        find(".likebtn").click
+        first(".likebtn").click
         expect(page).to have_css '.fa-heart-o'
       end
     end
