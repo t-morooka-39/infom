@@ -7,6 +7,8 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'capybara/rspec'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -22,8 +24,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
-
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -32,15 +33,36 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+include Warden::Test::Helpers
+Warden.test_mode!
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
+  config.include SystemSupport, type: :system
   config.use_transactional_fixtures = true
-
+  # ↑がture データベースにコミットが走らない,しかしデータベースに保存されてしまう
+  # config.before(:suite) do
+  #   DatabaseRewinder.clean_all
+  # end
+  # config.after(:each) do
+  #   DatabaseRewinder.clean
+  # end
+  config.verbose_retry = true
+  config.display_try_failure_messages = true
+  config.default_retry_count = 2
+  config.before(:each, type: :system) do
+    driven_by Capybara.default_driver
+  end
+  config.before(:each, type: :system, js: true) do
+    driven_by Capybara.javascript_driver
+    host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
+  end
+  config.include Devise::Test::IntegrationHelpers, type: :system
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.

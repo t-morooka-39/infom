@@ -12,7 +12,7 @@
       - if member_signed_in?
         /ログインした状態で見せる
         li.head_icon
-          = link_to new_tweet_path do 
+          = link_to new_tweet_path, class: 'post_tweet' do 
             i.fa.fa-send-o 投稿
         li.head_icon
           = link_to member_path(current_member.id) do 
@@ -23,10 +23,10 @@
         /ログインしていない状態に見せる
       - else
         li.head_icon
-          = link_to new_member_registration_path do 
+          = link_to new_member_registration_path, class: 'sign_up' do 
             i.fa.fa-edit 新規登録
         li.head_icon
-          = link_to new_member_session_path do 
+          = link_to new_member_session_path, class: "sign_in" do 
             i.fa.fa-sign-in ログイン        
         
       li.head_icon

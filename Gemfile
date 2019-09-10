@@ -35,7 +35,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '>=4.10'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -50,9 +50,10 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'database_rewinder'
 end
 
 gem 'acts_as_list'
@@ -70,5 +71,6 @@ gem 'kaminari-i18n'
 gem 'mini_magick', '>= 4.9.4'
 gem 'rails-i18n', '>= 5.1'
 gem 'rails_autolink'
+gem 'rspec-retry'
 gem 'slim-rails'
 gem 'tzinfo-data'

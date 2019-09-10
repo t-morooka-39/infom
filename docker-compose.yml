@@ -19,7 +19,7 @@ services:
   chrome:
     image: selenium/standalone-chrome
     ports:
-      - "4444:4444"
+    - 4444:4444
   mailhog:
     image: mailhog/mailhog:v1.0.0
     ports:
@@ -30,7 +30,7 @@ services:
     volumes:
       - .:/app:cached
       - bundle:/usr/local/bundle:cached
-      - /app/tmp
+      - /tmp
       - /app/log
       - /app/.git
     environment:
@@ -44,6 +44,7 @@ services:
       - db
       - redis
       - mailhog
+      - chrome
 
 volumes:
   bundle:
@@ -51,4 +52,4 @@ volumes:
   data:
     driver: local
   redis-data:
-      driver: local
+    driver: local
