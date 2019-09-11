@@ -1,0 +1,14 @@
+.image1
+  = form.label :image1
+  #img_field onClick = "$('#file').click()"
+    - if @tweet.image1?
+      = image_tag @tweet.image1.thumb.url, id: :img_prev1
+    -else
+      i.fa.fa-image
+  = form.file_field :image1, id: "file"
+  = form.hidden_field :image1_cache
+.image2
+  = form.label :image2
+  = image_tag @tweet.image2.thumb.url, id: :img_prev2 if @tweet.image2?
+  = form.file_field :image2
+  = form.hidden_field :image2_cache
