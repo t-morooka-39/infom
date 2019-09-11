@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :tweets do
     get "favo", "follow_tweet","search", "mine", "rank", on: :collection
     resource :likes, only: [:create, :destroy]
-    resources :images, :only => [:create, :destroy]
   end
   resources :relationships, only:[:create, :destroy]
   resources :comments, only:[:create, :destroy]
