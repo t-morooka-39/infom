@@ -1,14 +1,32 @@
+/ .image1
+/   = form.label :image1
+/   #img_field onClick = "$('#file').click()"
+/     - if @tweet.image1?
+/       = image_tag @tweet.image1.thumb.url, id: :img_prev1
+/     -else
+/       i.fa.fa-image
+/   = form.file_field :image1, id: "file"
+/   = form.hidden_field :image1_cache
+/ .image2
+/   = form.label :image2
+/   = image_tag @tweet.image2.thumb.url, id: :img_prev2 if @tweet.image2?
+/   = form.file_field :image2
+/   = form.hidden_field :image2_cache
 .image1
-  = form.label :image1
-  #img_field onClick = "$('#file').click()"
-    - if @tweet.image1?
+  - if @tweet.image1?
+    .file_div onClick = "$('.file1').click()"
       = image_tag @tweet.image1.thumb.url, id: :img_prev1
-    -else
-      i.fa.fa-image
-  = form.file_field :image1, id: "file"
+  -else
+    .file_div onClick = "$('.file1').click()"
+      = image_tag "no_image.png", id: :img_prev1, size: '100x100'
+  = form.file_field :image1, class: "file1"
   = form.hidden_field :image1_cache
 .image2
-  = form.label :image2
-  = image_tag @tweet.image2.thumb.url, id: :img_prev2 if @tweet.image2?
-  = form.file_field :image2
-  = form.hidden_field :image2_cache
+- if @tweet.image2?
+  .file_div onClick = "$('.file2').click()"
+    = image_tag @tweet.image2.thumb.url, id: :img_prev2
+-else
+  .file_div onClick = "$('.file').click()"
+    = image_tag "no_image.png", id: :img_prev2, size: '100x100'
+= form.file_field :image2, class: "file2"
+= form.hidden_field :image2_cache

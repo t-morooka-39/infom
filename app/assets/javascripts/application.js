@@ -17,22 +17,19 @@
 //= require_tree .
 
 $( document ).on('turbolinks:load', function(){
-  $("#file").on("change",'input[type="file"]', function(e) {
-    var file = e.target.files[0],
-        reader = new FileReader(),
-        $preview = $("#img_field");
-
-    reader.onload = (function(file) {
-      return function(e) {
-        $preview.empty();
-        $preview.append($('<img>').attr({
-          src: e.target.result,
-          width: "150px",
-          class: "preview",
-          title: file.name
-        }));
-      };
-    })(file);
-    reader.readAsDataURL(file);
+  function readURL(input, id){
+    if (input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        $(id).attr('src',e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('#tweet_image1').change(function(){
+    readURL(this, "#img_prev1");
+  });
+  $('#tweet_image2').change(function(){
+    readURL(this, "#img_prev2");
   });
 });
