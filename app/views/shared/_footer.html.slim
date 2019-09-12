@@ -3,8 +3,9 @@
     a href="#" ガイドライン
     |・
     a href="#" プライバシーポリシー
-    |・
-    a href="#" マイページ
+    -if member_signed_in?
+      |・
+      = link_to 'マイページ', member_path(current_member.id)
                     
 .footer_bar
   p copyright (C) 2019 infomus all rights reserved.

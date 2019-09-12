@@ -1,26 +1,29 @@
-.image1
-  - if tweet.image1?
-    .file_div onClick = "$('.file1').click()"
-      = image_tag tweet.image1.thumb.url, id: :img_prev1
-  - else
-    .file_div onClick = "$('.file1').click()"
-      = image_tag "nofile.png", id: :img_prev1, size: '100x100'
-  = form.label :image1
-  = form.file_field :image1, class: "file1"
-  = form.hidden_field :image1_cache
-  - if controller.action_name == 'edit'
-    = form.check_box :remove_image1
-    = form.label :remove_image1, "画像を削除する"
-.image2
-  - if tweet.image2?
-    .file_div onClick = "$('.file2').click()"
-      = image_tag tweet.image2.thumb.url, id: :img_prev2
-  - else
-    .file_div onClick = "$('.file2').click()"
-      = image_tag "nofile.png", id: :img_prev2, size: '100x100'
-  = form.label :image2
-  = form.file_field :image2, class: "file2"
-  = form.hidden_field :image2_cache
-  - if controller.action_name == 'edit'
-    = form.check_box :remove_image2
-    = form.label :remove_image2, "画像を削除する"
+.images_div
+  .image1
+    = form.label :image1, '画像を挿入'
+    - if tweet.image1?
+      .file_div onClick = "$('.file1').click()"
+        = image_tag tweet.image1.thumb.url, id: :img_prev1
+    - else
+      .file_div onClick = "$('.file1').click()"
+        = image_tag "nofile.png", id: :img_prev1
+    = form.file_field :image1, class: "file1"
+    = form.hidden_field :image1_cache
+    - if controller.action_name == 'edit' && tweet.image1?
+      .remove_img_div
+        = form.check_box :remove_image1, class: "check_box"
+        = form.label :remove_image1, "画像を削除する"
+  .image2
+    = form.label :image2, '画像を挿入'
+    - if tweet.image2?
+      .file_div onClick = "$('.file2').click()"
+        = image_tag tweet.image2.thumb.url, id: :img_prev2
+    - else
+      .file_div onClick = "$('.file2').click()"
+        = image_tag "nofile.png", id: :img_prev2
+    = form.file_field :image2, class: "file2"
+    = form.hidden_field :image2_cache
+    - if controller.action_name == 'edit' && tweet.image2?
+      .remove_img_div
+        = form.check_box :remove_image2, class: "check_box"
+        = form.label :remove_image2, "画像を削除する"

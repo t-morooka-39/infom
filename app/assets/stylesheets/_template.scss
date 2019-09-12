@@ -89,6 +89,11 @@ header{
   }
 }
 // sidebar
+@media(min-width:769px){
+  .sp_only{
+    display: none;
+  }  
+}
 aside{
   box-sizing: border-box;
   ul{
@@ -289,5 +294,35 @@ footer{
   .form-inline{
     width:90%;
     margin:0 auto 0;
+  }
+  //sidebar
+  .sp_slide_btn{
+    width:100%;
+    margin:0 auto;
+    background-color: #f9f8f6;
+    border: solid 2px #b5b5b5;
+  }
+  .sp_off,.sp_slide{
+    display: none;
+  }
+  .sp_p{
+    text-align: center;
+    font-size: 1.6rem;
+  }
+  .sp_slide{
+    position: fixed;
+    z-index: 100;
+    top:160px; 
+    left:0px;
+    width:100%;
+    ul{
+      li{
+        font-size: 1.6rem;
+        border-bottom: solid 2px #b5b5b5;
+        margin:10px 0 0 20px;
+      }
+      
+    }
+    
   }
 }

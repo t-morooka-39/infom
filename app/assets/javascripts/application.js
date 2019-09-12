@@ -33,3 +33,10 @@ $( document ).on('turbolinks:load', function(){
     readURL(this, "#img_prev2");
   });
 });
+
+$( document ).on('turbolinks:load', function(){
+  $('.sp_slide_btn').click(function(){
+    $('.sp_slide').slideToggle();
+    $('.sp_p').toggle();
+  });
+});
