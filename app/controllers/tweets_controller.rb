@@ -76,13 +76,19 @@ class TweetsController < ApplicationController
   end
 
   def search
+    if params[:keyword].blank?
+      redirect_to tweets_path, alert: '検索ワードを入力してください。'
+      return
+    end
     @tweets = Tweet
     keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
     @search_attr = params[:keyword]
     # 検索ワードの数だけor検索を行う
     keywords.each do |keyword|
+      next if keyword.blank?
       @tweets = @tweets.joins(:author).where('(body LIKE ?) OR (first_name LIKE ?)', "%#{keyword}%","%#{keyword}%")
     end
+
     @tweets = @tweets.sort_by(&:created_at).reverse
     @tweets = Kaminari.paginate_array(@tweets).page(params[:page]).per(10)
     render 'index'

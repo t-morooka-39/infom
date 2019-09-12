@@ -16,3 +16,27 @@
 //= require turbolinks
 //= require_tree .
 
+$( document ).on('turbolinks:load', function(){
+  function readURL(input, id){
+    if (input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        $(id).attr('src',e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('#tweet_image1').change(function(){
+    readURL(this, "#img_prev1");
+  });
+  $('#tweet_image2').change(function(){
+    readURL(this, "#img_prev2");
+  });
+});
+
+$( document ).on('turbolinks:load', function(){
+  $('.sp_slide_btn').click(function(){
+    $('.sp_slide').slideToggle();
+    $('.sp_p').toggle();
+  });
+});

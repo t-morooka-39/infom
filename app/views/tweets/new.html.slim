@@ -2,14 +2,6 @@
 h1.page_title = @page_title
 = render "shared/errors", obj: @tweet
 = form_with model: @tweet,local: true do |form|
+  = render "image_file", {form: form, tweet: @tweet}
   = render "form", form: form
-
-  .image1
-    = image_tag @tweet.image1.thumb.url if @tweet.image1?
-    = form.file_field :image1
-    = form.hidden_field :image1_cache
-  .image2
-    = image_tag @tweet.image2.thumb.url if @tweet.image2?
-    = form.file_field :image2
-    = form.hidden_field :image2_cache
   .buttn = form.submit 

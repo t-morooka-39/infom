@@ -225,6 +225,42 @@
     }
   }
 }
+.images_div{
+  margin: 10px 0 0 0;
+  display: flex;
+  .image1,.image2{
+    margin: 0 10px 0 0;
+    width:40%;
+    .file_div{
+      cursor: pointer;
+      cursor: hand;
+      margin:0 auto 0;
+      width:150px;
+      height: 150px;
+      @media(min-width:769px){
+        &:hover{
+          opacity: 0.7;
+        }  
+      }
+      img{
+        max-width: 150px;
+        max-height: 150px;
+        width: auto;
+        height: auto;
+      }
+    }
+    .file1,.file2{
+      display: none;
+    }
+    .remove_img_div{
+      width:100px;
+      margin:10px auto 0;
+      .check_box{
+        margin:0 5px 0 0;
+      }
+    }
+  }
+}
 
 // rank
 .rank{
@@ -262,6 +298,24 @@
     img{
       max-width:100%;
       max-height:100%;
+    }
+  }
+}
+
+//sp
+@media(max-width:768px){
+  .images_div{
+    .image1,.image2{
+      .file_div{
+        width:100px;
+        height: 100px;
+        img{
+          max-width: 100px;
+          max-height: 100px;
+          width: auto;
+          height: auto;
+        }
+      }
     }
   }
 }
