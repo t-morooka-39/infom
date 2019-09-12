@@ -37,6 +37,14 @@ class Member < ApplicationRecord
   has_many :like_tweets, through: :likes, source: :tweet
   soft_deletable
   attr_accessor :current_password
+
+  before_save do
+    if new_profile_picture
+      self.profile_picture = new_profile_picture
+    elsif remove_profile_picture
+      profile_picture.purge
+    end
+  end
   validate if: :new_profile_picture do
     if new_profile_picture.respond_to?(:content_type)
       unless new_profile_picture.content_type.in?(ALLOWED_CONTENT_TYPES)
@@ -56,13 +64,6 @@ class Member < ApplicationRecord
     errors.add(:password, :invalid_password)
   end
 
-  before_save do
-    if new_profile_picture
-      self.profile_picture = new_profile_picture
-    elsif remove_profile_picture
-      profile_picture.purge
-    end
-  end
   def favorite?(tweet)
     tweet && tweet.author != self && !favorites.exists?(tweet_id: tweet.id)
   end
