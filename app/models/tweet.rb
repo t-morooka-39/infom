@@ -18,7 +18,7 @@ class Tweet < ApplicationRecord
     body_for_validation = body.gsub(/[\r\n]/, '')
     return unless body_for_validation.length >= @chara_lim
 
-    errors.add(:body, "は#{@chara_lim}文字以内で入力してください")
+    errors.add(:body, :tweet_length)
   end
 
   def like?(member)

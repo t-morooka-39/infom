@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.member_id = current_member.id
     if @tweet.save
-      redirect_to @tweet, notice: ' 投稿しました。'
+      redirect_to @tweet, notice: t('flash.post')
     else
       render :new
     end
@@ -37,7 +37,7 @@ class TweetsController < ApplicationController
     @tweet.assign_attributes(tweet_params)
     @tweet.member_id = current_member.id
     if @tweet.save
-      redirect_to @tweet, notice: ' 更新しました。'
+      redirect_to @tweet, notice: t('flash.update')
     else
       render :edit
     end
@@ -46,12 +46,12 @@ class TweetsController < ApplicationController
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
-    redirect_to :tweets, notice: ' ツイートを削除しました。'
+    redirect_to :tweets, notice: t('flash.tweet_remove')
   end
 
   def favo
     @tweets = current_member.like_tweets.reverse_order.page(params[:page]).per(10)
-    @page_title = ' いいねしたツイート '
+    @page_title = t('.title')
     render 'other'
   end
 
@@ -71,13 +71,13 @@ class TweetsController < ApplicationController
 
   def mine
     @tweets = current_member.tweets.reverse_order.page(params[:page]).per(10)
-    @page_title = ' あなたの投稿 '
+    @page_title = t('.title')
     render 'other'
   end
 
   def search
     if params[:keyword].blank?
-      redirect_to tweets_path, alert: '検索ワードを入力してください。'
+      redirect_to tweets_path, alert: t('.brank')
       return
     end
     @tweets = Tweet

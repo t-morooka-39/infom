@@ -14,6 +14,15 @@ ja:
         introduction: 紹介文
       tweet:
         body: 本文
-        images: 画像挿入(4枚まで)
+        image1: 画像を挿入
+        image2: 画像を挿入
+        remove_image1: 画像を削除する
+        remove_image2: 画像を削除する
       comment:
         body: コメント内容
+  errors:
+    messages:
+      tweet_length: "は400文字以内で入力してください"
+      comment_length: "は200文字以内で入力してください"
+      invalid_image_type: にはJPEG、PNG、GIF、PING形式の画像を指定してください。
+      invalid_password: は英数字で入力してください。

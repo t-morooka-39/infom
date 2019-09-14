@@ -66,6 +66,4 @@ ja:
       not_saved:
         one: "以下のエラーにより、送信できません："
         other: "以下の%{count} 個のエラーにより、送信できません："
-      invalid_image_type: にはJPEG、PNG、GIF、PING形式の画像を指定してください。
-      invalid_password: は英数字で入力してください。
       
