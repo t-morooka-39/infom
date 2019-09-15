@@ -3,7 +3,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
   # if Rails.env.production? || ENV["RESCUE_EXCEPTIONS"]
   #   rescue_from StandardError, with: :rescue_internal_server_error
   #   rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
@@ -38,20 +37,19 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def resucue_bad_request(exception)
-    render "errors/bad_request", status: 400, formats: [:html]
+  def resucue_bad_request(_exception)
+    render 'errors/bad_request', status: 400, formats: [:html]
   end
 
-  def rescue_forbidden(exception)
-    render "errors/forbidden", status: 403, formats: [:html]
+  def rescue_forbidden(_exception)
+    render 'errors/forbidden', status: 403, formats: [:html]
   end
 
-  def rescue_not_found(exception)
-    render "errors/not_found", status: 404, formats: [:html]
+  def rescue_not_found(_exception)
+    render 'errors/not_found', status: 404, formats: [:html]
   end
 
-  def rescue_internal_server_error(exception)
-    render "errors/internal_server_error", status: 500, formats: [:html]
+  def rescue_internal_server_error(_exception)
+    render 'errors/internal_server_error', status: 500, formats: [:html]
   end
-
 end
