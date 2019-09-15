@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
 
   def body_length
     return if body.nil?
-    
+
     @chara_lim = 200
     body_for_validation = body.gsub(/\r\n/, 'a')
     return unless body_for_validation.length > @chara_lim

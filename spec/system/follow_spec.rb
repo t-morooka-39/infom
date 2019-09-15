@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'フォロー機能', type: :system, js: true do
-  let!(:member_a) { FactoryBot.create(:member)}
-  let!(:member_b) { FactoryBot.create(:member)}
+  let!(:member_a) { FactoryBot.create(:member) }
+  let!(:member_b) { FactoryBot.create(:member) }
   before do
     token = member_a.confirmation_token
     visit member_confirmation_path(confirmation_token: token)
     # page.driver.browser.manage.window.resize_to(800,550)
-    fill_in 'member_email', with: "#{member_a.email}"
-    fill_in 'member_password', with: "#{member_a.password}"
+    fill_in 'member_email', with: member_a.email.to_s
+    fill_in 'member_password', with: member_a.password.to_s
     click_button 'ログイン'
-    visit "/members/#{ member_b.id } "
+    visit "/members/#{member_b.id} "
   end
   context 'メンバーbをフォローしていない時' do
     it 'フォローボタンが表示され、クリックするとフォローできること' do

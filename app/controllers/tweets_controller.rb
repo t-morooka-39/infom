@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class TweetsController < ApplicationController
-  before_action :authenticate_member!,
-   only: %i[show new edit create update destroy favo followTweet mine]
+  before_action :authenticate_member!, except: %i[index search rank]
 
   def index
     @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(10)
@@ -50,7 +49,8 @@ class TweetsController < ApplicationController
   end
 
   def favo
-    @tweets = current_member.like_tweets.reverse_order.page(params[:page]).per(10)
+    @tweets = current_member.like_tweets.reverse_order
+                            .page(params[:page]).per(10)
     @page_title = t('.title')
     render 'other'
   end
@@ -70,7 +70,8 @@ class TweetsController < ApplicationController
   end
 
   def mine
-    @tweets = current_member.tweets.reverse_order.page(params[:page]).per(10)
+    @tweets = current_member.tweets.reverse_order
+                            .page(params[:page]).per(10)
     @page_title = t('.title')
     render 'other'
   end
@@ -86,7 +87,11 @@ class TweetsController < ApplicationController
     # 検索ワードの数だけor検索を行う
     keywords.each do |keyword|
       next if keyword.blank?
-      @tweets = @tweets.joins(:author).where('(body LIKE ?) OR (first_name LIKE ?)', "%#{keyword}%","%#{keyword}%")
+
+      @tweets = @tweets.joins(:author).where(
+        '(body LIKE ?) OR (first_name LIKE ?)',
+        "%#{keyword}%", "%#{keyword}%"
+      )
     end
 
     @tweets = @tweets.sort_by(&:created_at).reverse
@@ -102,6 +107,15 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:title, :body, :image1, :image1_cache, :remove_image1, :image2, :image2_cache, :remove_image2)
+    params.require(:tweet).permit(
+      :title,
+      :body,
+      :image1,
+      :image1_cache,
+      :remove_image1,
+      :image2,
+      :image2_cache,
+      :remove_image2
+    )
   end
 end

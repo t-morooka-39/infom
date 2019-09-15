@@ -71,8 +71,9 @@ class Member < ApplicationRecord
   def delete_favorite?(tweet)
     tweet && tweet.author != self && favorites.exists?(tweet_id: tweet.id)
   end
+
   # フォロー機能の追加
-    def follow(other_member)
+  def follow(other_member)
     active_relationships.create(followed_id: other_member.id)
   end
 
@@ -83,6 +84,7 @@ class Member < ApplicationRecord
   def following?(other_member)
     following.include?(other_member)
   end
+
   # いいね機能の追加
   def active_for_authentication?
     super && !soft_destroyed_at

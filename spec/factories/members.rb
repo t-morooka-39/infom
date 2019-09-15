@@ -7,6 +7,6 @@ FactoryBot.define do
     sex { 1 }
     sequence(:email) { |n| "test#{n}@example.com" }
     password { 'hogehoge' }
-    admin {false}
+    admin { false }
   end
 end

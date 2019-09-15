@@ -1,15 +1,16 @@
 ja:
+  ja:
   tweets:
     index:
       title: ツイート一覧
     show:
       title: ツイート詳細
-    search:
-      brank: 検索ワードを入力してください。
-    favo:
-      title: いいねしたツイート
     mine:
       title: あなたの投稿
+    favo:
+      title: いいねしたツイート
+    search:
+      brank: 検索ワードを入力してください。
   members:
     following:
       title: フォロー中
