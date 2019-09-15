@@ -105,8 +105,8 @@ aside{
       list-style: none;
       padding: 0px;
       margin:0 0 10px 0;
-      font-size: 1.4rem;
-      transform: scale( 1 , 1.2 );
+      font-size: 1.6rem;
+      // transform: scale( 1 , 1.2 );
       .list{
         padding: 2px 8px 2px;
         margin: 0 5px 0;
@@ -153,6 +153,10 @@ footer{
     text-align: center;
   }
 }
+// flash&errors
+.alert{
+  margin: 10px 0;
+}
 
 //pagination
 .pagination{
@@ -189,7 +193,7 @@ footer{
 }
 // root_path
 .three_icon{
-  margin-top:50px;
+  margin-top:100px;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
@@ -197,7 +201,8 @@ footer{
       width:30%;
       margin:0 7px 0;
       .extx{
-        padding: 0 2px 0;
+        margin: 0 10px 0;
+        // padding: 0 10px 0;
         font-size: 1.4rem;
       }
       i{
@@ -208,7 +213,8 @@ footer{
     .description{
       display: block;
       text-align: center;
-      margin:10px 0;
+      margin:10px 0 20px;
+      font-weight: bold;
     }
   }
   @media(max-width:768px){

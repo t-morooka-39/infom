@@ -115,11 +115,11 @@
     }
   }
   .stats_div{
-    width:45%;
+    width:100%;
     display: flex;
     .stats{
-      margin:5px 10px 0 0;
-      width:30%;
+      margin:30px 0 0;
+      width:90px;
       flex-wrap: wrap;
 
       p{
@@ -130,13 +130,13 @@
     @media(min-width:769px){
       a{
         &:hover{
-          border-color: black !important;
+          border-color: black;
         }
       } 
     }
   }
   #follow_form{
-    margin:0 0 0 10px;
+    margin: 30px 0;
     width:50%;
     form{
       input[type="submit"]{
@@ -144,10 +144,11 @@
       }
     }
     .followbtn{
-      border: 1px solid #007bff;
+      border: 1px solid black;
+      padding:0;
     }
     .unfollowbtn{
-      background-color: #007bff;
+      background-color: black;
       color: #f9f8f6;
     }
   }
