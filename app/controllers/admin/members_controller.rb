@@ -22,4 +22,5 @@ class Admin::MembersController < Admin::Base
     @member.restore
     redirect_to :admin_members, notice: '凍結を解除しました。'
   end
+
 end
