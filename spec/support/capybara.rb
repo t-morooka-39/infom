@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Capybara.configure do |config|
   config.server_host = Socket.ip_address_list.detect(&:ipv4_private?).ip_address
   config.server_port = 3001
@@ -7,7 +9,7 @@ Capybara.configure do |config|
   config.ignore_hidden_elements = true
 end
 Capybara.register_driver :selenium_chrome do |app|
-  url = "http://chrome:4444/wd/hub"
+  url = 'http://chrome:4444/wd/hub'
   # opts = { desired_capabilities: :chrome, browser: :remote, url: url }
   # options.add_argument('window-size=800,550')
   Capybara::Selenium::Driver.new(
@@ -15,13 +17,11 @@ Capybara.register_driver :selenium_chrome do |app|
     desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
       chromeOptions: {
         args: [
-          "window-size=1024,512",
+          'window-size=1024,512'
         ]
       }
     ),
     browser: :remote,
-    url: url,
-
+    url: url
   )
 end
-

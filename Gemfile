@@ -51,9 +51,9 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
+  gem 'database_rewinder'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-  gem 'database_rewinder'
 end
 
 gem 'acts_as_list'

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class TweetsController < ApplicationController
-  before_action :authenticate_member!,
-   only: %i[show new edit create update destroy favo followTweet mine]
+  before_action :authenticate_member!, except: %i[index search rank]
 
   def index
     @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(10)
@@ -26,7 +25,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.member_id = current_member.id
     if @tweet.save
-      redirect_to @tweet, notice: ' 投稿しました。'
+      redirect_to @tweet, notice: t('flash.post')
     else
       render :new
     end
@@ -37,7 +36,7 @@ class TweetsController < ApplicationController
     @tweet.assign_attributes(tweet_params)
     @tweet.member_id = current_member.id
     if @tweet.save
-      redirect_to @tweet, notice: ' 更新しました。'
+      redirect_to @tweet, notice: t('flash.update')
     else
       render :edit
     end
@@ -46,12 +45,13 @@ class TweetsController < ApplicationController
   def destroy
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
-    redirect_to :tweets, notice: ' ツイートを削除しました。'
+    redirect_to :tweets, notice: t('flash.tweet_remove')
   end
 
   def favo
-    @tweets = current_member.like_tweets.reverse_order.page(params[:page]).per(10)
-    @page_title = ' いいねしたツイート '
+    @tweets = current_member.like_tweets.reverse_order
+                            .page(params[:page]).per(10)
+    @page_title = t('.title')
     render 'other'
   end
 
@@ -70,14 +70,15 @@ class TweetsController < ApplicationController
   end
 
   def mine
-    @tweets = current_member.tweets.reverse_order.page(params[:page]).per(10)
-    @page_title = ' あなたの投稿 '
+    @tweets = current_member.tweets.reverse_order
+                            .page(params[:page]).per(10)
+    @page_title = t('.title')
     render 'other'
   end
 
   def search
     if params[:keyword].blank?
-      redirect_to tweets_path, alert: '検索ワードを入力してください。'
+      redirect_to tweets_path, alert: t('.brank')
       return
     end
     @tweets = Tweet
@@ -86,7 +87,11 @@ class TweetsController < ApplicationController
     # 検索ワードの数だけor検索を行う
     keywords.each do |keyword|
       next if keyword.blank?
-      @tweets = @tweets.joins(:author).where('(body LIKE ?) OR (first_name LIKE ?)', "%#{keyword}%","%#{keyword}%")
+
+      @tweets = @tweets.joins(:author).where(
+        '(body LIKE ?) OR (first_name LIKE ?)',
+        "%#{keyword}%", "%#{keyword}%"
+      )
     end
 
     @tweets = @tweets.sort_by(&:created_at).reverse
@@ -102,6 +107,15 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:title, :body, :image1, :image1_cache, :remove_image1, :image2, :image2_cache, :remove_image2)
+    params.require(:tweet).permit(
+      :title,
+      :body,
+      :image1,
+      :image1_cache,
+      :remove_image1,
+      :image2,
+      :image2_cache,
+      :remove_image2
+    )
   end
 end

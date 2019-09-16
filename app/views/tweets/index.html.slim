@@ -1,11 +1,11 @@
-- @page_title = "ツイート一覧"
+- @page_title = t('.title')
 = render 'shared/flash'
 - if @search_attr.present?
-  - @page_title = "検索結果"
+  - @page_title = '検索結果'
   h2.devise_title = @page_title
 - if @tweets.present?
   = render "listTweet", {tweets:@tweets}
   = paginate @tweets
-- else 
+- else
   h3.no_tweet ツイートがありません
 

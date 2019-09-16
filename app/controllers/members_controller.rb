@@ -17,14 +17,14 @@ class MembersController < ApplicationController
   end
 
   def following
-    @page_title = 'フォロー中'
+    @page_title = t('.title')
     @member = Member.find(params[:id])
     @members = @member.following.page(params[:page]).per(10)
     render 'show_follow'
   end
 
   def followers
-    @page_title = 'フォロワー'
+    @page_title = t('.title')
     @member = Member.find(params[:id])
     @members = @member.followers.page(params[:page]).per(10)
     render 'show_follow'

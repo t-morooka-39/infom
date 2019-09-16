@@ -9,22 +9,21 @@ class Tweet < ApplicationRecord
   has_many :comments, dependent: :destroy
   mount_uploader :image1, ImageUploader
   mount_uploader :image2, ImageUploader
-  
 
   def body_length
     @chara_lim = 400
     return if body.nil?
-    
+
     body_for_validation = body.gsub(/[\r\n]/, '')
     return unless body_for_validation.length >= @chara_lim
 
-    errors.add(:body, "は#{@chara_lim}文字以内で入力してください")
+    errors.add(:body, :tweet_length)
   end
 
   def like?(member)
     liker.include?(member)
   end
-  
+
   def comment_count
     if comments.loaded?
       comments.to_a.count

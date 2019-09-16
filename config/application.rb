@@ -30,5 +30,8 @@ module Infom
 
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.exceptions_app = ->(env) do
+      ErrorsController.action(:show).call(env)
+    end
   end
 end

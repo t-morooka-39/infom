@@ -1,0 +1,23 @@
+ja:
+  ja:
+  tweets:
+    index:
+      title: ツイート一覧
+    show:
+      title: ツイート詳細
+    mine:
+      title: あなたの投稿
+    favo:
+      title: いいねしたツイート
+    search:
+      brank: 検索ワードを入力してください。
+  members:
+    following:
+      title: フォロー中
+    followers:
+      title: フォロワー
+  flash:
+    post: 投稿しました。
+    update: 更新しました。
+    tweet_remove: ツイートを削除しました。
+    comment_remove: コメントを削除しました。

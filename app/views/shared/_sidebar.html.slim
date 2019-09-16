@@ -13,11 +13,11 @@
     li
       = link_to tweets_path, class: "tweet" do
         .list
-          i.fa.fa-comments 　ツイート一覧
+          i.fa.fa-comments 　投稿一覧
     li
         =link_to :rank_tweets, class: "popularity" do
           .list
-            i.fa.fa-home 　ランキング
+            i.fa.fa-signal 　ランキング
     - if member_signed_in?
       li
         =link_to :favo_tweets, class: "favorite" do
@@ -26,7 +26,7 @@
       li
         =link_to :mine_tweets, class: "follower" do
           .list
-            i.fa.fa-group 　投稿ツイート
+            i.fa.fa-group 　自分の投稿
       - if current_member.admin?
         li
           =link_to admin_members_path, class: "admin" do
