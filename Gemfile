@@ -57,6 +57,7 @@ group :test do
 end
 
 gem 'acts_as_list'
+gem 'aws-ses'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
 gem 'carrierwave'
