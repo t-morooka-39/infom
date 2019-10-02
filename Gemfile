@@ -58,6 +58,7 @@ end
 
 gem 'acts_as_list'
 gem 'aws-ses'
+gem 'aws-sdk-s3'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
 gem 'carrierwave'

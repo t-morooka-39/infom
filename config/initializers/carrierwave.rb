@@ -1,8 +1,13 @@
 CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 
+require 'carrierwave/storage/abstract'
+require 'carrierwave/storage/file'
+require 'carrierwave/storage/fog'
+
 CarrierWave.configure do |config|
+  config.storage :fog
   config.fog_provider = 'fog/aws'
-  config.fog_directory  = 'infom_images'
+  config.fog_directory  = "infom-images"
   config.fog_credentials = {
     provider: 'AWS',
     aws_access_key_id: Rails.application.credentials.dig(:s3, :access_key_id),
@@ -10,6 +15,4 @@ CarrierWave.configure do |config|
     region: Rails.application.credentials.dig(:s3, :region),
     path_style: true
   }
-  config.fog_public     = false
-  config.enable_processing = false if Rails.env.test?
 end
