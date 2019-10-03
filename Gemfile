@@ -56,6 +56,10 @@ group :test do
   gem 'webdrivers'
 end
 
+group :production do
+    gem 'unicorn'
+end
+
 gem 'acts_as_list'
 gem 'aws-ses'
 gem 'aws-sdk-s3'
