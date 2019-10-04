@@ -26,10 +26,7 @@ test:
   database: infom_test
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  pool: 5
+  <<: *default
   username: <%= Ralis.application.credentials.dig(:mysql, :database_user) %>
   password: <%= Ralis.application.credentials.dig(:mysql, :database_password) %>
-  host: <%= Ralis.application.credentials.dig(:mysql, :host) %>
   database: infom_production
