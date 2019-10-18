@@ -13,20 +13,24 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: <%= Rails.application.credentials.dig(:mysql_local, :database_user) %>
-  password: <%= Rails.application.credentials.dig(:mysql_local, :database_password) %>
-  host: <%= Rails.application.credentials.dig(:mysql_local, :database_host) %>
+  port: 3306
 
 development:
   <<: *default
   database: infom_development
+  username: <%= Rails.application.credentials.dig(:mysql_local, :database_user) %>
+  password: <%= Rails.application.credentials.dig(:mysql_local, :database_password) %>
+  host: <%= Rails.application.credentials.dig(:mysql_local, :database_host) %>
+
 
 test:
   <<: *default
   database: infom_test
+  host: <%= ENV['DB_HOST'] %>
+  username: root
 
 production:
   <<: *default
-  username: <%= Ralis.application.credentials.dig(:mysql, :database_user) %>
-  password: <%= Ralis.application.credentials.dig(:mysql, :database_password) %>
+  username: <%= Rails.application.credentials.dig(:mysql, :database_user) %>
+  password: <%= Rails.application.credentials.dig(:mysql, :database_password) %>
   database: infom_production
