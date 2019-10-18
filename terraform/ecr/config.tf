@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "terraform-container-infra"
-    key    = "infom-ralis/ecr/terraform.tfstate"
+    key    = "infom-rails/ecr/terraform.tfstate"
     region = "us-east-1"
   }
 }
