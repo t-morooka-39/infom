@@ -31,6 +31,7 @@ test:
 
 production:
   <<: *default
-  username: <%= Rails.application.credentials.dig(:mysql, :database_user) %>
-  password: <%= Rails.application.credentials.dig(:mysql, :database_password) %>
+  username: <%= Rails.application.credentials.dig(:db, :user) %>
+  password: <%= Rails.application.credentials.dig(:db, :password) %>
+  host: <%= Rails.application.credentials.dig(:db, :host) %>
   database: infom_production
