@@ -9,7 +9,12 @@ resource "aws_iam_instance_profile" "ecs_instance_profile" {
   role = "${aws_iam_role.ecs_instance_role.name}"
 }
 
-
+#ecstask role
+resource "aws_iam_role" "ecs_task_role" {
+  name               = "ecs-task-role"
+  path               = "/"
+  assume_role_policy = "${file("jsonfile/ecs_task_assume_role_policy.json")}"
+}
 #policy
 resource "aws_iam_policy" "ecs_instance_policy" {
   name        = "ecs-instance-policy"
