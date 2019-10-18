@@ -56,7 +56,13 @@ group :test do
   gem 'webdrivers'
 end
 
+group :production do
+    gem 'unicorn'
+end
+
 gem 'acts_as_list'
+gem 'aws-ses'
+gem 'aws-sdk-s3'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
 gem 'carrierwave'
@@ -64,6 +70,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
+gem 'fog-aws'
 gem 'html2slim'
 gem 'jquery-rails'
 gem 'kakurenbo-puti'

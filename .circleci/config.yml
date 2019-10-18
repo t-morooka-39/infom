@@ -1,0 +1,71 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/ruby:2.6.3
+        environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+      - image: mysql:5.7
+        environment:
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: bundle update
+          command: gem install bundler:2.0.2
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+  build_image:
+    docker:
+      - image: docker:18.09.0
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: install aws cli
+          command: |
+            apk add --no-cache --update py-pip
+            pip install awscli
+      - run:
+          name: login ecr
+          command: |
+            $(aws ecr get-login --no-include-email --region us-east-1)
+      - run:
+          name: build image
+          command: |
+            docker build -t ${ECR_DOMAIN}:$CIRCLE_SHA1 -t ${ECR_DOMAIN}:latest --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=production .
+      - run:
+          name: Push docker image
+          command: |
+            docker push ${ECR_DOMAIN}:$CIRCLE_SHA1
+            docker push ${ECR_DOMAIN}:latest
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
+      - build_image:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

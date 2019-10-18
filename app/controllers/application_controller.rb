@@ -13,9 +13,6 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::ParameterMissing, with: :resucue_bad_request
   # rescue_from Forbidden, with: :rescue_forbidden
 
-  class Forbidden < ActionController::ActionControllerError
-  end
-
   def after_sign_in_path_for(_resource)
     follow_tweet_tweets_path
   end
