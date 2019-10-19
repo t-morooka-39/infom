@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   resources :relationships, only:[:create, :destroy]
   resources :comments, only:[:create, :destroy]
+  resources :health_check, only: [:index]
 
   namespace :admin do
     resources :members, :only => [:index, :destroy] do 
