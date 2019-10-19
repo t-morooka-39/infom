@@ -18,7 +18,7 @@ RUN gem install bundler:2.0.2
 RUN bundle install && rm -rf ~/.gem
 COPY . $APP_ROOT
 # RAILS_ENV が production のとき assets:precompile を実行するようにしています
-RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
+RUN if [ "${RAILS_ENV}" = "production" ]; then bundle exec rails assets:precompile assets:clean; else export RAILS_ENV=development; fi
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
 
