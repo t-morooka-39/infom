@@ -27,6 +27,33 @@ resource "aws_subnet" "public_subnet_2" {
   }
 }
 
+#private subnet
+resource "aws_subnet" "private_subnet_1" {
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "10.0.11.0/24"
+  availability_zone = "us-east-1a"
+  tags = {
+    Name = "rails_pri1_sub"
+  }
+}
+
+resource "aws_subnet" "private_subnet_2" {
+  vpc_id            = "${aws_vpc.vpc.id}"
+  cidr_block        = "10.0.12.0/24"
+  availability_zone = "us-east-1c"
+  tags = {
+    Name = "rails_pri2_sub"
+  }
+}
+#RDS 用の db_subnet
+resource "aws_db_subnet_group" "main" {
+  name = "dbsubnet"
+  subnet_ids = [
+    "${aws_subnet.private_subnet_1.id}",
+    "${aws_subnet.private_subnet_2.id}"
+  ]
+}
+
 resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = "${aws_vpc.vpc.id}"
   tags = {

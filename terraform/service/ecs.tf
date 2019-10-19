@@ -22,6 +22,14 @@ resource "aws_ecs_task_definition" "sample-task" {
   task_role_arn         = "${data.terraform_remote_state.aws_iam.outputs.ecs_task_role_arn}"
   network_mode          = "bridge"
 }
+
+#migration用タスク定義
+resource "aws_ecs_task_definition" "rails-migrate" {
+  family                = "rails-migrate"
+  container_definitions = "${file("./jsonfile/migration.json")}"
+  task_role_arn         = "${data.terraform_remote_state.aws_iam.outputs.ecs_task_role_arn}"
+  network_mode          = "bridge"
+}
 resource "aws_cloudwatch_log_group" "sample-service" {
   name = "sample-service"
 }
