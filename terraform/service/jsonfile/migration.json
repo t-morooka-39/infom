@@ -1,0 +1,35 @@
+[
+  {
+    "name": "sample-rails",
+    "image": "025466711615.dkr.ecr.us-east-1.amazonaws.com/rails-image:latest",
+    "cpu": 200,
+    "memory": null,
+    "memoryReservation": 600,
+    "essential": true,
+    "command": [
+      "bundle",
+      "exec",
+      "rails",
+      "db:create",
+      "db:migrate"
+    ],
+    "environment": [
+      {
+        "name": "RAILS_ENV",
+        "value": "production"
+      },
+      {
+        "name": "RACK_ENV",
+        "value": "production"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "sample-service",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "migration"
+      }
+    }
+  }
+]
