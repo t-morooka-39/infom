@@ -21,5 +21,6 @@ Rails.application.routes.draw do
     resources :members, :only => [:index, :destroy] do 
       get :cancel, on: :member
     end
+    resources :bounces, :only => [:index, :create, :destroy]
   end
 end

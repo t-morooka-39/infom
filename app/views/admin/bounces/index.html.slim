@@ -1,0 +1,23 @@
+- @page_title = "ブラックリスト(バウンスメール)"
+h1 = @page_title
+= render "shared/errors", obj: @bounce
+.formbox
+  = form_with(model: [:admin, @bounce], local: true) do |form|
+    .field
+      = form.label :email
+      = form.text_field :email
+    .buttn = form.submit "登録"
+
+- if @bounces.present?
+  table.list
+    thead
+      tr
+        th メールアドレス
+        th 操作
+    tbody
+      - @bounces.each do |bounce|
+        tr
+          td = bounce.email
+          td = link_to "ブラックリストから解除", admin_bounce_path(bounce), method: :delete, data: {confirm: "このアドレスを解除しますか？"}
+- else
+  p ブラックリストがありません。

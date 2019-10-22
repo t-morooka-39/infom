@@ -16,6 +16,9 @@ class Member < ApplicationRecord
     allow_blank: true
   }
   validate :pass_value
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, format: { with: VALID_EMAIL_REGEX }
+  validate :bounce_email
   has_many :tweets, dependent: :destroy
   has_many :favorites
   has_many :favorite_tweets, through: :favorites, source: :tweet
@@ -85,12 +88,15 @@ class Member < ApplicationRecord
     following.include?(other_member)
   end
 
-  # いいね機能の追加
   def active_for_authentication?
     super && !soft_destroyed_at
   end
 
   def inactive_message
     !soft_destroyed_at ? super : :deleted_account
+  end
+
+  def bounce_email
+    
   end
 end

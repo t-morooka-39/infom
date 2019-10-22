@@ -23,11 +23,11 @@ development:
   host: <%= Rails.application.credentials.dig(:mysql_local, :database_host) %>
 
 
-test:
-  <<: *default
-  database: infom_test
-  host: <%= ENV['DB_HOST'] %>
-  username: root
+# test:
+#   <<: *default
+#   database: infom_test
+#   host: <%= ENV['DB_HOST'] %>
+#   username: root
 
 production:
   <<: *default
