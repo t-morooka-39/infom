@@ -28,3 +28,8 @@ ja:
       invalid_password: は英数字で入力してください。
       invalid_email: は不正な値です。
       bounce_email: を送信可能なものに変更してください。
+  helpers:
+    submit:
+      tweet:
+        create: "投稿する"
+        update: "修正する"
