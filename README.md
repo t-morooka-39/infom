@@ -3,6 +3,11 @@
 ## Infomus
 画像付きで情報を発信できる、情報共有サイトです。転職活動用のポートフォリオとして作成致しました。
 
+## 本番環境
+https://morooka3.net/
+ログイン画面からテストユーザーでログインが可能です。
+開発環境はdevelopブランチにあります。
+
 ## 機能一覧、使用gemなど
 * ユーザー登録（確認メール送信）、ログイン機能、パスワード再発行メールなど（device）
 * ユーザープロフィール画像アップロード、削除機能（active storage）
@@ -25,33 +30,28 @@
 * SASS,Bootstrap
 * Docker
 * GitHub,Git
-
-## 開発環境
-MacのDocker環境で開発。dockerfileとdocker-composeを使用して環境を作成しています。
-GitHubは実際に使用することを想定して、開発用にfeatureブランチを作成して作業を行い、masterブランチにマージしました。
+* Rspec
+* terraform
+* AWS
+  * VPC
+  * EC2
+  * ECS
+  * ECR 
+  * RDS for MySQL 
+  * ALB
+  * Route53
+  * S3
+  * ACM
+* circleci
 
 ## テスト
 * Rspec
   * 単体テスト（モデル）
   * 統合テスト（systemspec）
 
-## 環境構築方法
-.envファイルに以下の内容を記述します
+## circleci
+masterブランチへプッシュ
+circleciで自動ビルド・自動テスト・自動デプロイ、タスク定義の更新とmigrationを行う
 
-```
-DATABASE_ROOT_PASSWORD= 'hogehoge'
-DATABASE_USER="root"
-DATABASE_HOST= 'db'
-
-```
-
-開発環境用のseedを読み込んでいただくと、mailhog(localhost:8025/)にメールが届きます。
-すべて認証していただくと、かんたんログインが可能となります。
-
-管理者の機能を使用したい場合
-ログイン画面に
-メールアドレス　aiueo@ho.ge
-パスワード　hogehoge
-と打ち込んでいただけると、管理者としてログインが可能です。
-通常ユーザーと違い、サイドバーの一番下に管理者機能が追加されます。
+# AWSアーキテクチャ図
 ...
