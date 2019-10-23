@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 class Admin::BouncesController < Admin::Base
   before_action :authenticate_member!
   def index
     @bounces = Bounce.all
     @bounce = Bounce.new
   end
+
   def create
     @bounce = Bounce.new(bounce_params)
     add = @bounce.email
@@ -13,6 +16,7 @@ class Admin::BouncesController < Admin::Base
       render :index
     end
   end
+
   def destroy
     @bounce = Bounce.find(params[:id])
     del = @bounce.email
@@ -21,6 +25,7 @@ class Admin::BouncesController < Admin::Base
   end
 
   private
+
   def bounce_params
     params.require(:bounce).permit(:email)
   end

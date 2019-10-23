@@ -67,12 +67,13 @@ class Member < ApplicationRecord
   end
 
   def email_value
-    return if !(email.present?)
+    return unless email.present?
 
     return if email.match(VALID_EMAIL_REGEX)
 
     errors.add(:email, :invalid_email)
   end
+
   def bounce_email
     bounced_email_addresses = Bounce.pluck(:email)
     return unless bounced_email_addresses.include?(email)
