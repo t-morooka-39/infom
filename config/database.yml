@@ -22,7 +22,12 @@ development:
   password: <%= Rails.application.credentials.dig(:mysql_local, :database_password) %>
   host: <%= Rails.application.credentials.dig(:mysql_local, :database_host) %>
 
-
+# test:
+#   <<: *default
+#   database: infom_test
+#   username: <%= Rails.application.credentials.dig(:mysql_local, :database_user) %>
+#   password: <%= Rails.application.credentials.dig(:mysql_local, :database_password) %>
+#   host: <%= Rails.application.credentials.dig(:mysql_local, :database_host) %>
 test:
   <<: *default
   database: infom_test

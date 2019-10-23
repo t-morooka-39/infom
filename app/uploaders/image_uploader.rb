@@ -52,10 +52,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   protected
+
   # 一意となるトークン
   def secure_token
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
-
 end

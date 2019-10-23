@@ -16,6 +16,8 @@ class Member < ApplicationRecord
     allow_blank: true
   }
   validate :pass_value
+  validate :email_value
+  validate :bounce_email
   has_many :tweets, dependent: :destroy
   has_many :favorites
   has_many :favorite_tweets, through: :favorites, source: :tweet
@@ -54,14 +56,29 @@ class Member < ApplicationRecord
       errors.add(:new_profile_picture, :invalid)
     end
   end
-  # パスワードバリデーション
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i.freeze
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   def pass_value
     return unless password.present?
 
     return if password.match(VALID_PASSWORD_REGEX)
 
     errors.add(:password, :invalid_password)
+  end
+
+  def email_value
+    return unless email.present?
+
+    return if email.match(VALID_EMAIL_REGEX)
+
+    errors.add(:email, :invalid_email)
+  end
+
+  def bounce_email
+    bounced_email_addresses = Bounce.pluck(:email)
+    return unless bounced_email_addresses.include?(email)
+
+    errors.add(:email, :bounce_email)
   end
 
   def favorite?(tweet)
@@ -85,7 +102,6 @@ class Member < ApplicationRecord
     following.include?(other_member)
   end
 
-  # いいね機能の追加
   def active_for_authentication?
     super && !soft_destroyed_at
   end

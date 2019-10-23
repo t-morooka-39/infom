@@ -57,12 +57,12 @@ group :test do
 end
 
 group :production do
-    gem 'unicorn'
+  gem 'unicorn'
 end
 
 gem 'acts_as_list'
-gem 'aws-ses'
 gem 'aws-sdk-s3'
+gem 'aws-ses'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
 gem 'carrierwave'
