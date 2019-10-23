@@ -26,3 +26,5 @@ ja:
       comment_length: "は200文字以内で入力してください"
       invalid_image_type: にはJPEG、PNG、GIF、PING形式の画像を指定してください。
       invalid_password: は英数字で入力してください。
+      invalid_email: は不正な値です。
+      bounce_email: を送信可能なものに変更してください。
