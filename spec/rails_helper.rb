@@ -3,7 +3,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../config/environment', __dir__)
+require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
@@ -59,8 +59,9 @@ RSpec.configure do |config|
     driven_by Capybara.default_driver
   end
   config.before(:each, type: :system, js: true) do
-    driven_by Capybara.javascript_driver
-    host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
+    driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
+    # driven_by Capybara.javascript_driver
+    # host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
   end
   config.include Devise::Test::IntegrationHelpers, type: :system
   # RSpec Rails can automatically mix in different behaviours to your tests

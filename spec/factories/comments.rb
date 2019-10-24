@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :comment do
     body { 'これはテストです' }
-    association :tweet
+    tweet
   end
 end
