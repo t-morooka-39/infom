@@ -34,9 +34,22 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
+      - run: 
+          name: Update ChromeDriver Version
+          command: |
+            bundle exec rake webdrivers:chromedriver:update
       - run:
           name: Rspec
-          command: bundle exec rspec
+          command: |
+            mkdir /tmp/test-results
+
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
+            bundle exec rspec \
+              --format progress \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $TEST_FILES
   build_image:
     docker:
       - image: docker:18.09.0
