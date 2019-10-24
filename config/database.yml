@@ -33,6 +33,7 @@ test:
   database: infom_test
   host: <%= ENV['DB_HOST'] %>
   username: root
+  socket: /tmp/mysql.sock
 
 production:
   <<: *default
