@@ -42,7 +42,6 @@ jobs:
           name: Rspec
           command: |
             mkdir /tmp/test-results
-
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
             bundle exec rspec \
