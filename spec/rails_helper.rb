@@ -59,8 +59,9 @@ RSpec.configure do |config|
     driven_by Capybara.default_driver
   end
   config.before(:each, type: :system, js: true) do
-    driven_by Capybara.javascript_driver
-    host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
+    driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
+    # driven_by Capybara.javascript_driver
+    # host! "http://#{Capybara.server_host}:#{Capybara.server_port}"
   end
   config.include Devise::Test::IntegrationHelpers, type: :system
   # RSpec Rails can automatically mix in different behaviours to your tests
