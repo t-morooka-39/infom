@@ -26,7 +26,7 @@ describe 'Tweets', type: :system, js: true do
       click_button '投稿する'
       fill_in 'comment_body', with: 'コメントテスト'
       click_button '送信'
-      expect(page).to have_content 'コメントを投稿しました'
+      expect(page).to have_content '投稿しました'
       expect(page).to have_content 'コメントテスト'
       expect(page).to have_selector 'span', text: member.first_name.to_s
     end
