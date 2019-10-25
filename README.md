@@ -5,7 +5,9 @@
 
 ## 本番環境
 https://morooka3.net/
+
 ログイン画面からテストユーザーでログインが可能です。
+
 開発環境はdevelopブランチにあります。
 
 ## 機能一覧、使用gemなど
@@ -50,8 +52,12 @@ https://morooka3.net/
   * 統合テスト（systemspec）
 
 ## circleci
-masterブランチへプッシュ
-circleciで自動ビルド・自動テスト・自動デプロイ、タスク定義の更新とmigrationを行う
+masterブランチへプッシュすると、
+circleciで自動ビルド・自動テスト・自動デプロイ、タスク定義の更新とmigrationを行います。
+
+## terraform
+awsのインフラをterraformで作成することで、インフラのコード化を行いました。
+tfstateは、amazon S3 のバケットに保存しています。
 
 # AWSアーキテクチャ図
-...
+![awsのアーキテクチャ図](./readme-image.png)
